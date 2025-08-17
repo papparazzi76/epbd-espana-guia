@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle2, Home, Calendar, MapPin, FileText, Target, User, Mail, Phone } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface FormData {
   propertyType: string;
@@ -23,6 +24,7 @@ interface FormData {
 export const DiagnosticForm = () => {
   const { toast } = useToast();
   const [currentStep, setCurrentStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     propertyType: "",
     constructionYear: "",
@@ -41,6 +43,65 @@ export const DiagnosticForm = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+  const generateGuide = () => {
+    const guideContent = `GUÍA RÁPIDA: ADAPTA TU VIVIENDA A LA NORMATIVA EPBD 2030
+
+📋 FECHAS CLAVE QUE DEBES CONOCER:
+• 2030: Obligatorio clase E mínima para vender o alquilar
+• 2033: Obligatorio clase D mínima 
+• Actualización constante de normativas
+
+🏠 SI TU VIVIENDA ES CLASE F O G:
+✓ Necesitas mejoras urgentes antes de 2030
+✓ Sin mejoras, no podrás vender o alquilar
+✓ El valor de tu propiedad puede reducirse significativamente
+
+💰 AYUDAS DISPONIBLES (HASTA 80% DE DESCUENTO):
+✓ Plan de Recuperación, Transformación y Resiliencia
+✓ Ayudas autonómicas por comunidad
+✓ Subvenciones municipales específicas
+✓ Deducciones fiscales por eficiencia energética
+
+✅ CHECKLIST DE MEJORAS PRIORITARIAS:
+1. Aislamiento térmico de fachadas y cubiertas
+2. Cambio de ventanas por doble acristalamiento
+3. Instalación de bomba de calor aerotérmica
+4. Paneles solares fotovoltaicos
+5. Sistema de ventilación mecánica controlada
+6. Iluminación LED en toda la vivienda
+
+🎯 PRÓXIMOS PASOS RECOMENDADOS:
+1. Solicita certificado energético actualizado
+2. Identifica las mejoras más rentables
+3. Consulta ayudas disponibles en tu zona
+4. Contacta con empresas especializadas
+5. Planifica las obras con suficiente antelación
+
+📞 ¿NECESITAS AYUDA PERSONALIZADA?
+Nuestro equipo puede conectarte con empresas especializadas en tu zona.
+
+---
+Documento generado por casas-eficientes.es
+Fecha: ${new Date().toLocaleDateString('es-ES')}
+Datos del diagnóstico:
+- Tipo de vivienda: ${formData.propertyType}
+- Año construcción: ${formData.constructionYear}
+- Ubicación: ${formData.city}, ${formData.province}
+- Certificado energético: ${formData.hasEnergyLabel}
+- Interés principal: ${formData.interest}
+`;
+
+    const blob = new Blob([guideContent], { type: 'text/plain;charset=utf-8' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'guia-personalizada-epbd-2030.txt';
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+  };
+
   const handleSubmit = async () => {
     if (!formData.name || !formData.email || !formData.phone) {
       toast({
@@ -51,24 +112,60 @@ export const DiagnosticForm = () => {
       return;
     }
 
-    // Here you would integrate with your CRM (Airtable, HubSpot, etc.)
-    console.log("Lead data:", formData);
-    
-    setSubmitted(true);
-    toast({
-      title: "¡Gracias!",
-      description: "En breve recibirás tu guía personalizada por email",
-    });
+    setIsSubmitting(true);
 
-    // Auto-download the PDF guide
-    setTimeout(() => {
-      const link = document.createElement('a');
-      link.href = 'data:application/pdf;base64,';
-      link.download = 'Guia-Rapida-EPBD-2030.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }, 1000);
+    try {
+      // Map form data to database schema
+      const leadData = {
+        nombre_completo: formData.name,
+        email: formData.email,
+        telefono: formData.phone,
+        tipo_vivienda: formData.propertyType,
+        año_construccion: formData.constructionYear,
+        provincia: formData.province,
+        localidad: formData.city,
+        certificado_energetico: formData.hasEnergyLabel,
+        interes_principal: formData.interest
+      };
+
+      const { data, error } = await supabase
+        .from('leads')
+        .insert([leadData])
+        .select();
+
+      if (error) {
+        console.error('Error saving lead:', error);
+        toast({
+          title: "Error",
+          description: "No se pudo enviar el formulario. Inténtalo de nuevo.",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      console.log("Lead saved successfully:", data);
+      
+      setSubmitted(true);
+      toast({
+        title: "¡Gracias!",
+        description: "En breve recibirás tu guía personalizada por email",
+      });
+
+      // Auto-download the guide
+      setTimeout(() => {
+        generateGuide();
+      }, 1000);
+
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      toast({
+        title: "Error",
+        description: "Error inesperado. Por favor, inténtalo de nuevo.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -99,6 +196,23 @@ export const DiagnosticForm = () => {
                     En las próximas 24h un experto te contactará para analizar tu caso específico
                   </p>
                 </div>
+                <Button onClick={() => {
+                  setSubmitted(false);
+                  setCurrentStep(1);
+                  setFormData({
+                    propertyType: "",
+                    constructionYear: "",
+                    province: "",
+                    city: "",
+                    hasEnergyLabel: "",
+                    interest: "",
+                    name: "",
+                    email: "",
+                    phone: ""
+                  });
+                }}>
+                  Hacer otro diagnóstico
+                </Button>
               </div>
             </CardContent>
           </Card>
@@ -189,14 +303,11 @@ export const DiagnosticForm = () => {
                         <SelectValue placeholder="Selecciona década" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="antes-1960">Antes de 1960</SelectItem>
-                        <SelectItem value="1960-1970">1960-1970</SelectItem>
-                        <SelectItem value="1970-1980">1970-1980</SelectItem>
-                        <SelectItem value="1980-1990">1980-1990</SelectItem>
-                        <SelectItem value="1990-2000">1990-2000</SelectItem>
-                        <SelectItem value="2000-2010">2000-2010</SelectItem>
-                        <SelectItem value="2010-2020">2010-2020</SelectItem>
-                        <SelectItem value="despues-2020">Después de 2020</SelectItem>
+                        <SelectItem value="antes_1980">Antes de 1980</SelectItem>
+                        <SelectItem value="1980_1990">1980-1990</SelectItem>
+                        <SelectItem value="1990_2000">1990-2000</SelectItem>
+                        <SelectItem value="2000_2010">2000-2010</SelectItem>
+                        <SelectItem value="despues_2010">Después de 2010</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -260,7 +371,7 @@ export const DiagnosticForm = () => {
                         <Label htmlFor="no">No</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="no-se" id="no-se" />
+                        <RadioGroupItem value="no_se" id="no-se" />
                         <Label htmlFor="no-se">No lo sé</Label>
                       </div>
                     </RadioGroup>
@@ -284,7 +395,7 @@ export const DiagnosticForm = () => {
                         <Label htmlFor="subvencion">Solicitar subvención</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="vender-alquilar" id="vender-alquilar" />
+                        <RadioGroupItem value="vender_alquilar" id="vender-alquilar" />
                         <Label htmlFor="vender-alquilar">Vender/Alquilar</Label>
                       </div>
                     </RadioGroup>
@@ -364,8 +475,8 @@ export const DiagnosticForm = () => {
                     <Button variant="outline" onClick={() => setCurrentStep(2)} className="flex-1">
                       Atrás
                     </Button>
-                    <Button onClick={handleSubmit} className="flex-1">
-                      Enviar diagnóstico
+                    <Button onClick={handleSubmit} className="flex-1" disabled={isSubmitting}>
+                      {isSubmitting ? "Enviando..." : "Enviar diagnóstico"}
                     </Button>
                   </div>
                 </div>

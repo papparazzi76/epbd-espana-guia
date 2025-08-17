@@ -6,12 +6,14 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Bell, Mail, CheckCircle2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 export const SubscriptionAlerts = () => {
   const { toast } = useToast();
   const [email, setEmail] = useState("");
   const [province, setProvince] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const provinces = [
     "Álava", "Albacete", "Alicante", "Almería", "Asturias", "Ávila", "Badajoz", "Barcelona",
@@ -23,7 +25,7 @@ export const SubscriptionAlerts = () => {
     "Toledo", "Valencia", "Valladolid", "Bizkaia", "Zamora", "Zaragoza"
   ];
 
-  const handleSubscribe = () => {
+  const handleSubscribe = async () => {
     if (!email || !province) {
       toast({
         title: "Datos incompletos",
@@ -33,14 +35,69 @@ export const SubscriptionAlerts = () => {
       return;
     }
 
-    // Here you would integrate with your email marketing platform
-    console.log("Subscription data:", { email, province, timestamp: new Date() });
-    
-    setSubscribed(true);
-    toast({
-      title: "¡Suscrito correctamente!",
-      description: "Te avisaremos cuando salgan nuevas ayudas en tu comunidad",
-    });
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast({
+        title: "Email inválido",
+        description: "Por favor introduce un email válido",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Save subscription to database
+      const { data, error } = await supabase
+        .from('subscription_alerts')
+        .insert([
+          {
+            email: email.toLowerCase().trim(),
+            provincia: province,
+            activo: true
+          }
+        ])
+        .select();
+
+      if (error) {
+        // Check if it's a duplicate email
+        if (error.code === '23505') {
+          toast({
+            title: "Ya estás suscrito",
+            description: "Este email ya está registrado para recibir alertas",
+            variant: "destructive"
+          });
+        } else {
+          console.error('Error saving subscription:', error);
+          toast({
+            title: "Error",
+            description: "No se pudo completar la suscripción. Inténtalo de nuevo.",
+            variant: "destructive"
+          });
+        }
+        return;
+      }
+
+      console.log("Subscription saved successfully:", data);
+      
+      setSubscribed(true);
+      toast({
+        title: "¡Suscrito correctamente!",
+        description: "Te avisaremos cuando salgan nuevas ayudas en tu comunidad",
+      });
+
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      toast({
+        title: "Error",
+        description: "Error inesperado. Por favor, inténtalo de nuevo.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (subscribed) {
@@ -52,6 +109,18 @@ export const SubscriptionAlerts = () => {
           <p className="text-sm text-muted-foreground">
             Te avisaremos por email cuando salgan nuevas ayudas en <strong>{province}</strong>
           </p>
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={() => {
+              setSubscribed(false);
+              setEmail("");
+              setProvince("");
+            }}
+            className="mt-4"
+          >
+            Suscribir otro email
+          </Button>
         </CardContent>
       </Card>
     );
@@ -80,12 +149,13 @@ export const SubscriptionAlerts = () => {
             placeholder="tu@email.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            disabled={isSubmitting}
           />
         </div>
 
         <div className="space-y-2">
           <Label>Comunidad Autónoma</Label>
-          <Select value={province} onValueChange={setProvince}>
+          <Select value={province} onValueChange={setProvince} disabled={isSubmitting}>
             <SelectTrigger>
               <SelectValue placeholder="Selecciona tu provincia" />
             </SelectTrigger>
@@ -97,8 +167,12 @@ export const SubscriptionAlerts = () => {
           </Select>
         </div>
 
-        <Button onClick={handleSubscribe} className="w-full">
-          Suscribirme a alertas
+        <Button 
+          onClick={handleSubscribe} 
+          className="w-full"
+          disabled={isSubmitting || !email || !province}
+        >
+          {isSubmitting ? "Suscribiendo..." : "Suscribirme a alertas"}
         </Button>
 
         <p className="text-xs text-muted-foreground text-center">

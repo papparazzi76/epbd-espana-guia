@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Mail, Phone, Calendar, CheckCircle, ArrowRight, Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 export const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -14,9 +15,11 @@ export const ContactSection = () => {
   });
 
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!formData.acepta_privacidad) {
@@ -28,23 +31,78 @@ export const ContactSection = () => {
       return;
     }
 
-    // Simular envío
-    toast({
-      title: "¡Solicitud enviada!",
-      description: "Te contactaremos en las próximas 24 horas laborables",
-    });
+    if (!formData.nombre || !formData.email || !formData.tipo_consulta) {
+      toast({
+        title: "Datos incompletos",
+        description: "Por favor completa todos los campos obligatorios",
+        variant: "destructive"
+      });
+      return;
+    }
 
-    // Reset form
-    setFormData({
-      nombre: '',
-      email: '',
-      telefono: '',
-      tipo_consulta: '',
-      mensaje: '',
-      acepta_privacidad: false,
-      quiere_newsletter: false
-    });
-    setStep(1);
+    setIsSubmitting(true);
+
+    try {
+      // Save contact form as a special type of lead
+      const { data, error } = await supabase
+        .from('leads')
+        .insert([
+          {
+            nombre_completo: formData.nombre,
+            email: formData.email,
+            telefono: formData.telefono || null,
+            tipo_vivienda: 'consulta', // Special value for contact form
+            año_construccion: 'no_especificado',
+            provincia: 'no_especificado',
+            localidad: 'no_especificado',
+            certificado_energetico: 'no_especificado',
+            interes_principal: formData.tipo_consulta,
+            // We could add a notes field to store the message and newsletter preference
+          }
+        ])
+        .select();
+
+      if (error) {
+        console.error('Error saving contact form:', error);
+        toast({
+          title: "Error",
+          description: "No se pudo enviar el formulario. Inténtalo de nuevo.",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      console.log("Contact form saved successfully:", data);
+
+      // If they want newsletter, also subscribe them to alerts (we'll use Madrid as default)
+      if (formData.quiere_newsletter) {
+        await supabase
+          .from('subscription_alerts')
+          .insert([
+            {
+              email: formData.email.toLowerCase().trim(),
+              provincia: 'Madrid', // Default province for newsletter
+              activo: true
+            }
+          ]);
+      }
+
+      setIsSubmitted(true);
+      toast({
+        title: "¡Solicitud enviada!",
+        description: "Te contactaremos en las próximas 24 horas laborables",
+      });
+
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      toast({
+        title: "Error",
+        description: "Error inesperado. Por favor, inténtalo de nuevo.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const downloadChecklist = () => {
@@ -87,6 +145,44 @@ Descarga la versión completa en nuestra web.
     document.body.removeChild(link);
   };
 
+  if (isSubmitted) {
+    return (
+      <section id="contacto" className="section-padding">
+        <div className="container-width">
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="card-elevated p-8">
+              <div className="w-16 h-16 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <CheckCircle className="w-8 h-8 text-success" />
+              </div>
+              <h3 className="text-2xl font-bold mb-4">¡Solicitud enviada correctamente!</h3>
+              <p className="text-lg text-muted-foreground mb-6">
+                Te contactaremos en las próximas 24 horas laborables para ofrecerte asesoramiento personalizado.
+              </p>
+              <button
+                onClick={() => {
+                  setIsSubmitted(false);
+                  setFormData({
+                    nombre: '',
+                    email: '',
+                    telefono: '',
+                    tipo_consulta: '',
+                    mensaje: '',
+                    acepta_privacidad: false,
+                    quiere_newsletter: false
+                  });
+                  setStep(1);
+                }}
+                className="btn-hero-secondary"
+              >
+                Enviar otra consulta
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="contacto" className="section-padding">
       <div className="container-width">
@@ -122,6 +218,7 @@ Descarga la versión completa en nuestra web.
                         onChange={(e) => setFormData(prev => ({...prev, nombre: e.target.value}))}
                         className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                         placeholder="Juan Pérez"
+                        disabled={isSubmitting}
                       />
                     </div>
                     
@@ -136,6 +233,7 @@ Descarga la versión completa en nuestra web.
                         onChange={(e) => setFormData(prev => ({...prev, email: e.target.value}))}
                         className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                         placeholder="juan@email.com"
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -150,6 +248,7 @@ Descarga la versión completa en nuestra web.
                       onChange={(e) => setFormData(prev => ({...prev, telefono: e.target.value}))}
                       className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                       placeholder="600 123 456"
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -162,22 +261,23 @@ Descarga la versión completa en nuestra web.
                       value={formData.tipo_consulta}
                       onChange={(e) => setFormData(prev => ({...prev, tipo_consulta: e.target.value}))}
                       className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      disabled={isSubmitting}
                     >
                       <option value="">Selecciona una opción</option>
-                      <option value="diagnostico">Diagnóstico inicial de mi vivienda</option>
-                      <option value="ayudas">Información sobre ayudas disponibles</option>
-                      <option value="mejoras">Qué mejoras necesito hacer</option>
-                      <option value="costes">Estimación de costes</option>
-                      <option value="tramites">Ayuda con trámites</option>
+                      <option value="reformar">Diagnóstico inicial de mi vivienda</option>
+                      <option value="subvencion">Información sobre ayudas disponibles</option>
+                      <option value="vender_alquilar">Qué mejoras necesito hacer</option>
+                      <option value="reformar">Estimación de costes</option>
+                      <option value="subvencion">Ayuda con trámites</option>
                       <option value="comunidad">Consulta para comunidad de propietarios</option>
-                      <option value="otro">Otra consulta</option>
+                      <option value="reformar">Otra consulta</option>
                     </select>
                   </div>
 
                   <button
                     type="button"
                     onClick={() => setStep(2)}
-                    disabled={!formData.nombre || !formData.email || !formData.tipo_consulta}
+                    disabled={!formData.nombre || !formData.email || !formData.tipo_consulta || isSubmitting}
                     className="w-full btn-hero disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Continuar
@@ -198,6 +298,7 @@ Descarga la versión completa en nuestra web.
                       rows={4}
                       className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                       placeholder="Ej: Tengo un piso de 1985 con calificación F, quiero saber qué mejoras hacer para cumplir la normativa..."
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -208,6 +309,7 @@ Descarga la versión completa en nuestra web.
                         checked={formData.acepta_privacidad}
                         onChange={(e) => setFormData(prev => ({...prev, acepta_privacidad: e.target.checked}))}
                         className="mt-1"
+                        disabled={isSubmitting}
                       />
                       <span className="text-sm">
                         Acepto la <a href="#privacidad" className="text-primary hover:underline">política de privacidad</a> y 
@@ -221,6 +323,7 @@ Descarga la versión completa en nuestra web.
                         checked={formData.quiere_newsletter}
                         onChange={(e) => setFormData(prev => ({...prev, quiere_newsletter: e.target.checked}))}
                         className="mt-1"
+                        disabled={isSubmitting}
                       />
                       <span className="text-sm">
                         Quiero recibir información sobre nuevas ayudas y actualizaciones normativas
@@ -233,15 +336,17 @@ Descarga la versión completa en nuestra web.
                       type="button"
                       onClick={() => setStep(1)}
                       className="btn-hero-secondary"
+                      disabled={isSubmitting}
                     >
                       Atrás
                     </button>
                     <button
                       type="submit"
                       className="btn-hero flex-1"
+                      disabled={isSubmitting}
                     >
                       <Calendar className="w-4 h-4" />
-                      Solicitar consulta gratuita
+                      {isSubmitting ? "Enviando..." : "Solicitar consulta gratuita"}
                     </button>
                   </div>
                 </>

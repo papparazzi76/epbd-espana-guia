@@ -1,153 +1,158 @@
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Building2, Users, Target, TrendingUp, Phone, Mail, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useToast } from "@/hooks/use-toast";
+import { Building2, Users, TrendingUp, CheckCircle, ArrowRight, Target } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 export const B2BSection = () => {
-  const openB2BContact = () => {
-    // In a real app, this would open a contact form or redirect to a B2B landing page
-    window.open('mailto:empresas@casas-eficientes.es?subject=Información para empresas - Leads EPBD 2024', '_blank');
+  const { toast } = useToast();
+  const [showForm, setShowForm] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    nombreEmpresa: '',
+    emailContacto: '',
+    telefono: '',
+    provinciasInteres: [] as string[],
+    tipoServicios: [] as string[],
+    planSuscripcion: 'basico',
+    mensaje: ''
+  });
+
+  const provinces = ["Madrid", "Barcelona", "Valencia", "Sevilla", "Bilbao", "Zaragoza", "Málaga"];
+  const servicios = ["Rehabilitación energética", "Instalación bomba de calor", "Paneles solares", "Aislamiento térmico"];
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.nombreEmpresa || !formData.emailContacto) {
+      toast({ title: "Error", description: "Completa los campos obligatorios", variant: "destructive" });
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const { error } = await supabase.from('companies').insert([{
+        nombre_empresa: formData.nombreEmpresa,
+        email_contacto: formData.emailContacto,
+        telefono: formData.telefono || null,
+        provincias_interes: formData.provinciasInteres,
+        tipo_servicios: formData.tipoServicios,
+        plan_suscripcion: formData.planSuscripcion,
+        activo: true
+      }]);
+
+      if (error) throw error;
+      setIsSubmitted(true);
+      toast({ title: "¡Solicitud enviada!", description: "Te contactaremos pronto" });
+    } catch (error) {
+      toast({ title: "Error", description: "No se pudo enviar la solicitud", variant: "destructive" });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
+  if (isSubmitted) {
+    return (
+      <section className="section-padding bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div className="container-width text-center">
+          <Card className="max-w-2xl mx-auto card-elevated">
+            <CardContent className="p-8">
+              <CheckCircle className="w-16 h-16 text-success mx-auto mb-4" />
+              <h3 className="text-2xl font-bold mb-4">¡Solicitud recibida!</h3>
+              <p className="text-muted-foreground mb-6">Te contactaremos en 24 horas para activar tu cuenta.</p>
+              <Button onClick={() => { setIsSubmitted(false); setShowForm(false); }}>Enviar otra solicitud</Button>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section className="section-padding bg-gradient-to-br from-primary/5 to-secondary/5">
+    <section id="empresas" className="section-padding bg-gradient-to-br from-primary/5 to-secondary/5">
       <div className="container-width">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Content */}
-            <div>
-              <div className="mb-6">
-                <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
-                  <Building2 className="w-4 h-4" />
-                  Para empresas de reformas y constructoras
-                </span>
-              </div>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            ¿Eres <span className="gradient-text">empresa de reformas</span> o constructora?
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+            Captar clientes interesados en rehabilitación energética es cada vez más caro y complejo.
+            En Casas Eficientes lo hacemos por ti: generamos leads precalificados con propietarios 
+            realmente interesados en adaptar su vivienda a la normativa.
+          </p>
+        </div>
 
-              <h2 className="text-3xl font-bold mb-6">
-                ¿Eres empresa de reformas o constructora?
-              </h2>
-              
-              <p className="text-lg text-muted-foreground mb-8">
-                Captar clientes interesados en rehabilitación energética es cada vez más caro y complejo. 
-                En <strong>Casas Eficientes</strong> lo hacemos por ti: generamos leads precalificados con 
-                propietarios realmente interesados en adaptar su vivienda a la normativa.
-              </p>
-
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-success mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold mb-1">Leads precalificados</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Propietarios que ya conocen la normativa y buscan activamente realizar mejoras
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-success mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold mb-1">Segmentación geográfica</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Acceso exclusivo a leads en tu zona de trabajo y especialización
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-success mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold mb-1">Información completa</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Datos del inmueble, tipo de reforma requerida y presupuesto estimado
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-success mt-0.5 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold mb-1">Modelo de suscripción</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Por una suscripción anual tendrás acceso exclusivo a todos los leads de tu área
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-6 bg-primary/10 rounded-lg mb-8">
-                <h3 className="font-semibold text-primary mb-2">👉 Ventaja competitiva</h3>
-                <p className="text-sm text-muted-foreground">
-                  Mientras tus competidores luchan por visibilidad en Google Ads, tú tendrás acceso 
-                  directo a propietarios que ya buscan soluciones de eficiencia energética.
-                </p>
-              </div>
-
-              <Button onClick={openB2BContact} size="lg" className="btn-hero group">
-                <span>Quiero más información para empresas</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </div>
-
-            {/* Stats & Benefits */}
-            <div className="lg:pl-8">
-              <Card className="card-elevated border-2 border-primary/20 mb-8">
-                <CardHeader className="text-center">
-                  <CardTitle className="text-xl">Oportunidad de mercado</CardTitle>
-                  <CardDescription>
-                    7 millones de viviendas necesitan reformas antes de 2030
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="text-center p-4 bg-muted rounded-lg">
-                      <Users className="w-8 h-8 text-primary mx-auto mb-2" />
-                      <div className="text-2xl font-bold text-primary">7M</div>
-                      <div className="text-sm text-muted-foreground">Viviendas F/G</div>
-                    </div>
-                    <div className="text-center p-4 bg-muted rounded-lg">
-                      <Target className="w-8 h-8 text-success mx-auto mb-2" />
-                      <div className="text-2xl font-bold text-success">€120K</div>
-                      <div className="text-sm text-muted-foreground">Ticket medio</div>
-                    </div>
-                    <div className="text-center p-4 bg-muted rounded-lg">
-                      <TrendingUp className="w-8 h-8 text-secondary mx-auto mb-2" />
-                      <div className="text-2xl font-bold text-secondary">300%</div>
-                      <div className="text-sm text-muted-foreground">Crecimiento sector</div>
-                    </div>
-                    <div className="text-center p-4 bg-muted rounded-lg">
-                      <Building2 className="w-8 h-8 text-warning mx-auto mb-2" />
-                      <div className="text-2xl font-bold text-warning">6 años</div>
-                      <div className="text-sm text-muted-foreground">Plazo normativa</div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
+        {!showForm ? (
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
               <Card className="card-elevated">
                 <CardHeader>
-                  <CardTitle className="text-lg">Contacto empresas</CardTitle>
+                  <Target className="w-12 h-12 text-primary mx-auto mb-4" />
+                  <CardTitle>Leads Cualificados</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3">
-                      <Phone className="w-5 h-5 text-primary" />
-                      <span className="text-sm">+34 900 123 456</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <Mail className="w-5 h-5 text-primary" />
-                      <span className="text-sm">empresas@casas-eficientes.es</span>
-                    </div>
-                  </div>
-                  <div className="mt-4 pt-4 border-t border-border">
-                    <p className="text-xs text-muted-foreground">
-                      Horario de atención: L-V 9:00-18:00
-                    </p>
-                  </div>
+                  <p className="text-muted-foreground">Propietarios que ya completaron nuestro diagnóstico</p>
+                </CardContent>
+              </Card>
+              <Card className="card-elevated">
+                <CardHeader>
+                  <Users className="w-12 h-12 text-primary mx-auto mb-4" />
+                  <CardTitle>Segmentación Avanzada</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">Solo leads de tu zona y servicios</p>
+                </CardContent>
+              </Card>
+              <Card className="card-elevated">
+                <CardHeader>
+                  <TrendingUp className="w-12 h-12 text-primary mx-auto mb-4" />
+                  <CardTitle>Mayor Conversión</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">Leads con scoring automático</p>
                 </CardContent>
               </Card>
             </div>
+            <Button size="lg" onClick={() => setShowForm(true)} className="btn-hero">
+              Quiero más información para empresas <ArrowRight className="w-4 h-4" />
+            </Button>
           </div>
-        </div>
+        ) : (
+          <Card className="max-w-2xl mx-auto card-elevated">
+            <CardHeader>
+              <CardTitle>Solicitar información</CardTitle>
+              <CardDescription>Te contactaremos para explicarte nuestra plataforma</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <Input 
+                  placeholder="Nombre empresa *" 
+                  value={formData.nombreEmpresa}
+                  onChange={(e) => setFormData(prev => ({...prev, nombreEmpresa: e.target.value}))}
+                  required 
+                />
+                <Input 
+                  type="email" 
+                  placeholder="Email *" 
+                  value={formData.emailContacto}
+                  onChange={(e) => setFormData(prev => ({...prev, emailContacto: e.target.value}))}
+                  required 
+                />
+                <div className="flex gap-3">
+                  <Button type="button" variant="outline" onClick={() => setShowForm(false)}>Cancelar</Button>
+                  <Button type="submit" className="flex-1" disabled={isSubmitting}>
+                    {isSubmitting ? "Enviando..." : "Solicitar información"}
+                  </Button>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+        )}
       </div>
     </section>
   );
