@@ -63,7 +63,7 @@ export const HeroSection = () => {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
               <button 
-                onClick={() => scrollToSection('ayudas')}
+                onClick={() => scrollToSection('guia-gratuita')}
                 className="btn-hero-secondary"
               >
                 Ver ayudas disponibles
@@ -90,13 +90,13 @@ export const HeroSection = () => {
                     Descargar guía PDF
                   </button>
                   <button 
-                    onClick={() => scrollToSection('fechas')}
+                    onClick={() => window.location.href = '/fechas-clave'}
                     className="bg-white/10 hover:bg-white/20 px-3 py-1 rounded text-sm"
                   >
                     📅 Ver fechas clave
                   </button>
                   <button 
-                    onClick={() => scrollToSection('obligaciones')}
+                    onClick={() => window.location.href = '/obligaciones'}
                     className="bg-white/10 hover:bg-white/20 px-3 py-1 rounded text-sm"
                   >
                     📋 Mis obligaciones
@@ -175,14 +175,14 @@ export const HeroSection = () => {
               <div className="mt-6 pt-4 border-t border-border">
                 <div className="grid grid-cols-2 gap-4 text-center">
                   <button 
-                    onClick={() => scrollToSection('fechas')}
+                    onClick={() => window.location.href = '/fechas-clave'}
                     className="bg-primary text-primary-foreground hover:bg-primary-hover 
                              px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                   >
                     📅 Fechas clave
                   </button>
                   <button 
-                    onClick={() => scrollToSection('ayudas')}
+                    onClick={() => scrollToSection('guia-gratuita')}
                     className="bg-secondary text-secondary-foreground hover:bg-secondary-hover 
                              px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                   >
@@ -197,7 +197,7 @@ export const HeroSection = () => {
 
       {/* Scroll indicator funcional */}
       <button 
-        onClick={() => scrollToSection('fechas')}
+        onClick={() => scrollToSection('diagnostico')}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce hover:text-secondary transition-colors"
       >
         <div className="text-center">

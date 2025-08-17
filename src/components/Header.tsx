@@ -72,7 +72,7 @@ export const Header = () => {
           <NavButton to="/">Inicio</NavButton>
           <NavButton to="/fechas-clave">Fechas Clave</NavButton>
           <NavButton to="/obligaciones">Obligaciones</NavButton>
-          <NavButton to="/ayudas-subvenciones">Ayudas</NavButton>
+          <NavButton to="/ayudas-subvenciones" sectionId="guia-gratuita">Ayudas</NavButton>
           <NavButton to="/calculadora" sectionId="diagnostico">Calculadora</NavButton>
           <NavButton to="/faq" sectionId="faq">FAQ</NavButton>
         </nav>
@@ -96,7 +96,7 @@ export const Header = () => {
             <NavButton to="/">Inicio</NavButton>
             <NavButton to="/fechas-clave">Fechas Clave</NavButton>
             <NavButton to="/obligaciones">Obligaciones</NavButton>
-            <NavButton to="/ayudas-subvenciones">Ayudas</NavButton>
+            <NavButton to="/ayudas-subvenciones" sectionId="guia-gratuita">Ayudas</NavButton>
             <NavButton to="/calculadora" sectionId="diagnostico">Calculadora</NavButton>
             <NavButton to="/faq" sectionId="faq">FAQ</NavButton>
           </nav>

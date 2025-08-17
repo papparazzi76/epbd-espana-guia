@@ -44,7 +44,7 @@ Para más información: https://casas-eficientes.es
   };
 
   return (
-    <section className="section-padding bg-gradient-to-br from-primary/5 to-secondary/5">
+    <section id="guia-gratuita" className="section-padding bg-gradient-to-br from-primary/5 to-secondary/5">
       <div className="container-width">
         <div className="max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">

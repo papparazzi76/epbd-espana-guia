@@ -17,7 +17,7 @@ export const MarketImpactSection = () => {
         <link rel="canonical" href="https://guiaepbd2024.es/impacto-mercado" />
       </Helmet>
 
-      <section className="section-padding">
+      <section id="impacto-mercado" className="section-padding">
         <div className="container-width">
           <div className="text-center mb-12">
             <h1 className="text-3xl font-bold mb-4">
