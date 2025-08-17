@@ -191,10 +191,11 @@ export const CalculatorSection = () => {
                   <label className="block text-sm font-medium mb-2">
                     Tipo de vivienda
                   </label>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-3 gap-3">
                     {[
                       { id: 'piso', nombre: 'Piso' },
-                      { id: 'unifamiliar', nombre: 'Casa unifamiliar' }
+                      { id: 'unifamiliar', nombre: 'Casa unifamiliar' },
+                      { id: 'edificio', nombre: 'Edificio de vecinos' }
                     ].map(tipo => (
                       <button
                         key={tipo.id}
