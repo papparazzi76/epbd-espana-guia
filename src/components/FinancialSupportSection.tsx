@@ -1,10 +1,135 @@
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useState } from "react";
-import { Euro, Calendar, FileText, Calculator, Info, ExternalLink, CheckCircle } from "lucide-react";
+import { Euro, Calendar, FileText, Calculator, Info, ExternalLink, CheckCircle, Search, MapPin, Filter } from "lucide-react";
 import financialData from "@/data/financial-support.json";
 
 export const FinancialSupportSection = () => {
   const [activeTab, setActiveTab] = useState("deductions");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCommunity, setSelectedCommunity] = useState("");
+  const [selectedProvince, setSelectedProvince] = useState("");
+
+  // Datos de comunidades autónomas y sus ayudas específicas
+  const communityAids = [
+    {
+      community: "Andalucía",
+      provinces: ["Almería", "Cádiz", "Córdoba", "Granada", "Huelva", "Jaén", "Málaga", "Sevilla"],
+      programs: [
+        {
+          name: "Plan Renove Andalucía 2024",
+          amount: "Hasta 18.000€",
+          type: "Subvención",
+          description: "Para calderas de biomasa y aerotermia",
+          deadline: "31 diciembre 2024"
+        },
+        {
+          name: "Programa FEDER Andalucía",
+          amount: "Hasta 40% del coste",
+          type: "Cofinanciación",
+          description: "Rehabilitación energética integral",
+          deadline: "Abierto"
+        }
+      ]
+    },
+    {
+      community: "Madrid",
+      provinces: ["Madrid"],
+      programs: [
+        {
+          name: "Plan RENOVE Calderas 2024",
+          amount: "Hasta 2.500€",
+          type: "Subvención",
+          description: "Sustitución de calderas obsoletas",
+          deadline: "30 junio 2024"
+        },
+        {
+          name: "Ayudas Rehabilitación Energética",
+          amount: "Hasta 12.000€",
+          type: "Subvención",
+          description: "Mejoras envolvente térmica",
+          deadline: "Diciembre 2024"
+        }
+      ]
+    },
+    {
+      community: "Cataluña",
+      provinces: ["Barcelona", "Girona", "Lleida", "Tarragona"],
+      programs: [
+        {
+          name: "Pla Renove Catalunya",
+          amount: "Hasta 15.000€",
+          type: "Subvención",
+          description: "Sistemas renovables y eficiencia",
+          deadline: "Octubre 2024"
+        },
+        {
+          name: "ICAEN Eficiencia Energética",
+          amount: "30-50% del coste",
+          type: "Subvención",
+          description: "Rehabilitación energética",
+          deadline: "Convocatoria anual"
+        }
+      ]
+    },
+    {
+      community: "País Vasco",
+      provinces: ["Álava", "Guipúzcoa", "Vizcaya"],
+      programs: [
+        {
+          name: "Plan Renove Euskadi",
+          amount: "Hasta 20.000€",
+          type: "Subvención",
+          description: "Renovables y eficiencia energética",
+          deadline: "Abierto todo el año"
+        }
+      ]
+    },
+    {
+      community: "Valencia",
+      provinces: ["Alicante", "Castellón", "Valencia"],
+      programs: [
+        {
+          name: "Plan Renove Valencia",
+          amount: "Hasta 8.000€",
+          type: "Subvención",
+          description: "Equipos de climatización eficientes",
+          deadline: "Noviembre 2024"
+        }
+      ]
+    },
+    {
+      community: "Galicia",
+      provinces: ["A Coruña", "Lugo", "Ourense", "Pontevedra"],
+      programs: [
+        {
+          name: "Plan Renove Galicia",
+          amount: "Hasta 6.000€",
+          type: "Subvención",
+          description: "Calderas y sistemas renovables",
+          deadline: "Diciembre 2024"
+        }
+      ]
+    }
+  ];
+
+  // Filtrar ayudas según búsqueda y selección
+  const filteredCommunities = communityAids.filter(item => {
+    const matchesSearch = searchTerm === "" || 
+      item.community.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.programs.some(program => 
+        program.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        program.description.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    
+    const matchesCommunity = selectedCommunity === "" || item.community === selectedCommunity;
+    
+    return matchesSearch && matchesCommunity;
+  });
+
+  const allCommunities = communityAids.map(item => item.community);
+  const availableProvinces = selectedCommunity 
+    ? communityAids.find(item => item.community === selectedCommunity)?.provinces || []
+    : [];
 
   return (
     <HelmetProvider>
@@ -42,6 +167,16 @@ export const FinancialSupportSection = () => {
               💰 Deducciones IRPF
             </button>
             <button
+              onClick={() => setActiveTab("communities")}
+              className={`px-6 py-3 rounded-lg font-medium transition-colors ${
+                activeTab === "communities"
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-background text-foreground hover:bg-muted"
+              }`}
+            >
+              🗺️ Ayudas por CCAA
+            </button>
+            <button
               onClick={() => setActiveTab("financial")}
               className={`px-6 py-3 rounded-lg font-medium transition-colors ${
                 activeTab === "financial"
@@ -64,6 +199,126 @@ export const FinancialSupportSection = () => {
           </div>
 
           {/* Contenido de las tabs */}
+          {activeTab === "communities" && (
+            <div className="space-y-8">
+              {/* Buscador y filtros */}
+              <div className="bg-background rounded-lg p-6 border">
+                <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                  <MapPin className="w-6 h-6 text-primary" />
+                  Buscador de ayudas por comunidades
+                </h2>
+                
+                <div className="grid md:grid-cols-3 gap-4 mb-6">
+                  {/* Buscador */}
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                    <input
+                      type="text"
+                      placeholder="Buscar ayudas..."
+                      className="w-full pl-10 pr-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                  </div>
+
+                  {/* Filtro por comunidad */}
+                  <select
+                    value={selectedCommunity}
+                    onChange={(e) => {
+                      setSelectedCommunity(e.target.value);
+                      setSelectedProvince(""); // Reset province when community changes
+                    }}
+                    className="w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  >
+                    <option value="">Todas las comunidades</option>
+                    {allCommunities.map(community => (
+                      <option key={community} value={community}>{community}</option>
+                    ))}
+                  </select>
+
+                  {/* Filtro por provincia */}
+                  <select
+                    value={selectedProvince}
+                    onChange={(e) => setSelectedProvince(e.target.value)}
+                    className="w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                    disabled={!selectedCommunity}
+                  >
+                    <option value="">Todas las provincias</option>
+                    {availableProvinces.map(province => (
+                      <option key={province} value={province}>{province}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Resultados */}
+                <div className="space-y-6">
+                  {filteredCommunities.length === 0 ? (
+                    <div className="text-center py-8">
+                      <Filter className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                      <p className="text-muted-foreground">No se encontraron ayudas que coincidan con los filtros</p>
+                    </div>
+                  ) : (
+                    filteredCommunities.map((communityData, index) => (
+                      <div key={index} className="bg-muted/50 rounded-lg p-6">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="bg-primary/10 rounded-full p-2">
+                            <MapPin className="w-5 h-5 text-primary" />
+                          </div>
+                          <h3 className="text-xl font-semibold">{communityData.community}</h3>
+                          <span className="bg-primary/20 text-primary px-2 py-1 rounded text-xs font-medium">
+                            {communityData.programs.length} programa{communityData.programs.length !== 1 ? 's' : ''}
+                          </span>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 gap-4">
+                          {communityData.programs.map((program, programIndex) => (
+                            <div key={programIndex} className="bg-background rounded-lg p-4 border">
+                              <div className="flex justify-between items-start mb-3">
+                                <h4 className="font-semibold text-lg">{program.name}</h4>
+                                <span className={`px-2 py-1 rounded text-xs font-medium ${
+                                  program.type === 'Subvención' 
+                                    ? 'bg-success/20 text-success' 
+                                    : 'bg-primary/20 text-primary'
+                                }`}>
+                                  {program.type}
+                                </span>
+                              </div>
+                              
+                              <div className="space-y-2 mb-4">
+                                <div className="flex items-center gap-2">
+                                  <Euro className="w-4 h-4 text-primary" />
+                                  <span className="font-medium text-primary">{program.amount}</span>
+                                </div>
+                                <p className="text-sm text-muted-foreground">{program.description}</p>
+                              </div>
+
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                                  <Calendar className="w-3 h-3" />
+                                  {program.deadline}
+                                </div>
+                                <button className="bg-primary text-primary-foreground px-3 py-1 rounded text-xs font-medium hover:bg-primary/90 transition-colors">
+                                  Más info
+                                </button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="mt-4 pt-4 border-t border-border">
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <MapPin className="w-4 h-4" />
+                            <span>Provincias: {communityData.provinces.join(", ")}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
+
           {activeTab === "deductions" && (
             <div className="space-y-8">
               <div className="bg-background rounded-lg p-6 border">
