@@ -10,7 +10,7 @@ const iconMap = {
 
 export const ProfilesSection = () => {
   return (
-    <section className="section-padding">
+    <section id="obligaciones" className="section-padding">
       <div className="container-width">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">
@@ -100,8 +100,16 @@ export const ProfilesSection = () => {
                 </div>
 
                 {/* CTA específico */}
-                <button className="w-full bg-primary text-primary-foreground hover:bg-primary-hover 
-                                 py-2 px-4 rounded-lg font-medium text-sm transition-colors">
+                <button 
+                  onClick={() => {
+                    const element = document.getElementById('calculadora');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary-hover 
+                                   py-2 px-4 rounded-lg font-medium text-sm transition-colors"
+                >
                   Ver guía completa para {profile.title.toLowerCase()}
                 </button>
               </div>

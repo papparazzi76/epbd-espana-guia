@@ -46,7 +46,7 @@ export const SubsidiesTable = () => {
   };
 
   return (
-    <section className="section-padding bg-muted/30">
+    <section id="ayudas" className="section-padding bg-muted/30">
       <div className="container-width">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">

@@ -20,7 +20,7 @@ export const FAQSection = () => {
   };
 
   return (
-    <section className="section-padding">
+    <section id="faq" className="section-padding">
       <div className="container-width">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">
@@ -121,7 +121,12 @@ export const FAQSection = () => {
                 Prueba con otros términos o consulta todas las preguntas.
               </p>
               <button 
-                onClick={() => setSearchTerm("")}
+                onClick={() => {
+                  const element = document.getElementById('contacto');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
                 className="btn-hero-secondary mt-4"
               >
                 Ver todas las preguntas
@@ -141,10 +146,68 @@ export const FAQSection = () => {
               cómo adaptar tu vivienda a la EPBD 2024, reserva una consulta gratuita.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-hero">
+              <button 
+                onClick={() => {
+                  const element = document.getElementById('contacto');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="btn-hero"
+              >
                 Consulta gratuita 15 min
               </button>
-              <button className="btn-hero-secondary">
+              <button 
+                onClick={() => {
+                  const guiaPDF = `
+GUÍA COMPLETA EPBD 2024
+
+📋 RESUMEN EJECUTIVO
+La Directiva (UE) 2024/1275 marca un antes y después en la eficiencia energética.
+
+🎯 FECHAS CRÍTICAS:
+• 2025: Fin ayudas calderas gas/gasóleo
+• 2026: Nueva escala certificados (G=15% peor)
+• 2030: Prohibido vender/alquilar clase F-G
+• 2033: Prohibido vender/alquilar clase E
+• 2050: Todas las viviendas cero emisiones
+
+💰 AYUDAS DISPONIBLES:
+• Subvenciones: hasta 100% vulnerables
+• Deducciones IRPF: 20%/40%/60%
+• Préstamos ICO bonificados
+• Financiación por ahorro
+
+🔧 MEJORAS RECOMENDADAS:
+1. Aislamiento térmico (máximo impacto)
+2. Ventanas eficientes
+3. Bomba de calor (sustitución calderas)
+4. Paneles solares (obligatorio obra nueva)
+5. Domótica y control
+
+📊 IMPACTO ESPERADO:
+• Ahorro energético: hasta 70%
+• Revalorización vivienda: 3-7% por letra
+• Retorno inversión: 5-10 años
+• Confort mejorado
+
+⚖️ MARCO LEGAL:
+Basado en Directiva (UE) 2024/1275
+Transposición España: mayo 2026
+Fuentes: MITECO, IDAE, BOE
+
+Más información: www.guiaepbd2024.es
+                  `;
+                  
+                  const link = document.createElement('a');
+                  link.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(guiaPDF);
+                  link.download = 'guia-completa-epbd-2024.txt';
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
+                className="btn-hero-secondary"
+              >
                 Descargar guía completa PDF
               </button>
             </div>

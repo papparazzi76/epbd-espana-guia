@@ -1,7 +1,27 @@
-import { ArrowRight, Calendar, TrendingUp, AlertTriangle, CheckCircle2 } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Calculator, Download, ChevronDown } from "lucide-react";
 import heroImage from "@/assets/hero-energy-house.jpg";
 
 export const HeroSection = () => {
+  const [showQuickActions, setShowQuickActions] = useState(false);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const downloadGuide = () => {
+    // Simular descarga de guía PDF
+    const link = document.createElement('a');
+    link.href = 'data:text/plain;charset=utf-8,Guía EPBD 2024 - Contenido de ejemplo';
+    link.download = 'Guia-EPBD-2024-Completa.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       {/* Background image with overlay */}
@@ -21,8 +41,7 @@ export const HeroSection = () => {
             <div className="mb-6">
               <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm 
                              px-4 py-2 rounded-full text-sm font-medium">
-                <Calendar className="w-4 h-4" />
-                Nueva normativa EPBD 2024 en vigor
+                ✅ Nueva normativa EPBD 2024 en vigor desde mayo
               </span>
             </div>
 
@@ -36,42 +55,90 @@ export const HeroSection = () => {
 
             <p className="text-xl text-white/90 mb-8 leading-relaxed max-w-2xl">
               Descubre qué cambios trae la EPBD 2024, cuándo te afectan y cómo adaptar 
-              tu vivienda aprovechando las ayudas disponibles. Guía completa y actualizada.
+              tu vivienda aprovechando las ayudas disponibles. Guía oficial actualizada.
             </p>
 
             {/* CTAs principales */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <button className="btn-hero group">
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <button 
+                onClick={() => scrollToSection('calculadora')}
+                className="btn-hero group"
+              >
+                <Calculator className="w-5 h-5" />
                 <span>Calcula tu punto de partida</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              <button className="btn-hero-secondary">
+              <button 
+                onClick={() => scrollToSection('ayudas')}
+                className="btn-hero-secondary"
+              >
                 Ver ayudas disponibles
               </button>
+            </div>
+
+            {/* Acciones rápidas desplegables */}
+            <div className="mb-12">
+              <button
+                onClick={() => setShowQuickActions(!showQuickActions)}
+                className="flex items-center gap-2 text-white/80 hover:text-white text-sm"
+              >
+                <span>Acciones rápidas</span>
+                <ChevronDown className={`w-4 h-4 transition-transform ${showQuickActions ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {showQuickActions && (
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <button 
+                    onClick={downloadGuide}
+                    className="bg-white/10 hover:bg-white/20 px-3 py-1 rounded text-sm flex items-center gap-1"
+                  >
+                    <Download className="w-3 h-3" />
+                    Descargar guía PDF
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('fechas')}
+                    className="bg-white/10 hover:bg-white/20 px-3 py-1 rounded text-sm"
+                  >
+                    📅 Ver fechas clave
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('obligaciones')}
+                    className="bg-white/10 hover:bg-white/20 px-3 py-1 rounded text-sm"
+                  >
+                    📋 Mis obligaciones
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('faq')}
+                    className="bg-white/10 hover:bg-white/20 px-3 py-1 rounded text-sm"
+                  >
+                    ❓ FAQ
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* Stats rápidas */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-secondary">2033</div>
-                <div className="text-sm text-white/80">Prohibido vender/alquilar clase G</div>
+                <div className="text-2xl font-bold text-secondary">2030</div>
+                <div className="text-sm text-white/80">Clase E mínima</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-accent">50%</div>
-                <div className="text-sm text-white/80">Ayudas hasta el 50%</div>
+                <div className="text-2xl font-bold text-accent">60%</div>
+                <div className="text-sm text-white/80">Deducción IRPF máx.</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-warning">2025</div>
                 <div className="text-sm text-white/80">Fin ayudas calderas gas</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-success">70%</div>
-                <div className="text-sm text-white/80">Ahorro en factura</div>
+                <div className="text-2xl font-bold text-success">100%</div>
+                <div className="text-sm text-white/80">Ayuda vulnerables</div>
               </div>
             </div>
           </div>
 
-          {/* Quick summary card */}
+          {/* Quick summary card - ahora funcional */}
           <div className="lg:ml-8">
             <div className="card-elevated p-6 bg-white/95 backdrop-blur-sm">
               <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
@@ -81,31 +148,31 @@ export const HeroSection = () => {
               
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-success mt-1 flex-shrink-0" />
+                  <div className="w-2 h-2 bg-success rounded-full mt-2 flex-shrink-0"></div>
                   <div>
                     <strong className="text-sm">Qué es:</strong>
                     <p className="text-sm text-muted-foreground">
-                      Nueva normativa europea que obliga a mejorar la eficiencia de todos los edificios
+                      Nueva Directiva (UE) 2024/1275 que obliga a mejorar la eficiencia de todos los edificios
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <AlertTriangle className="w-5 h-5 text-warning mt-1 flex-shrink-0" />
+                  <div className="w-2 h-2 bg-warning rounded-full mt-2 flex-shrink-0"></div>
                   <div>
-                    <strong className="text-sm">Cuándo:</strong>
+                    <strong className="text-sm">Cuándo te afecta:</strong>
                     <p className="text-sm text-muted-foreground">
-                      Desde 2025 no habrá ayudas para calderas de gas. Desde 2033, prohibido vender/alquilar clase G
+                      2030: mínimo clase E • 2033: mínimo clase D • 2025: fin ayudas calderas gas
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <TrendingUp className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
                   <div>
-                    <strong className="text-sm">Oportunidad:</strong>
+                    <strong className="text-sm">Tu oportunidad:</strong>
                     <p className="text-sm text-muted-foreground">
-                      Ayudas del 30-70% para bombas de calor, aislamiento, ventanas y solar
+                      Ayudas hasta 100% + deducciones IRPF hasta 60% para mejoras energéticas
                     </p>
                   </div>
                 </div>
@@ -113,12 +180,18 @@ export const HeroSection = () => {
 
               <div className="mt-6 pt-4 border-t border-border">
                 <div className="grid grid-cols-2 gap-4 text-center">
-                  <button className="bg-primary text-primary-foreground hover:bg-primary-hover 
-                                   px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                  <button 
+                    onClick={() => scrollToSection('fechas')}
+                    className="bg-primary text-primary-foreground hover:bg-primary-hover 
+                             px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                  >
                     📅 Fechas clave
                   </button>
-                  <button className="bg-secondary text-secondary-foreground hover:bg-secondary-hover 
-                                   px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                  <button 
+                    onClick={() => scrollToSection('ayudas')}
+                    className="bg-secondary text-secondary-foreground hover:bg-secondary-hover 
+                             px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                  >
                     💰 Ayudas por CCAA
                   </button>
                 </div>
@@ -128,15 +201,18 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+      {/* Scroll indicator funcional */}
+      <button 
+        onClick={() => scrollToSection('fechas')}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce hover:text-secondary transition-colors"
+      >
         <div className="text-center">
           <div className="w-6 h-10 border-2 border-white/50 rounded-full mb-2 flex justify-center">
             <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse"></div>
           </div>
-          <span className="text-xs text-white/70">Desliza para más info</span>
+          <span className="text-xs text-white/70">Descubre más</span>
         </div>
-      </div>
+      </button>
     </section>
   );
 };

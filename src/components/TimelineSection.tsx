@@ -25,7 +25,7 @@ export const TimelineSection = () => {
   };
 
   return (
-    <section className="section-padding bg-muted/30">
+    <section id="fechas" className="section-padding bg-muted/30">
       <div className="container-width">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">
@@ -109,7 +109,15 @@ export const TimelineSection = () => {
           <p className="text-muted-foreground mb-6">
             ¿No tienes claro cómo te afectan estas fechas?
           </p>
-          <button className="btn-hero">
+          <button 
+            onClick={() => {
+              const element = document.getElementById('calculadora');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="btn-hero"
+          >
             Calcula tu plan personalizado
           </button>
         </div>

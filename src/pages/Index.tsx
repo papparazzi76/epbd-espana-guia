@@ -3,6 +3,8 @@ import { TimelineSection } from "@/components/TimelineSection";
 import { ProfilesSection } from "@/components/ProfilesSection";
 import { SubsidiesTable } from "@/components/SubsidiesTable";
 import { FinancialSupportSection } from "@/components/FinancialSupportSection";
+import { CalculatorSection } from "@/components/CalculatorSection";
+import { ContactSection } from "@/components/ContactSection";
 import { FAQSection } from "@/components/FAQSection";
 
 const Index = () => {
@@ -111,9 +113,11 @@ const Index = () => {
         <HeroSection />
         <TimelineSection />
         <ProfilesSection />
+        <CalculatorSection />
         <FinancialSupportSection />
         <SubsidiesTable />
         <FAQSection />
+        <ContactSection />
         
         {/* Footer with legal info */}
         <footer className="section-padding bg-foreground text-background">
