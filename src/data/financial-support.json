@@ -1,0 +1,76 @@
+{
+  "deductions": {
+    "title": "Deducciones fiscales IRPF por mejoras energéticas",
+    "vigencia": "Hasta 2025 (prorrogadas 2 años adicionales)",
+    "tipos": [
+      {
+        "nivel": "básico",
+        "porcentaje": 20,
+        "requisito": "Mejora de eficiencia energética",
+        "limite": "5.000€ base deducible",
+        "descripción": "Para mejoras generales que reduzcan consumo"
+      },
+      {
+        "nivel": "intermedio", 
+        "porcentaje": 40,
+        "requisito": "Reducción >30% consumo primario no renovable O clase A/B",
+        "limite": "7.500€ base deducible",
+        "descripción": "Para mejoras significativas: aislamiento, bomba calor, solar"
+      },
+      {
+        "nivel": "máximo",
+        "porcentaje": 60,
+        "requisito": "Rehabilitación edificio completo a estándar casi nZEB",
+        "limite": "15.000€ base deducible",
+        "descripción": "Para comunidades con rehabilitación integral profunda"
+      }
+    ],
+    "compatible_con": ["Subvenciones PREE", "Ayudas autonómicas", "Préstamos ICO"],
+    "procedimiento": [
+      "Certificado energético antes de obras",
+      "Ejecución obras con instaladores autorizados", 
+      "Certificado energético después verificando mejora",
+      "Declaración IRPF incluyendo deducción",
+      "Conservar facturas y certificados 4 años"
+    ]
+  },
+  "financial_support": {
+    "vulnerable_households": {
+      "cobertura": "Hasta 100% del coste de rehabilitación",
+      "requisitos": ["Renta familiar <3 veces IPREM", "Vivienda habitual", "Clase energética F o G"],
+      "tramite": "A través de oficinas municipales de rehabilitación"
+    },
+    "soft_financing": {
+      "prestamos_ico": {
+        "tipo_interes": "Desde 0,5% TIN",
+        "plazo_maximo": "15 años",
+        "importe_maximo": "60.000€ vivienda unifamiliar",
+        "carencia": "Hasta 2 años"
+      },
+      "pago_por_ahorro": {
+        "descripción": "El coste se amortiza con ahorros en factura energética",
+        "disponible": "Algunos ayuntamientos y ESEs",
+        "ventaja": "Sin desembolso inicial"
+      }
+    },
+    "ventanillas_unicas": {
+      "función": "Asesoramiento gratuito integral",
+      "servicios": ["Orientación ayudas", "Búsqueda profesionales", "Tramitación", "Seguimiento"],
+      "despliegue": "En todas las provincias antes 2026"
+    }
+  },
+  "innovation_tools": {
+    "pasaporte_renovacion": {
+      "disponibilidad": "Voluntario desde 2026",
+      "función": "Plan personalizado por etapas hasta cero emisiones", 
+      "contenido": ["Diagnóstico actual", "Secuencia óptima reformas", "Costes estimados", "Ayudas aplicables"],
+      "vigencia": "Sustituye recomendaciones del certificado actual"
+    },
+    "nueva_escala_certificados": {
+      "calendario": "Mayo 2026",
+      "cambio": "G = 15% peor del parque español",
+      "impacto": "Muchas viviendas bajarán de letra",
+      "validez_reducida": "5 años para clases D, E, F, G (era 10 años)"
+    }
+  }
+}

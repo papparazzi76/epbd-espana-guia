@@ -29,12 +29,18 @@
       "porcentaje_subvencion": 35,
       "importe_maximo": 18000,
       "plazo_apertura": "2024-01-15",
-      "plazo_cierre": "2025-03-31",
+      "plazo_cierre": "2025-12-31",
       "estado": "abierta",
       "enlace_oficial": "https://www.idae.es/ayudas-y-financiacion/para-rehabilitacion-de-edificios/programa-pree-5000",
-      "documentacion_requerida": ["Proyecto técnico", "Certificados energéticos antes y después", "Licencia de obras"],
+      "documentacion_requerida": ["Proyecto técnico", "Certificados energéticos antes y después", "Licencia de obras", "Presupuestos instaladores autorizados"],
       "contacto": "pree5000@idae.es",
-      "ultima_actualizacion": "2024-11-20"
+      "ultima_actualizacion": "2024-11-25",
+      "detalles_adicionales": {
+        "cobertura_vulnerables": "Hasta 100% para familias en riesgo de pobreza energética",
+        "deduccion_irpf_compatible": "Sí, hasta 40% adicional si mejora >30% eficiencia",
+        "financiacion_blanda": "ICO préstamos bonificados disponibles",
+        "requisitos_especiales": "Prioridad para mejoras que suban 2+ letras energéticas"
+      }
     },
     {
       "id": "3",

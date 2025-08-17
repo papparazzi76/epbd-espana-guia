@@ -1,5 +1,5 @@
 import { Calendar, Clock, AlertTriangle, CheckCircle2, Target } from "lucide-react";
-import timelineData from "@/data/timeline.json";
+import timelineData from "@/data/timeline-updated.json";
 
 export const TimelineSection = () => {
   const getStatusIcon = (status: string, year: string) => {

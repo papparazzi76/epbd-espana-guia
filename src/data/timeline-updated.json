@@ -1,0 +1,168 @@
+{
+  "timeline": [
+    {
+      "year": "2024",
+      "quarter": "Q2",
+      "title": "EPBD 2024 entra en vigor",
+      "description": "La nueva Directiva (UE) 2024/1275 entra oficialmente en vigor el 28 de mayo",
+      "impact": "Marca el inicio del nuevo marco normativo europeo",
+      "status": "completado",
+      "deadline": "2024-05-28"
+    },
+    {
+      "year": "2025",
+      "quarter": "Q1",
+      "title": "Fin de incentivos a calderas de combustibles fósiles",
+      "description": "Prohibición total de ayudas públicas para calderas de gas, gasóleo o carbón",
+      "impact": "Solo bombas de calor y sistemas renovables recibirán subvenciones",
+      "status": "activo",
+      "deadline": "2025-01-01"
+    },
+    {
+      "year": "2025",
+      "quarter": "Q4",
+      "title": "Plan Nacional de Renovación de España",
+      "description": "España debe entregar su Plan Nacional con objetivos 2030-2050 a Bruselas",
+      "impact": "Define la hoja de ruta específica española",
+      "status": "pendiente",
+      "deadline": "2025-12-31"
+    },
+    {
+      "year": "2026",
+      "quarter": "Q2",
+      "title": "Transposición obligatoria en España",
+      "description": "Fecha límite para adaptar toda la legislación española a la EPBD 2024",
+      "impact": "La normativa será vinculante y exigible en España",
+      "status": "pendiente",
+      "deadline": "2026-05-29"
+    },
+    {
+      "year": "2026",
+      "quarter": "Q2",
+      "title": "Nueva escala de certificados energéticos A-G",
+      "description": "Implantación de la escala unificada UE donde G = 15% peor del país",
+      "impact": "Muchas viviendas cambiarán de letra energética",
+      "status": "pendiente",
+      "deadline": "2026-05-26"
+    },
+    {
+      "year": "2026",
+      "quarter": "Q4",
+      "title": "Solar obligatorio en edificios grandes nuevos",
+      "description": "Edificios públicos y no residenciales >250m² deben llevar paneles solares",
+      "impact": "Acelera el despliegue de autoconsumo solar",
+      "status": "pendiente",
+      "deadline": "2026-12-31"
+    },
+    {
+      "year": "2027",
+      "quarter": "Q1",
+      "title": "Cargadores VE obligatorios en edificios grandes",
+      "description": "Edificios no residenciales >20 plazas: 1 cargador cada 10 plazas",
+      "impact": "Facilita el despliegue del vehículo eléctrico",
+      "status": "pendiente",
+      "deadline": "2027-01-01"
+    },
+    {
+      "year": "2028",
+      "quarter": "Q1",
+      "title": "Edificios públicos nuevos de cero emisiones",
+      "description": "Toda nueva construcción pública debe ser cero emisiones",
+      "impact": "El sector público lidera con el ejemplo",
+      "status": "pendiente",
+      "deadline": "2028-01-01"
+    },
+    {
+      "year": "2029",
+      "quarter": "Q1",
+      "title": "Solar obligatorio en todas las viviendas nuevas",
+      "description": "Ninguna vivienda nueva puede entregarse sin tecnología solar",
+      "impact": "Autoconsumo solar se convierte en estándar",
+      "status": "pendiente",
+      "deadline": "2029-01-01"
+    },
+    {
+      "year": "2030",
+      "quarter": "Q1",
+      "title": "Múltiples hitos críticos",
+      "description": "Clase E mínima + edificios nuevos cero emisiones + -16% consumo medio",
+      "impact": "Año clave: imposible vender/alquilar viviendas clase F-G",
+      "status": "pendiente",
+      "deadline": "2030-01-01"
+    },
+    {
+      "year": "2033",
+      "quarter": "Q1",
+      "title": "Clase D mínima obligatoria",
+      "description": "Solo se pueden vender/alquilar viviendas clase D o superior",
+      "impact": "También las viviendas clase E quedan fuera del mercado",
+      "status": "pendiente",
+      "deadline": "2033-01-01"
+    },
+    {
+      "year": "2035",
+      "quarter": "Q1",
+      "title": "Reducción 20-22% consumo medio viviendas",
+      "description": "Meta intermedia hacia el objetivo final 2050",
+      "impact": "El parque de viviendas debe ser significativamente más eficiente",
+      "status": "pendiente",
+      "deadline": "2035-12-31"
+    },
+    {
+      "year": "2040",
+      "quarter": "Q1",
+      "title": "Eliminación total calderas de combustibles fósiles",
+      "description": "Prohibición completa de calderas de gas, gasóleo y otros fósiles",
+      "impact": "Solo sistemas renovables en climatización",
+      "status": "pendiente",
+      "deadline": "2040-12-31"
+    },
+    {
+      "year": "2050",
+      "quarter": "Q1",
+      "title": "Parque inmobiliario cero emisiones",
+      "description": "Todos los edificios existentes deben ser neutros en carbono",
+      "impact": "Objetivo final: edificación climáticamente neutra",
+      "status": "pendiente",
+      "deadline": "2050-12-31"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "EPBD 2024",
+      "definition": "Energy Performance of Buildings Directive - Nueva Directiva de Eficiencia Energética de Edificios (UE) 2024/1275"
+    },
+    {
+      "term": "MEPS",
+      "definition": "Minimum Energy Performance Standards - Normas Mínimas de Eficiencia Energética para edificios no residenciales"
+    },
+    {
+      "term": "ZEB",
+      "definition": "Zero Emission Building - Edificio de Cero Emisiones (estándar post-2028/2030)"
+    },
+    {
+      "term": "nZEB",
+      "definition": "nearly Zero Energy Building - Edificio de Consumo de Energía Casi Nulo (estándar 2020-2028)"
+    },
+    {
+      "term": "CEE",
+      "definition": "Certificado de Eficiencia Energética - Nueva escala A-G unificada UE (G = 15% peor del país)"
+    },
+    {
+      "term": "Pasaporte de Renovación",
+      "definition": "Herramienta voluntaria que ofrece plan personalizado por etapas para llegar a cero emisiones"
+    },
+    {
+      "term": "Bomba de calor",
+      "definition": "Sistema de climatización eléctrico que extrae calor del aire, agua o suelo (alternativa a calderas fósiles)"
+    },
+    {
+      "term": "Solar-ready",
+      "definition": "Edificios diseñados para permitir instalación rentable de paneles solares fotovoltaicos o térmicos"
+    },
+    {
+      "term": "Ventanilla única",
+      "definition": "Oficinas de asesoramiento gratuito para rehabilitación energética (obligatorias por EPBD)"
+    }
+  ]
+}

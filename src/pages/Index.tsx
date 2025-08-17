@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { TimelineSection } from "@/components/TimelineSection";
 import { ProfilesSection } from "@/components/ProfilesSection";
 import { SubsidiesTable } from "@/components/SubsidiesTable";
+import { FinancialSupportSection } from "@/components/FinancialSupportSection";
 import { FAQSection } from "@/components/FAQSection";
 
 const Index = () => {
@@ -110,6 +111,7 @@ const Index = () => {
         <HeroSection />
         <TimelineSection />
         <ProfilesSection />
+        <FinancialSupportSection />
         <SubsidiesTable />
         <FAQSection />
         
@@ -136,27 +138,34 @@ const Index = () => {
               </div>
               
               <div>
-                <h4 className="font-semibold mb-3">Fuentes oficiales</h4>
+                <h4 className="font-semibold mb-3">Fuentes oficiales actualizadas</h4>
                 <ul className="space-y-2 text-sm">
                   <li>
-                    <a href="https://eur-lex.europa.eu/eli/dir/2024/1275/oj" 
+                    <a href="https://www.boe.es/buscar/doc.php?id=DOUE-L-2024-80664" 
                        target="_blank" rel="noopener noreferrer"
                        className="text-background/80 hover:text-background transition-colors">
-                      Directiva EPBD 2024 (UE)
+                      Directiva EPBD 2024 (BOE/DOUE)
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.miteco.gob.es" 
+                    <a href="https://www.miteco.gob.es/es/energia/eficiencia/epbd2024.html" 
                        target="_blank" rel="noopener noreferrer"
                        className="text-background/80 hover:text-background transition-colors">
-                      MITECO
+                      MITECO - EPBD 2024
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.idae.es" 
+                    <a href="https://www.idae.es/ayudas-y-financiacion" 
                        target="_blank" rel="noopener noreferrer"
                        className="text-background/80 hover:text-background transition-colors">
-                      IDAE
+                      IDAE - Ayudas y financiación
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://energy.ec.europa.eu/topics/energy-efficiency/energy-performance-buildings" 
+                       target="_blank" rel="noopener noreferrer"
+                       className="text-background/80 hover:text-background transition-colors">
+                      Comisión Europea - EPBD
                     </a>
                   </li>
                 </ul>
@@ -167,13 +176,14 @@ const Index = () => {
               <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-background/60">
                 <div>
                   <p>
-                    <strong>Aviso legal:</strong> Esta web tiene carácter informativo y divulgativo. 
-                    No constituye asesoramiento legal ni técnico oficial. Consulta siempre con 
-                    profesionales cualificados para tu caso específico.
+                    <strong>Aviso legal:</strong> Esta web tiene carácter informativo y divulgativo basada en 
+                    el informe oficial de la Directiva (UE) 2024/1275. No constituye asesoramiento legal 
+                    ni técnico oficial. Consulta siempre con profesionales cualificados para tu caso específico.
                   </p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <span>Última actualización: 25/11/2024</span>
+                  <span>Basado en: EPBD 2024 oficial</span>
                   <a href="#privacidad" className="hover:text-background transition-colors">
                     Política de privacidad
                   </a>
