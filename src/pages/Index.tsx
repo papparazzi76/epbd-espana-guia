@@ -1,11 +1,15 @@
 import { HeroSection } from "@/components/HeroSection";
+import { DiagnosticForm } from "@/components/DiagnosticForm";
+import { LeadMagnetSection } from "@/components/LeadMagnetSection";
 import { TimelineSection } from "@/components/TimelineSection";
 import { ProfilesSection } from "@/components/ProfilesSection";
-import { SubsidiesTable } from "@/components/SubsidiesTable";
-import { FinancialSupportSection } from "@/components/FinancialSupportSection";
 import { CalculatorSection } from "@/components/CalculatorSection";
-import { ContactSection } from "@/components/ContactSection";
+import { MarketImpactSection } from "@/components/MarketImpactSection";
+import { FinancialSupportSection } from "@/components/FinancialSupportSection";
+import { SubsidiesTable } from "@/components/SubsidiesTable";
+import { B2BSection } from "@/components/B2BSection";
 import { FAQSection } from "@/components/FAQSection";
+import { ContactSection } from "@/components/ContactSection";
 
 const Index = () => {
   return (
@@ -111,11 +115,15 @@ const Index = () => {
 
       <main>
         <HeroSection />
+        <DiagnosticForm />
+        <LeadMagnetSection />
+        <CalculatorSection />
+        <MarketImpactSection />
         <TimelineSection />
         <ProfilesSection />
-        <CalculatorSection />
         <FinancialSupportSection />
         <SubsidiesTable />
+        <B2BSection />
         <FAQSection />
         <ContactSection />
         

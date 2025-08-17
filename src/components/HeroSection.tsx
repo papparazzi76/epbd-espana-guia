@@ -46,26 +46,26 @@ export const HeroSection = () => {
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Adapta tu vivienda a la nueva
+              En 2030 tu vivienda necesitará al menos
               <span className="block bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
-                normativa europea
+                clase energética E
               </span>
-              de eficiencia energética
+              para poder venderse o alquilarse
             </h1>
 
             <p className="text-xl text-white/90 mb-8 leading-relaxed max-w-2xl">
-              Descubre qué cambios trae la EPBD 2024, cuándo te afectan y cómo adaptar 
-              tu vivienda aprovechando las ayudas disponibles. Guía oficial actualizada.
+              Descubre cómo afectará la nueva normativa europea de eficiencia energética a tu hogar 
+              y qué ayudas públicas puedes obtener para adaptarlo a tiempo.
             </p>
 
             {/* CTAs principales */}
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <button 
-                onClick={() => scrollToSection('calculadora')}
+                onClick={() => scrollToSection('diagnostico')}
                 className="btn-hero group"
               >
                 <Calculator className="w-5 h-5" />
-                <span>Calcula tu punto de partida</span>
+                <span>Calcula tu situación ahora</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
               <button 
