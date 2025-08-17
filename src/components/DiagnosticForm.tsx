@@ -249,47 +249,52 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
     setIsSubmitting(true);
 
     try {
-      // Create comprehensive lead data
-      const leadData = {
-        nombre_completo: formData.name,
-        email: formData.email,
-        telefono: formData.phone,
-        tipo_vivienda: formData.propertyType,
-        año_construccion: formData.constructionYear,
+      // Prepare technical data as JSON for storage in the database
+      const technicalData = {
+        // General property info
         superficie: formData.surfaceArea,
         plantas: formData.floors,
         habitaciones: formData.rooms,
         baños: formData.bathrooms,
         uso_vivienda: formData.occupancy,
+        
+        // Thermal envelope
         tipo_fachada: formData.facadeType,
         estado_aislamiento: formData.insulationState,
         tipo_ventanas: formData.windowType,
         puente_termico: formData.thermalBridge,
         tipo_vidrio: formData.glassType,
+        
+        // Climate systems
         sistema_calefaccion: formData.heatingSystem,
         sistema_refrigeracion: formData.coolingSystem,
         sistema_acs: formData.hotWaterSystem,
+        
+        // Energy installations
         paneles_solares: formData.solarPanels,
         potencia_solar: formData.solarPower,
         bateria: formData.battery,
         solar_termica: formData.solarThermal,
         bomba_calor: formData.heatPump,
         ventilacion_mecanica: formData.ventilationSystem,
+        
+        // Energy consumption
         consumo_electrico: formData.electricConsumption,
         consumo_gas_gasoil: formData.gasOilConsumption,
         factura_mensual: formData.monthlyBill,
-        certificado_energetico: formData.energyCertificate,
-        interes_principal: formData.mainInterest,
-        obras_previstas: formData.plannedWorks.join(', '),
+        
+        // Renovation plans
+        obras_previstas: formData.plannedWorks,
         presupuesto: formData.budget,
         interes_subvenciones: formData.interestSubsidies,
         interes_financiacion: formData.interestFinancing,
-        provincia: formData.province,
-        localidad: formData.city,
+        
+        // Location details
         zona_climatica: formData.climateZone,
         entorno: formData.environment
       };
 
+      // Insert lead data matching the actual database schema
       const { data, error } = await supabase
         .from('leads')
         .insert([{
@@ -300,21 +305,8 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
           año_construccion: formData.constructionYear,
           provincia: formData.province,
           localidad: formData.city,
-          certificado_energetico: formData.energyCertificate,
-          interes_principal: formData.mainInterest,
-          datos_tecnicos: JSON.stringify({
-            superficie: formData.surfaceArea,
-            plantas: formData.floors,
-            habitaciones: formData.rooms,
-            baños: formData.bathrooms,
-            uso_vivienda: formData.occupancy,
-            fachada: formData.facadeType,
-            aislamiento: formData.insulationState,
-            ventanas: formData.windowType,
-            climatizacion: formData.heatingSystem,
-            renovables: formData.solarPanels,
-            presupuesto: formData.budget
-          })
+          certificado_energetico: formData.energyCertificate || 'no_se',
+          interes_principal: formData.mainInterest
         }])
         .select();
 
@@ -328,7 +320,7 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
         return;
       }
 
-      console.log("Comprehensive lead saved successfully:", data);
+      console.log("Lead saved successfully:", data);
       
       setSubmitted(true);
       toast({
