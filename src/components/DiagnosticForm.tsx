@@ -237,6 +237,8 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
   };
 
   const handleSubmit = async () => {
+    console.log('Form submission started with data:', formData);
+    
     if (!formData.name || !formData.email || !formData.phone) {
       toast({
         title: "Faltan datos",
@@ -246,72 +248,62 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
       return;
     }
 
+    // Check required fields for database
+    if (!formData.province || !formData.city) {
+      toast({
+        title: "Faltan datos de ubicación",
+        description: "Por favor completa la provincia y ciudad",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (!formData.propertyType || !formData.constructionYear) {
+      toast({
+        title: "Faltan datos de la vivienda",
+        description: "Por favor completa el tipo de vivienda y año de construcción",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (!formData.mainInterest) {
+      toast({
+        title: "Falta información",
+        description: "Por favor indica tu interés principal",
+        variant: "destructive"
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      // Prepare technical data as JSON for storage in the database
-      const technicalData = {
-        // General property info
-        superficie: formData.surfaceArea,
-        plantas: formData.floors,
-        habitaciones: formData.rooms,
-        baños: formData.bathrooms,
-        uso_vivienda: formData.occupancy,
-        
-        // Thermal envelope
-        tipo_fachada: formData.facadeType,
-        estado_aislamiento: formData.insulationState,
-        tipo_ventanas: formData.windowType,
-        puente_termico: formData.thermalBridge,
-        tipo_vidrio: formData.glassType,
-        
-        // Climate systems
-        sistema_calefaccion: formData.heatingSystem,
-        sistema_refrigeracion: formData.coolingSystem,
-        sistema_acs: formData.hotWaterSystem,
-        
-        // Energy installations
-        paneles_solares: formData.solarPanels,
-        potencia_solar: formData.solarPower,
-        bateria: formData.battery,
-        solar_termica: formData.solarThermal,
-        bomba_calor: formData.heatPump,
-        ventilacion_mecanica: formData.ventilationSystem,
-        
-        // Energy consumption
-        consumo_electrico: formData.electricConsumption,
-        consumo_gas_gasoil: formData.gasOilConsumption,
-        factura_mensual: formData.monthlyBill,
-        
-        // Renovation plans
-        obras_previstas: formData.plannedWorks,
-        presupuesto: formData.budget,
-        interes_subvenciones: formData.interestSubsidies,
-        interes_financiacion: formData.interestFinancing,
-        
-        // Location details
-        zona_climatica: formData.climateZone,
-        entorno: formData.environment
+      console.log('Preparing data for database insertion...');
+      
+      // Prepare the lead data for insertion
+      const leadData = {
+        nombre_completo: formData.name.trim(),
+        email: formData.email.toLowerCase().trim(),
+        telefono: formData.phone.trim(),
+        tipo_vivienda: formData.propertyType,
+        año_construccion: formData.constructionYear,
+        provincia: formData.province,
+        localidad: formData.city.trim(),
+        certificado_energetico: formData.energyCertificate || 'no_se',
+        interes_principal: formData.mainInterest
       };
+
+      console.log('Lead data to insert:', leadData);
 
       // Insert lead data matching the actual database schema
       const { data, error } = await supabase
         .from('leads')
-        .insert([{
-          nombre_completo: formData.name,
-          email: formData.email,
-          telefono: formData.phone,
-          tipo_vivienda: formData.propertyType,
-          año_construccion: formData.constructionYear,
-          provincia: formData.province,
-          localidad: formData.city,
-          certificado_energetico: formData.energyCertificate || 'no_se',
-          interes_principal: formData.mainInterest
-        }])
+        .insert([leadData])
         .select();
 
       if (error) {
-        console.error('Error saving lead:', error);
+        console.error('Supabase error details:', error);
         toast({
           title: "Error",
           description: "No se pudo enviar el formulario. Inténtalo de nuevo.",
@@ -321,6 +313,7 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
       }
 
       console.log("Lead saved successfully:", data);
+
       
       setSubmitted(true);
       toast({
