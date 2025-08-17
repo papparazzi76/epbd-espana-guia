@@ -120,6 +120,11 @@
 }
 
 @layer base {
+  /* Enable smooth scrolling globally */
+  html {
+    scroll-behavior: smooth;
+  }
+
   * {
     @apply border-border;
   }

@@ -1,5 +1,6 @@
 import { Calendar, Clock, AlertTriangle, CheckCircle2, Target } from "lucide-react";
 import timelineData from "@/data/timeline-updated.json";
+import { scrollToSection } from "@/lib/smooth-scroll";
 
 export const TimelineSection = () => {
   const getStatusIcon = (status: string, year: string) => {
@@ -110,12 +111,7 @@ export const TimelineSection = () => {
             ¿No tienes claro cómo te afectan estas fechas?
           </p>
           <button 
-            onClick={() => {
-              const element = document.getElementById('calculadora');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
+            onClick={() => scrollToSection('calculadora')}
             className="btn-hero"
           >
             Calcula tu plan personalizado

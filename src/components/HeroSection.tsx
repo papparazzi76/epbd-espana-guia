@@ -1,16 +1,10 @@
 import { useState } from "react";
 import { ArrowRight, Calculator, Download, ChevronDown } from "lucide-react";
 import heroImage from "@/assets/hero-energy-house.jpg";
+import { scrollToSection } from "@/lib/smooth-scroll";
 
 export const HeroSection = () => {
   const [showQuickActions, setShowQuickActions] = useState(false);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   const downloadGuide = () => {
     // Simular descarga de guía PDF

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronDown, HelpCircle, Search } from "lucide-react";
 import faqData from "@/data/faq.json";
+import { scrollToSection } from "@/lib/smooth-scroll";
 
 export const FAQSection = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -121,12 +122,7 @@ export const FAQSection = () => {
                 Prueba con otros términos o consulta todas las preguntas.
               </p>
               <button 
-                onClick={() => {
-                  const element = document.getElementById('contacto');
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+                onClick={() => scrollToSection('contacto')}
                 className="btn-hero-secondary mt-4"
               >
                 Ver todas las preguntas
@@ -147,12 +143,7 @@ export const FAQSection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
-                onClick={() => {
-                  const element = document.getElementById('contacto');
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+                onClick={() => scrollToSection('contacto')}
                 className="btn-hero"
               >
                 Consulta gratuita 15 min

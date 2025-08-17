@@ -311,9 +311,9 @@ Descarga la versión completa en nuestra web.
                         className="mt-1"
                         disabled={isSubmitting}
                       />
-                      <span className="text-sm">
-                        Acepto la <a href="#privacidad" className="text-primary hover:underline">política de privacidad</a> y 
-                        el tratamiento de mis datos para responder a mi consulta *
+                       <span className="text-sm">
+                         Acepto la <a href="#privacidad" onClick={(e) => { e.preventDefault(); const element = document.getElementById('privacidad'); if (element) element.scrollIntoView({ behavior: 'smooth' }); }} className="text-primary hover:underline">política de privacidad</a> y 
+                         el tratamiento de mis datos para responder a mi consulta *
                       </span>
                     </label>
 

@@ -10,6 +10,7 @@ import { SubsidiesTable } from "@/components/SubsidiesTable";
 import { B2BSection } from "@/components/B2BSection";
 import { FAQSection } from "@/components/FAQSection";
 import { ContactSection } from "@/components/ContactSection";
+import { handleSmoothScroll } from "@/lib/smooth-scroll";
 
 const Index = () => {
   return (
@@ -142,10 +143,10 @@ const Index = () => {
               <div>
                 <h4 className="font-semibold mb-3">Enlaces útiles</h4>
                 <ul className="space-y-2 text-sm">
-                  <li><a href="#fechas" className="text-background/80 hover:text-background transition-colors">Fechas clave</a></li>
-                  <li><a href="#obligaciones" className="text-background/80 hover:text-background transition-colors">Obligaciones por perfil</a></li>
-                  <li><a href="#ayudas" className="text-background/80 hover:text-background transition-colors">Ayudas y subvenciones</a></li>
-                  <li><a href="#faq" className="text-background/80 hover:text-background transition-colors">Preguntas frecuentes</a></li>
+                  <li><a href="#fechas" onClick={(e) => handleSmoothScroll(e, "#fechas")} className="text-background/80 hover:text-background transition-colors">Fechas clave</a></li>
+                  <li><a href="#obligaciones" onClick={(e) => handleSmoothScroll(e, "#obligaciones")} className="text-background/80 hover:text-background transition-colors">Obligaciones por perfil</a></li>
+                  <li><a href="#ayudas" onClick={(e) => handleSmoothScroll(e, "#ayudas")} className="text-background/80 hover:text-background transition-colors">Ayudas y subvenciones</a></li>
+                  <li><a href="#faq" onClick={(e) => handleSmoothScroll(e, "#faq")} className="text-background/80 hover:text-background transition-colors">Preguntas frecuentes</a></li>
                 </ul>
               </div>
               
@@ -196,10 +197,10 @@ const Index = () => {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <span>Última actualización: 25/11/2024</span>
                   <span>Basado en: EPBD 2024 oficial</span>
-                  <a href="#privacidad" className="hover:text-background transition-colors">
+                  <a href="#privacidad" onClick={(e) => handleSmoothScroll(e, "#privacidad")} className="hover:text-background transition-colors">
                     Política de privacidad
                   </a>
-                  <a href="#cookies" className="hover:text-background transition-colors">
+                  <a href="#cookies" onClick={(e) => handleSmoothScroll(e, "#cookies")} className="hover:text-background transition-colors">
                     Cookies
                   </a>
                 </div>

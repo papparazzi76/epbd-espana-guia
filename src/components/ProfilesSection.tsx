@@ -1,5 +1,6 @@
 import { Home, Building, Key, Search, ChevronRight, Calendar, CheckCircle, XCircle } from "lucide-react";
 import profilesData from "@/data/profiles.json";
+import { scrollToSection } from "@/lib/smooth-scroll";
 
 const iconMap = {
   Home,
@@ -101,12 +102,7 @@ export const ProfilesSection = () => {
 
                 {/* CTA específico */}
                 <button 
-                  onClick={() => {
-                    const element = document.getElementById('calculadora');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => scrollToSection('calculadora')}
                   className="w-full bg-primary text-primary-foreground hover:bg-primary-hover 
                                    py-2 px-4 rounded-lg font-medium text-sm transition-colors"
                 >
