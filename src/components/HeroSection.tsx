@@ -63,7 +63,7 @@ export const HeroSection = () => {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
               <button 
-                onClick={() => scrollToSection('guia-gratuita')}
+                onClick={() => window.location.href = '/ayudas-subvenciones'}
                 className="btn-hero-secondary"
               >
                 Ver ayudas disponibles
@@ -182,7 +182,7 @@ export const HeroSection = () => {
                     📅 Fechas clave
                   </button>
                   <button 
-                    onClick={() => scrollToSection('guia-gratuita')}
+                    onClick={() => window.location.href = '/ayudas-subvenciones'}
                     className="bg-secondary text-secondary-foreground hover:bg-secondary-hover 
                              px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                   >
