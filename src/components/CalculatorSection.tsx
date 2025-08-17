@@ -39,8 +39,10 @@ export const CalculatorSection = () => {
     });
 
     const clase_actual_index = clases_energeticas.indexOf(formData.clase_actual);
-    const nueva_clase_index = Math.max(0, clase_actual_index - Math.floor(mejora_total_letras));
+    const mejora_aplicada = Math.max(0, Math.floor(mejora_total_letras));
+    const nueva_clase_index = Math.min(clases_energeticas.length - 1, clase_actual_index + mejora_aplicada);
     const nueva_clase = clases_energeticas[nueva_clase_index];
+    const mejora_real = Math.max(0, nueva_clase_index - clase_actual_index);
 
     // Cálculo de ayudas simplificado
     const subvencion_base = Math.min(coste_total * 0.4, 15000);
@@ -52,17 +54,20 @@ export const CalculatorSection = () => {
     const ahorro_anual = coste_total * 0.15; // 15% ahorro estimado
     const retorno_años = Math.round((coste_total - subvencion_base) / ahorro_anual);
 
+    const idxE = clases_energeticas.indexOf('E');
+    const idxD = clases_energeticas.indexOf('D');
+
     setResultado({
       coste_total,
       subvencion_estimada: subvencion_base,
       deduccion_irpf: deduccion_irpf_limitada,
       coste_neto: coste_total - subvencion_base - deduccion_irpf_limitada,
       nueva_clase,
-      mejora_letras: Math.floor(mejora_total_letras),
+      mejora_letras: mejora_real,
       ahorro_anual,
       retorno_años: retorno_años > 0 ? retorno_años : 1,
-      cumple_2030: nueva_clase_index <= 4, // E o mejor
-      cumple_2033: nueva_clase_index <= 3  // D o mejor
+      cumple_2030: nueva_clase_index >= idxE, // E o mejor
+      cumple_2033: nueva_clase_index >= idxD  // D o mejor
     });
   };
 
