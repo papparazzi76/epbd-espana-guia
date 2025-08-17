@@ -14,13 +14,182 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      companies: {
+        Row: {
+          activo: boolean | null
+          created_at: string
+          email_contacto: string
+          id: string
+          nombre_empresa: string
+          plan_suscripcion: string | null
+          provincias_interes: string[]
+          telefono: string | null
+          tipo_servicios: string[]
+          updated_at: string
+        }
+        Insert: {
+          activo?: boolean | null
+          created_at?: string
+          email_contacto: string
+          id?: string
+          nombre_empresa: string
+          plan_suscripcion?: string | null
+          provincias_interes: string[]
+          telefono?: string | null
+          tipo_servicios: string[]
+          updated_at?: string
+        }
+        Update: {
+          activo?: boolean | null
+          created_at?: string
+          email_contacto?: string
+          id?: string
+          nombre_empresa?: string
+          plan_suscripcion?: string | null
+          provincias_interes?: string[]
+          telefono?: string | null
+          tipo_servicios?: string[]
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      lead_assignments: {
+        Row: {
+          asignado_fecha: string
+          company_id: string
+          estado: string | null
+          id: string
+          lead_id: string
+          notas: string | null
+        }
+        Insert: {
+          asignado_fecha?: string
+          company_id: string
+          estado?: string | null
+          id?: string
+          lead_id: string
+          notas?: string | null
+        }
+        Update: {
+          asignado_fecha?: string
+          company_id?: string
+          estado?: string | null
+          id?: string
+          lead_id?: string
+          notas?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lead_assignments_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "lead_assignments_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      leads: {
+        Row: {
+          año_construccion: string
+          certificado_energetico: string
+          clase_energetica_estimada: string | null
+          created_at: string
+          email: string
+          estado: string | null
+          id: string
+          interes_principal: string
+          lead_score: number | null
+          localidad: string
+          nombre_completo: string
+          provincia: string
+          telefono: string | null
+          tipo_vivienda: string
+          updated_at: string
+          urgencia_nivel: number | null
+        }
+        Insert: {
+          año_construccion: string
+          certificado_energetico: string
+          clase_energetica_estimada?: string | null
+          created_at?: string
+          email: string
+          estado?: string | null
+          id?: string
+          interes_principal: string
+          lead_score?: number | null
+          localidad: string
+          nombre_completo: string
+          provincia: string
+          telefono?: string | null
+          tipo_vivienda: string
+          updated_at?: string
+          urgencia_nivel?: number | null
+        }
+        Update: {
+          año_construccion?: string
+          certificado_energetico?: string
+          clase_energetica_estimada?: string | null
+          created_at?: string
+          email?: string
+          estado?: string | null
+          id?: string
+          interes_principal?: string
+          lead_score?: number | null
+          localidad?: string
+          nombre_completo?: string
+          provincia?: string
+          telefono?: string | null
+          tipo_vivienda?: string
+          updated_at?: string
+          urgencia_nivel?: number | null
+        }
+        Relationships: []
+      }
+      subscription_alerts: {
+        Row: {
+          activo: boolean | null
+          created_at: string
+          email: string
+          id: string
+          provincia: string
+        }
+        Insert: {
+          activo?: boolean | null
+          created_at?: string
+          email: string
+          id?: string
+          provincia: string
+        }
+        Update: {
+          activo?: boolean | null
+          created_at?: string
+          email?: string
+          id?: string
+          provincia?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      calculate_lead_score: {
+        Args: {
+          año_construccion: string
+          certificado_energetico: string
+          interes_principal: string
+          tipo_vivienda: string
+        }
+        Returns: number
+      }
     }
     Enums: {
       [_ in never]: never
