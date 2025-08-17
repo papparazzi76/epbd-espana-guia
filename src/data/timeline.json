@@ -1,0 +1,97 @@
+{
+  "timeline": [
+    {
+      "year": "2025",
+      "quarter": "Q2",
+      "title": "Transposición de la EPBD a la legislación española",
+      "description": "España debe adaptar su normativa nacional a la nueva directiva europea",
+      "impact": "Los marcos normativos se actualizan",
+      "status": "pendiente",
+      "deadline": "2025-05-28"
+    },
+    {
+      "year": "2025",
+      "quarter": "Q1",
+      "title": "Fin de incentivos a calderas de combustibles fósiles",
+      "description": "Las calderas de gas y gasóleo dejan de recibir subvenciones públicas",
+      "impact": "Solo bombas de calor y sistemas renovables recibirán ayudas",
+      "status": "activo",
+      "deadline": "2025-01-01"
+    },
+    {
+      "year": "2027",
+      "quarter": "Q1",
+      "title": "Obligación de instalación solar en edificios nuevos",
+      "description": "Todos los edificios nuevos deben incluir sistemas solares cuando sea técnicamente viable",
+      "impact": "Encarece ligeramente la obra nueva pero reduce costes energéticos",
+      "status": "pendiente",
+      "deadline": "2027-01-01"
+    },
+    {
+      "year": "2030",
+      "quarter": "Q1",
+      "title": "Reducción del 16% en consumo energético de edificios",
+      "description": "Objetivo intermedio de reducción del consumo en el parque edificatorio",
+      "impact": "Presión para renovar viviendas con peor calificación",
+      "status": "pendiente",
+      "deadline": "2030-12-31"
+    },
+    {
+      "year": "2033",
+      "quarter": "Q1",
+      "title": "Normas mínimas de eficiencia (MEPS) para viviendas",
+      "description": "Las viviendas clase G no se podrán vender ni alquilar",
+      "impact": "Bloqueo del mercado para viviendas con peor calificación",
+      "status": "pendiente",
+      "deadline": "2033-01-01"
+    },
+    {
+      "year": "2035",
+      "quarter": "Q1",
+      "title": "MEPS para viviendas clase F",
+      "description": "Las viviendas clase F tampoco se podrán comercializar",
+      "impact": "Ampliación de restricciones a más viviendas",
+      "status": "pendiente",
+      "deadline": "2035-01-01"
+    },
+    {
+      "year": "2050",
+      "quarter": "Q1",
+      "title": "Edificios de cero emisiones",
+      "description": "Todo el parque edificatorio debe ser neutro en carbono",
+      "impact": "Transformación completa del sector inmobiliario",
+      "status": "pendiente",
+      "deadline": "2050-12-31"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "EPBD",
+      "definition": "Energy Performance of Buildings Directive - Directiva de Eficiencia Energética de los Edificios"
+    },
+    {
+      "term": "MEPS",
+      "definition": "Minimum Energy Performance Standards - Normas Mínimas de Eficiencia Energética"
+    },
+    {
+      "term": "ZEB",
+      "definition": "Zero Emission Building - Edificio de Cero Emisiones"
+    },
+    {
+      "term": "nZEB",
+      "definition": "nearly Zero Energy Building - Edificio de Consumo de Energía Casi Nulo"
+    },
+    {
+      "term": "CEE",
+      "definition": "Certificado de Eficiencia Energética - Documento que califica la eficiencia de A a G"
+    },
+    {
+      "term": "Bomba de calor",
+      "definition": "Sistema de climatización eléctrico que extrae calor del aire, agua o suelo"
+    },
+    {
+      "term": "Clase energética",
+      "definition": "Calificación de A (más eficiente) a G (menos eficiente) del consumo energético"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "faq": [
+    {
+      "id": "1",
+      "question": "¿Qué es exactamente la EPBD 2024 y cómo me afecta?",
+      "answer": "La EPBD (Energy Performance of Buildings Directive) 2024 es la nueva normativa europea que obliga a mejorar la eficiencia energética de todos los edificios. Te afecta si eres propietario, arrendador o vas a comprar una vivienda. Las principales consecuencias son: desde 2033 no podrás vender ni alquilar viviendas clase G, desde 2035 tampoco las clase F, y desde 2025 las calderas de gas/gasóleo no recibirán ayudas públicas."
+    },
+    {
+      "id": "2", 
+      "question": "¿Cómo sé qué clase energética tiene mi vivienda?",
+      "answer": "Necesitas un certificado de eficiencia energética actualizado, realizado por un técnico competente (arquitecto, ingeniero o certificador energético). El certificado es válido durante 10 años y clasifica tu vivienda de la A (más eficiente) a la G (menos eficiente). Si tu certificado tiene más de 5 años, es recomendable actualizarlo porque los criterios han cambiado."
+    },
+    {
+      "id": "3",
+      "question": "Mi vivienda es clase G, ¿qué opciones tengo y cuánto me costará?",
+      "answer": "Si tu vivienda es clase G, tienes hasta 2033 para mejorarla. Las opciones más efectivas son: mejorar el aislamiento térmico (3.000-8.000€), cambiar ventanas por unas eficientes (200-600€/m²), instalar bomba de calor (3.000-6.000€) y añadir paneles solares (4.000-8.000€). Con ayudas públicas, el coste puede reducirse entre un 30-50%. Lo importante es subir al menos a clase E o D."
+    },
+    {
+      "id": "4",
+      "question": "¿Puedo seguir usando mi caldera de gas o tengo que cambiarla ya?",
+      "answer": "Puedes seguir usando tu caldera de gas actual hasta que se estropee, pero desde enero de 2025 ya no habrá ayudas públicas para instalar calderas nuevas de combustibles fósiles. La recomendación es planificar el cambio a bomba de calor antes de que tu caldera actual falle, para aprovechar las ayudas disponibles y evitar quedarte sin calefacción."
+    },
+    {
+      "id": "5",
+      "question": "¿Qué ayudas puedo solicitar y cómo accedo a ellas?",
+      "answer": "Hay ayudas a nivel nacional (PREE 5000, Next Generation EU) y autonómico que pueden cubrir del 30% al 70% de la inversión. Para acceder necesitas: presupuesto de instalador autorizado, certificado energético actual, proyecto técnico (para obras importantes) y cumplir requisitos de renta en algunos casos. Recomendamos usar nuestro buscador de ayudas por comunidad autónoma para encontrar las específicas de tu zona."
+    },
+    {
+      "id": "6",
+      "question": "¿Es obligatorio instalar paneles solares en mi casa?",
+      "answer": "No es obligatorio en viviendas existentes, pero sí será obligatorio en edificios nuevos desde 2027 y en renovaciones importantes donde sea técnicamente viable. Para viviendas existentes es recomendable porque: reduce tu factura eléctrica hasta un 70%, hay ayudas del 40-50% del coste, aumenta el valor de tu propiedad y mejora tu clase energética."
+    },
+    {
+      "id": "7",
+      "question": "Vivo en una comunidad de propietarios, ¿cómo organizamos las mejoras?",
+      "answer": "La comunidad debe: 1) Convocar junta informativa sobre EPBD 2024, 2) Contratar auditoría energética del edificio, 3) Solicitar presupuestos para mejoras (fachada, cubierta, calderas comunes), 4) Estudiar ayudas específicas para comunidades (pueden llegar al 60%), 5) Aprobar las obras por mayoría y 6) Planificar la financiación. Hay ayudas específicas para comunidades que suelen ser más generosas."
+    },
+    {
+      "id": "8",
+      "question": "¿Cuánto tiempo tengo para adaptar mi vivienda?",
+      "answer": "Los plazos clave son: hasta 2033 para viviendas clase G (no se podrán vender/alquilar), hasta 2035 para clase F, y hasta 2050 para el objetivo de cero emisiones. Sin embargo, es recomendable actuar antes porque: las ayudas se irán agotando, los precios de materiales y mano de obra subirán por la demanda, y tu vivienda perderá valor de mercado antes de las fechas límite."
+    },
+    {
+      "id": "9",
+      "question": "¿Merece la pena comprar una vivienda clase F o G ahora?",
+      "answer": "Puede merecer la pena si: el precio está muy ajustado considerando las mejoras necesarias, tienes presupuesto para las reformas inmediatas, hay ayudas disponibles en esa zona, y el potencial de mejora es alto (por ejemplo, buena orientación). Siempre solicita presupuestos de mejoras antes de comprar y negocia el precio final considerando estos costes adicionales."
+    },
+    {
+      "id": "10",
+      "question": "¿Qué es una bomba de calor y por qué es mejor que mi caldera de gas?",
+      "answer": "Una bomba de calor es un sistema que extrae energía del aire, agua o suelo para calentar tu casa usando principalmente electricidad. Es mejor porque: consume 3-4 veces menos energía que una caldera de gas, no produce emisiones directas, puede dar calefacción y refrigeración, es compatible con paneles solares, y recibirá ayudas mientras que las calderas de gas ya no."
+    },
+    {
+      "id": "11",
+      "question": "¿Puedo hacer las mejoras por fases o tengo que hacerlo todo a la vez?",
+      "answer": "Es recomendable hacerlo por fases siguiendo este orden de prioridad: 1) Envolvente térmica (aislamiento y ventanas), 2) Sistema de calefacción eficiente, 3) Agua caliente solar/aerotermia, 4) Paneles fotovoltaicos. Esto permite repartir la inversión en el tiempo y cada fase mejora el rendimiento de la siguiente. Algunas ayudas exigen mejoras integrales, pero otras permiten actuaciones específicas."
+    },
+    {
+      "id": "12",
+      "question": "¿Cómo afectará la normativa al precio de mi vivienda?",
+      "answer": "Las viviendas eficientes (A, B, C) se revalorizarán porque tendrán mayor demanda. Las viviendas ineficientes (F, G) perderán valor progresivamente hasta quedar bloqueadas para venta/alquiler. Estudios europeos indican que cada letra de mejora aumenta el valor entre un 3-7%. Es una inversión que se recupera tanto en ahorro energético como en revalorización del inmueble."
+    },
+    {
+      "id": "13",
+      "question": "¿Qué documentación necesito para solicitar las ayudas?",
+      "answer": "La documentación básica incluye: certificado energético actual, presupuesto de instalador autorizado, proyecto técnico (para obras importantes), justificante de propiedad, DNI/CIF, declaración de IRPF, y licencia de obras si es necesaria. Cada ayuda tiene requisitos específicos, por eso recomendamos consultar los detalles exactos en nuestra sección de ayudas antes de iniciar el proceso."
+    },
+    {
+      "id": "14",
+      "question": "¿Puedo solicitar varias ayudas para la misma obra?",
+      "answer": "En general no se pueden acumular ayudas públicas para el mismo concepto (por ejemplo, dos ayudas para la misma bomba de calor), pero sí puedes combinar ayudas para diferentes actuaciones (una para aislamiento, otra para bomba de calor, otra para solar). También puedes combinar ayudas públicas con financiación bancaria preferencial. Es importante consultarlo antes de solicitar para evitar incompatibilidades."
+    },
+    {
+      "id": "15",
+      "question": "¿Qué pasa si no adapto mi vivienda a tiempo?",
+      "answer": "Las consecuencias son progresivas: desde 2033 no podrás vender ni alquilar si eres clase G, desde 2035 tampoco si eres F. Además, tu vivienda perderá valor de mercado antes de esas fechas, tendrás facturas energéticas más altas, menor confort, y dificultades para conseguir financiación hipotecaria. El riesgo mayor es quedarte con una vivienda 'bloqueada' sin poder transmitirla."
+    }
+  ]
+}

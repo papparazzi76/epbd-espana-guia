@@ -1,0 +1,75 @@
+{
+  "sitemap": {
+    "home": {
+      "path": "/",
+      "title": "Guía práctica para adaptar tu vivienda a la nueva normativa de eficiencia energética (EPBD 2024)",
+      "h1": "Adapta tu vivienda a la nueva normativa europea de eficiencia energética",
+      "sections": [
+        {
+          "h2": "Lo esencial en 60 segundos",
+          "description": "Resumen ejecutivo de cambios clave"
+        },
+        {
+          "h2": "Fechas clave que debes conocer",
+          "h3": ["Línea temporal 2025-2050", "Glosario de términos", "Hitos normativos"]
+        },
+        {
+          "h2": "¿Qué obligaciones tienes según tu perfil?",
+          "h3": ["Propietarios de vivienda", "Arrendadores", "Compradores", "Comunidades de propietarios"]
+        },
+        {
+          "h2": "Impacto en el mercado inmobiliario",
+          "h3": ["Efectos en el precio", "Riesgos de inacción", "Oportunidades de revalorización"]
+        },
+        {
+          "h2": "Cómo adaptar tu vivienda paso a paso",
+          "h3": ["Checklist descargable", "Medidas por impacto/coste", "Calculadora simple"]
+        },
+        {
+          "h2": "Ayudas y subvenciones disponibles",
+          "h3": ["Buscador por comunidad", "Cómo solicitarlas", "Alertas de ayudas"]
+        },
+        {
+          "h2": "Casos reales de éxito",
+          "h3": ["Piso años 70", "Vivienda unifamiliar", "Comunidad de propietarios"]
+        },
+        {
+          "h2": "Preguntas frecuentes",
+          "h3": ["Dudas sobre normativa", "Proceso de renovación", "Financiación"]
+        }
+      ]
+    },
+    "pages": [
+      {
+        "path": "/fechas-clave",
+        "title": "Fechas clave EPBD 2024 - Cronograma de implementación",
+        "h1": "Fechas clave de la nueva normativa EPBD 2024"
+      },
+      {
+        "path": "/obligaciones",
+        "title": "Obligaciones según tu perfil - EPBD 2024",
+        "h1": "¿Qué obligaciones tienes según tu situación?"
+      },
+      {
+        "path": "/como-adaptar",
+        "title": "Cómo adaptar tu vivienda - Guía práctica EPBD 2024",
+        "h1": "Guía paso a paso para adaptar tu vivienda"
+      },
+      {
+        "path": "/ayudas-subvenciones",
+        "title": "Ayudas y subvenciones para eficiencia energética 2024",
+        "h1": "Repositorio actualizado de ayudas y subvenciones"
+      },
+      {
+        "path": "/calculadora",
+        "title": "Calculadora de eficiencia energética - EPBD 2024",
+        "h1": "Calcula el impacto de las mejoras en tu vivienda"
+      },
+      {
+        "path": "/casos-reales",
+        "title": "Casos reales de renovación energética - EPBD 2024",
+        "h1": "Ejemplos reales de adaptación a la normativa"
+      }
+    ]
+  }
+}

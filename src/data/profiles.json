@@ -1,0 +1,168 @@
+{
+  "profiles": [
+    {
+      "id": "propietario-vivienda",
+      "title": "Propietario de vivienda unifamiliar",
+      "icon": "Home",
+      "description": "Tienes una casa propia y quieres adaptarla",
+      "obligations": [
+        "Realizar certificado energético si vendes o alquilas",
+        "Cumplir MEPS antes de 2033 (clase G) y 2035 (clase F)",
+        "Considerar instalación solar si renuevas tejado",
+        "Sustituir caldera de gasóleo/gas por bomba de calor (recomendado)"
+      ],
+      "timeline": [
+        {
+          "date": "2025-01-01",
+          "action": "Fin de ayudas para calderas fósiles"
+        },
+        {
+          "date": "2033-01-01",
+          "action": "Imposible vender/alquilar si eres clase G"
+        }
+      ],
+      "actions": [
+        "Solicita un certificado energético actualizado",
+        "Evalúa qué mejoras te suben de clase energética",
+        "Consulta ayudas disponibles en tu comunidad autónoma",
+        "Planifica la sustitución de sistemas antiguos"
+      ],
+      "dos": [
+        "Actúa antes de que se agoten las ayudas",
+        "Prioriza envolvente térmica (aislamiento)",
+        "Considera soluciones integrales",
+        "Guarda toda la documentación"
+      ],
+      "donts": [
+        "No instales calderas nuevas de gas/gasóleo",
+        "No esperes al último momento",
+        "No hagas obras puntuales sin planificar",
+        "No ignores la orientación de tu vivienda"
+      ]
+    },
+    {
+      "id": "comunidad-propietarios",
+      "title": "Comunidad de propietarios",
+      "icon": "Building",
+      "description": "Administras una comunidad que debe adaptarse",
+      "obligations": [
+        "Certificado energético del edificio completo",
+        "Plan de renovación energética a medio plazo",
+        "Instalación de puntos de recarga para vehículos eléctricos",
+        "Cumplimiento de MEPS para zonas comunes"
+      ],
+      "timeline": [
+        {
+          "date": "2025-05-28",
+          "action": "Nueva normativa transpuesta"
+        },
+        {
+          "date": "2027-01-01",
+          "action": "Obligación solar en renovaciones importantes"
+        }
+      ],
+      "actions": [
+        "Convocar junta para informar sobre EPBD 2024",
+        "Contratar auditoría energética del edificio",
+        "Estudiar ayudas para comunidades",
+        "Planificar actuaciones por fases"
+      ],
+      "dos": [
+        "Busca ayudas específicas para comunidades",
+        "Implica a todos los propietarios",
+        "Estudia financiación para obras importantes",
+        "Considera mejoras en zonas comunes primero"
+      ],
+      "donts": [
+        "No tomes decisiones unilaterales",
+        "No ignores a propietarios con dificultades económicas",
+        "No contrates sin varios presupuestos",
+        "No olvides las licencias necesarias"
+      ]
+    },
+    {
+      "id": "arrendador",
+      "title": "Arrendador de viviendas",
+      "icon": "Key",
+      "description": "Alquilas viviendas y debes cumplir MEPS",
+      "obligations": [
+        "Certificado energético válido y visible en anuncios",
+        "Cumplir MEPS para poder alquilar (2033: no clase G, 2035: no clase F)",
+        "Informar al inquilino sobre eficiencia energética",
+        "Mantener sistemas de climatización eficientes"
+      ],
+      "timeline": [
+        {
+          "date": "2025-01-01",
+          "action": "Fin de ayudas para calderas fósiles"
+        },
+        {
+          "date": "2033-01-01",
+          "action": "Prohibido alquilar viviendas clase G"
+        },
+        {
+          "date": "2035-01-01",
+          "action": "Prohibido alquilar viviendas clase F"
+        }
+      ],
+      "actions": [
+        "Revisa el certificado energético de todas tus viviendas",
+        "Identifica propiedades en riesgo (clases F y G)",
+        "Planifica inversiones para subir de clase",
+        "Estudia el retorno de inversión vs. rentabilidad"
+      ],
+      "dos": [
+        "Actúa primero en viviendas clase G",
+        "Considera mejoras que también aumenten el valor",
+        "Incluye eficiencia energética en la comercialización",
+        "Mantén documentación al día"
+      ],
+      "donts": [
+        "No esperes a 2032 para actuar",
+        "No ignores viviendas clase F",
+        "No olvides incluir costes en tu planificación",
+        "No renueves contratos largos sin certificar"
+      ]
+    },
+    {
+      "id": "comprador",
+      "title": "Futuro comprador",
+      "icon": "Search",
+      "description": "Vas a comprar y quieres tomar la mejor decisión",
+      "obligations": [
+        "Exigir certificado energético válido antes de comprar",
+        "Evaluar costes futuros de adaptación",
+        "Considerar restricciones futuras de venta",
+        "Negociar precio según clase energética"
+      ],
+      "timeline": [
+        {
+          "date": "2033-01-01",
+          "action": "Viviendas clase G sin valor de mercado"
+        },
+        {
+          "date": "2035-01-01",
+          "action": "Viviendas clase F sin valor de mercado"
+        }
+      ],
+      "actions": [
+        "Solicita siempre el certificado energético",
+        "Calcula costes de mejoras necesarias",
+        "Compara viviendas incluyendo eficiencia",
+        "Negocia precio según futuras obligaciones"
+      ],
+      "dos": [
+        "Prioriza viviendas clase C o superior",
+        "Solicita presupuestos de mejoras antes de comprar",
+        "Considera viviendas con renovación reciente",
+        "Valora la orientación y el aislamiento"
+      ],
+      "donts": [
+        "No compres clase G sin evaluar costes",
+        "No ignores el certificado energético",
+        "No asumas que 'se puede mejorar fácil'",
+        "No olvides incluir mejoras en la financiación"
+      ]
+    }
+  ]
+}
