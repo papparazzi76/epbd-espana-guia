@@ -1,6 +1,7 @@
 import { Calendar, Clock, AlertTriangle, CheckCircle2, Target } from "lucide-react";
 import timelineData from "@/data/timeline-updated.json";
 import { scrollToSection } from "@/lib/smooth-scroll";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 export const TimelineSection = () => {
   const getStatusIcon = (status: string, year: string) => {
