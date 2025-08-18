@@ -113,19 +113,6 @@ export const TimelineSection = () => {
               ))}
             </div>
           </div>
-
-          {/* CTA */}
-          <div className="text-center mt-12">
-            <p className="text-muted-foreground mb-6">
-              ¿No tienes claro cómo te afectan estas fechas?
-            </p>
-            <button 
-              onClick={() => scrollToSection('calculadora')}
-              className="btn-hero"
-            >
-              Calcula tu plan personalizado
-            </button>
-          </div>
         </div>
       </section>
     </HelmetProvider>
