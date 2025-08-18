@@ -15,9 +15,10 @@ import { FinancialSupportSection } from "@/components/FinancialSupportSection";
 import { FAQSection } from "@/components/FAQSection";
 import { B2BSection } from "@/components/B2BSection";
 import { ContactSection } from "@/components/ContactSection";
-import { Header } from "@/components/Header"; // Componente a crear
-import { Footer } from "@/components/Footer"; // Componente a crear
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { GuiaViviendaUnifamiliar } from "@/components/GuiaViviendaUnifamiliar";
+import { GuiaComunidadPropietarios } from "@/components/GuiaComunidadPropietarios"; // 1. Importa la nueva guía
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,10 @@ const App = () => (
             <Route path="/empresas" element={<B2BSection />} />
             <Route path="/contacto" element={<ContactSection />} />
             <Route path="/guia-vivienda-unifamiliar" element={<GuiaViviendaUnifamiliar />} />
+            
+            {/* 2. Añade la nueva ruta para la guía de comunidades */}
+            <Route path="/guia-comunidad-propietarios" element={<GuiaComunidadPropietarios />} />
+
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
