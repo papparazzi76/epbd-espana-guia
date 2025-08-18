@@ -1,16 +1,20 @@
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { Home, Calendar, AlertTriangle, CheckCircle, TrendingUp, Euro, Zap, Download, ShieldCheck } from 'lucide-react';
-// @ts-nocheck
+import { Home, Calendar, ShieldCheck, Euro, Download } from 'lucide-react';
 
 export const GuiaViviendaUnifamiliar = () => {
 
   const handleDownloadPDF = () => {
+    // Aseguramos que las librerías están disponibles en el objeto window
+    const { jsPDF } = window.jspdf;
+    const html2canvas = window.html2canvas;
+
     const input = document.getElementById('infographic-content');
-    if (input && window.html2canvas && window.jspdf) {
-      window.html2canvas(input, { scale: 2 }) // Aumenta la escala para mejor calidad
+    
+    if (input && html2canvas && jsPDF) {
+      html2canvas(input, { scale: 2 }) // Aumenta la escala para mejor calidad
         .then((canvas) => {
           const imgData = canvas.toDataURL('image/png');
-          const pdf = new window.jspdf.jsPDF({
+          const pdf = new jsPDF({
             orientation: 'portrait',
             unit: 'px',
             format: [canvas.width, canvas.height]
@@ -19,7 +23,8 @@ export const GuiaViviendaUnifamiliar = () => {
           pdf.save("guia-propietario-vivienda-unifamiliar-EPBD2024.pdf");
         });
     } else {
-        console.error("No se pudo encontrar el elemento para generar el PDF o las librerías no están cargadas.");
+        console.error("Error: No se pudo encontrar el elemento para generar el PDF o las librerías jspdf/html2canvas no están cargadas.");
+        alert("Hubo un error al generar el PDF. Por favor, recarga la página e inténtalo de nuevo.");
     }
   };
 
