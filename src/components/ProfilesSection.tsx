@@ -1,7 +1,7 @@
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Home, Building, Key, Search, ChevronRight, Calendar, CheckCircle, XCircle } from "lucide-react";
 import profilesData from "@/data/profiles.json";
-import { scrollToSection } from "@/lib/smooth-scroll";
+import { useNavigate } from "react-router-dom";
 
 const iconMap = {
   Home,
@@ -11,6 +11,17 @@ const iconMap = {
 };
 
 export const ProfilesSection = () => {
+  const navigate = useNavigate();
+
+  const handleGuideClick = (profileId: string) => {
+    if (profileId === 'propietario-vivienda') {
+      navigate('/guia-vivienda-unifamiliar');
+    } else {
+      // Para otros perfiles, navegar a calculadora por ahora
+      navigate('/calculadora');
+    }
+  };
+
   return (
     <HelmetProvider>
       <Helmet>
@@ -109,7 +120,7 @@ export const ProfilesSection = () => {
                   </div>
 
                   <button 
-                    onClick={() => scrollToSection('calculadora')}
+                    onClick={() => handleGuideClick(profile.id)}
                     className="w-full bg-primary text-primary-foreground hover:bg-primary-hover 
                                      py-2 px-4 rounded-lg font-medium text-sm transition-colors"
                   >
