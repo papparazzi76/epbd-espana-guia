@@ -1,18 +1,27 @@
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { Home, Calendar, ShieldCheck, Euro, Download } from 'lucide-react';
+import { Home, Calendar, ShieldCheck, Euro, Download, Loader2 } from 'lucide-react';
+import { useState } from 'react';
+import { useToast } from "@/hooks/use-toast";
 
 export const GuiaViviendaUnifamiliar = () => {
+  const [isDownloading, setIsDownloading] = useState(false);
+  const { toast } = useToast();
 
   const handleDownloadPDF = () => {
+    setIsDownloading(true);
+    
     // Aseguramos que las librerías están disponibles en el objeto window
-    const { jsPDF } = window.jspdf;
+    const { jsPDF } = window.jspdf || {};
     const html2canvas = window.html2canvas;
 
     const input = document.getElementById('infographic-content');
     
     if (input && html2canvas && jsPDF) {
-      html2canvas(input, { scale: 2 }) // Aumenta la escala para mejor calidad
-        .then((canvas) => {
+      html2canvas(input, { 
+        scale: 2, // Aumenta la escala para mejor calidad
+        useCORS: true,
+        backgroundColor: '#ffffff'
+      }).then((canvas) => {
           const imgData = canvas.toDataURL('image/png');
           const pdf = new jsPDF({
             orientation: 'portrait',
@@ -21,10 +30,24 @@ export const GuiaViviendaUnifamiliar = () => {
           });
           pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
           pdf.save("guia-propietario-vivienda-unifamiliar-EPBD2024.pdf");
+          setIsDownloading(false);
+        }).catch(err => {
+            console.error("Error durante la generación del canvas:", err);
+            toast({
+                title: "Error al generar PDF",
+                description: "Hubo un problema al crear la imagen de la guía.",
+                variant: "destructive",
+            });
+            setIsDownloading(false);
         });
     } else {
         console.error("Error: No se pudo encontrar el elemento para generar el PDF o las librerías jspdf/html2canvas no están cargadas.");
-        alert("Hubo un error al generar el PDF. Por favor, recarga la página e inténtalo de nuevo.");
+        toast({
+            title: "Error de carga",
+            description: "Las herramientas para generar el PDF no se cargaron correctamente. Por favor, recarga la página.",
+            variant: "destructive",
+        });
+        setIsDownloading(false);
     }
   };
 
@@ -128,10 +151,20 @@ export const GuiaViviendaUnifamiliar = () => {
             <div className="mt-8 text-center">
                 <button
                     onClick={handleDownloadPDF}
-                    className="inline-flex items-center justify-center gap-2 bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-xl transform hover:scale-105 px-8 py-4 rounded-lg font-semibold transition-all duration-200"
+                    disabled={isDownloading}
+                    className="inline-flex items-center justify-center gap-2 bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-xl transform hover:scale-105 px-8 py-4 rounded-lg font-semibold transition-all duration-200 disabled:opacity-75 disabled:cursor-not-allowed"
                 >
-                    <Download className="w-5 h-5" />
-                    Descargar Guía en PDF
+                    {isDownloading ? (
+                        <>
+                            <Loader2 className="w-5 h-5 animate-spin" />
+                            Generando PDF...
+                        </>
+                    ) : (
+                        <>
+                            <Download className="w-5 h-5" />
+                            Descargar Guía en PDF
+                        </>
+                    )}
                 </button>
             </div>
         </div>
