@@ -17,6 +17,7 @@ import { B2BSection } from "@/components/B2BSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Header } from "@/components/Header"; // Componente a crear
 import { Footer } from "@/components/Footer"; // Componente a crear
+import { GuiaViviendaUnifamiliar } from "@/components/GuiaViviendaUnifamiliar";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +50,7 @@ const App = () => (
             <Route path="/faq" element={<FAQSection />} />
             <Route path="/empresas" element={<B2BSection />} />
             <Route path="/contacto" element={<ContactSection />} />
+            <Route path="/guia-vivienda-unifamiliar" element={<GuiaViviendaUnifamiliar />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
