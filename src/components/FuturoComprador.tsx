@@ -9,14 +9,41 @@ export const GuiaFuturoComprador = () => {
 
   const handleDownloadPDF = () => {
     setIsDownloading(true);
-    // Simulate PDF download with toast notification
-    setTimeout(() => {
+    const { jsPDF } = window.jspdf || {};
+    const html2canvas = window.html2canvas;
+    const input = document.getElementById('infographic-comprador-content');
+
+    if (!input || !html2canvas || !jsPDF) {
+      console.error("Error: Elemento o librerías PDF no encontradas.");
       toast({
-        title: "Descarga simulada",
-        description: "La descarga del PDF se ha simulado correctamente.",
+          title: "Error de Carga",
+          description: "No se pudieron cargar las herramientas para generar el PDF. Refresca la página.",
+          variant: "destructive",
       });
       setIsDownloading(false);
-    }, 2000);
+      return;
+    }
+    
+    html2canvas(input, { scale: 2, useCORS: true, backgroundColor: '#ffffff' })
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF({
+          orientation: 'portrait',
+          unit: 'px',
+          format: [canvas.width, canvas.height]
+        });
+        pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+        pdf.save("guia-futuro-comprador-EPBD2024.pdf");
+        setIsDownloading(false);
+      }).catch(err => {
+          console.error("Error al generar el PDF:", err);
+          toast({
+              title: "Error al generar PDF",
+              description: "Hubo un problema al crear la imagen de la guía.",
+              variant: "destructive",
+          });
+          setIsDownloading(false);
+      });
   };
 
   return (
