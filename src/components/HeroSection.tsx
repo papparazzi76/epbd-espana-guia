@@ -39,7 +39,7 @@ export const HeroSection = () => {
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-relaxed">
               En 2030 tu vivienda necesitará al menos
               <span className="block bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
                 clase energética E
