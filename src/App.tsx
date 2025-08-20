@@ -18,7 +18,9 @@ import { ContactSection } from "@/components/ContactSection";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GuiaViviendaUnifamiliar } from "@/components/GuiaViviendaUnifamiliar";
-import { GuiaComunidadPropietarios } from "@/components/GuiaComunidadPropietarios"; // 1. Importa la nueva guía
+import { GuiaComunidadPropietarios } from "@/components/GuiaComunidadPropietarios";
+import { CRMDashboard } from "@/pages/CRMDashboard";
+import { ConectaLanding } from "@/pages/ConectaLanding";
 
 const queryClient = new QueryClient();
 
@@ -53,8 +55,11 @@ const App = () => (
             <Route path="/contacto" element={<ContactSection />} />
             <Route path="/guia-vivienda-unifamiliar" element={<GuiaViviendaUnifamiliar />} />
             
-            {/* 2. Añade la nueva ruta para la guía de comunidades */}
             <Route path="/guia-comunidad-propietarios" element={<GuiaComunidadPropietarios />} />
+            
+            {/* CRM Platform Routes */}
+            <Route path="/crm" element={<CRMDashboard />} />
+            <Route path="/conecta" element={<ConectaLanding />} />
 
             <Route path="*" element={<NotFound />} />
           </Route>
