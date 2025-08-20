@@ -14,11 +14,21 @@ export const ProfilesSection = () => {
   const navigate = useNavigate();
 
   const handleGuideClick = (profileId: string) => {
-    if (profileId === 'propietario-vivienda') {
-      navigate('/guia-vivienda-unifamiliar');
-    } else {
-      // Para otros perfiles, navegar a calculadora por ahora
-      navigate('/calculadora');
+    switch (profileId) {
+      case 'propietario-vivienda':
+        navigate('/guia-vivienda-unifamiliar');
+        break;
+      case 'comunidad-propietarios':
+        navigate('/guia-comunidad-propietarios');
+        break;
+      case 'arrendador':
+        navigate('/guia-arrendador');
+        break;
+      case 'futuro-comprador':
+        navigate('/guia-futuro-comprador');
+        break;
+      default:
+        navigate('/calculadora');
     }
   };
 

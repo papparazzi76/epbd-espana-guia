@@ -19,6 +19,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GuiaViviendaUnifamiliar } from "@/components/GuiaViviendaUnifamiliar";
 import { GuiaComunidadPropietarios } from "@/components/GuiaComunidadPropietarios";
+import { GuiaArrendador } from "@/components/GuiaArrendador";
+import { FuturoComprador } from "@/components/FuturoComprador";
 import { CRMDashboard } from "@/pages/CRMDashboard";
 import { ConectaLanding } from "@/pages/ConectaLanding";
 
@@ -56,6 +58,8 @@ const App = () => (
             <Route path="/guia-vivienda-unifamiliar" element={<GuiaViviendaUnifamiliar />} />
             
             <Route path="/guia-comunidad-propietarios" element={<GuiaComunidadPropietarios />} />
+            <Route path="/guia-arrendador" element={<GuiaArrendador />} />
+            <Route path="/guia-futuro-comprador" element={<FuturoComprador />} />
             
             {/* CRM Platform Routes */}
             <Route path="/crm" element={<CRMDashboard />} />
