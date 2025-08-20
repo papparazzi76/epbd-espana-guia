@@ -6,33 +6,33 @@
 
 @layer base {
   :root {
-    /* Core brand colors - Professional greens and blues for energy/sustainability */
-    --background: 0 0% 100%;
-    --foreground: 210 24% 16%;
+    /* Brand colors matching HTML design */
+    --background: 249 250 251; /* bg-gray-50 equivalent */
+    --foreground: 17 24 39; /* text-gray-900 equivalent */
 
     --card: 0 0% 100%;
-    --card-foreground: 210 24% 16%;
+    --card-foreground: 17 24 39;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 24% 16%;
+    --popover-foreground: 17 24 39;
 
-    /* Primary: Trustworthy blue for CTAs and key actions */
-    --primary: 217 89% 42%;
-    --primary-foreground: 0 0% 100%;
-    --primary-hover: 217 89% 35%;
+    /* Primary: Brand blue #1E40AF */
+    --primary: 225 83% 40%;
+    --primary-foreground: 0 0% 98%;
+    --primary-hover: 225 83% 33%;
 
-    /* Secondary: Energy green for positive actions */
-    --secondary: 142 71% 45%;
-    --secondary-foreground: 0 0% 100%;
-    --secondary-hover: 142 71% 38%;
+    /* Secondary: Brand green #16A34A */
+    --secondary: 142 76% 36%;
+    --secondary-foreground: 0 0% 98%;
+    --secondary-hover: 142 76% 30%;
 
-    /* Muted: Neutral grays for backgrounds */
-    --muted: 210 20% 96%;
-    --muted-foreground: 210 16% 46%;
+    /* Muted: Light backgrounds and subtle text */
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 75 85% 40%; /* brand-subtext equivalent */
 
-    /* Accent: Highlight orange for alerts/warnings */
-    --accent: 25 95% 53%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent: Highlight for special elements */
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
 
     /* Success: For completed steps and positive outcomes */
     --success: 142 76% 36%;
@@ -46,9 +46,9 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 89%;
-    --input: 210 20% 89%;
-    --ring: 217 89% 42%;
+    --border: 229 84% 5%;
+    --input: 229 84% 5%;
+    --ring: 225 83% 40%;
 
     /* Enhanced gradients for visual appeal */
     --gradient-primary: linear-gradient(135deg, hsl(217, 89%, 42%), hsl(217, 89%, 52%));
