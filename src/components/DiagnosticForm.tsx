@@ -159,16 +159,17 @@ export const DiagnosticForm = () => {
       console.log("Datos enviados:", { fullDiagnosticData, informeGenerado });
 
       // 4. Guardar en Supabase
-      const { error } = await supabase.from('leads').insert([{ 
+      const { error } = await supabase.from('leads').insert({ 
         nombre_completo: formData.name,
         email: formData.email,
         telefono: formData.phone,
         provincia: formData.province,
+        localidad: formData.province, // Using province as localidad for now
         tipo_vivienda: formData.propertyType,
         año_construccion: formData.constructionYear,
         interes_principal: formData.mainInterest || 'reformar',
         certificado_energetico: formData.energyCertificate || 'no_se'
-      }]);
+      });
 
       if (error) throw error;
 
