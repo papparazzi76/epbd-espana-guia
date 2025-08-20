@@ -1,20 +1,18 @@
-import { useState } from 'react';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { ArrowRight, Users, TrendingUp, Shield, Star, CheckCircle, Building, Phone, Mail } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/hooks/use-toast';
-import heroImage from '@/assets/hero-energy-house.jpg';
+import React, { useState } from 'react';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
+import { handleSmoothScroll } from "@/lib/smooth-scroll";
 
 export const ConectaLanding = () => {
   const [formData, setFormData] = useState({
-    empresa: '',
-    nombre: '',
+    company: '',
+    name: '',
     email: '',
-    telefono: '',
-    mensaje: ''
+    phone: '',
+    message: ''
   });
   const { toast } = useToast();
 
@@ -23,20 +21,20 @@ export const ConectaLanding = () => {
     
     // Simulate form submission
     toast({
-      title: "Solicitud enviada",
-      description: "Te contactaremos pronto para activar tus 30 créditos gratuitos.",
+      title: "¡Gracias!",
+      description: "Hemos recibido tu solicitud. Un miembro de nuestro equipo se pondrá en contacto contigo en las próximas 24 horas para activar tus créditos gratuitos.",
     });
     
     setFormData({
-      empresa: '',
-      nombre: '',
+      company: '',
+      name: '',
       email: '',
-      telefono: '',
-      mensaje: ''
+      phone: '',
+      message: ''
     });
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -45,288 +43,304 @@ export const ConectaLanding = () => {
 
   return (
     <HelmetProvider>
-      <Helmet>
-        <title>Conecta Rehabilita 360 - CRM para Empresas de Reformas</title>
-        <meta name="description" content="Plataforma CRM especializada en leads de rehabilitación energética. Consigue más clientes cualificados para tu empresa de reformas." />
-        <meta name="keywords" content="CRM reformas, leads rehabilitación, empresas constructoras, EPBD 2024" />
-        <link rel="canonical" href="https://conectarehabilita360.com" />
-      </Helmet>
+      <div className="min-h-screen bg-background font-manrope">
+        <Helmet>
+          <title>ConectaRehabilita 360 - Leads Cualificados para Empresas de Rehabilitación</title>
+          <meta name="description" content="Accede a un flujo constante de oportunidades de negocio reales, impulsadas por la nueva normativa europea. Nosotros captamos y cualificamos los proyectos, tú te centras en cerrar los tratos." />
+        </Helmet>
 
-      <div className="min-h-screen bg-background">
         {/* Header */}
-        <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Building className="w-8 h-8 text-primary" />
-                <h1 className="text-xl font-bold text-foreground">Conecta Rehabilita 360</h1>
-              </div>
-              <div className="flex items-center gap-4">
-                <Button variant="ghost" size="sm">Iniciar Sesión</Button>
-                <Button size="sm">Registrarse</Button>
-              </div>
+        <header className="bg-white/90 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+          <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" className="text-2xl font-bold text-foreground">
+              Conecta<span className="text-primary">Rehabilita 360</span>
+            </a>
+            <div className="hidden md:flex items-center space-x-8">
+              <a 
+                href="#como-funciona" 
+                onClick={(e) => handleSmoothScroll(e, '#como-funciona')}
+                className="text-muted-foreground font-medium hover:text-primary transition-colors"
+              >
+                Cómo funciona
+              </a>
+              <a 
+                href="#beneficios" 
+                onClick={(e) => handleSmoothScroll(e, '#beneficios')}
+                className="text-muted-foreground font-medium hover:text-primary transition-colors"
+              >
+                Beneficios
+              </a>
+              <a 
+                href="#precios" 
+                onClick={(e) => handleSmoothScroll(e, '#precios')}
+                className="text-muted-foreground font-medium hover:text-primary transition-colors"
+              >
+                Precios
+              </a>
             </div>
-          </div>
+            <a 
+              href="#formulario-contacto" 
+              onClick={(e) => handleSmoothScroll(e, '#formulario-contacto')}
+              className="hidden md:inline-block bg-primary text-primary-foreground font-semibold px-5 py-2 rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              Obtén 30 créditos gratis
+            </a>
+          </nav>
         </header>
 
-        {/* Hero Section */}
-        <section className="relative py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <main>
+          {/* Hero Section */}
+          <section id="hero" className="py-20 md:py-32 bg-white">
+            <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                  Multiplica tus clientes de <span className="text-primary">rehabilitación energética</span>
-                </h2>
-                <p className="text-xl text-muted-foreground mb-8">
-                  CRM especializado que te conecta con propietarios que necesitan reformas para cumplir la normativa EPBD 2024.
+                <h1 className="text-4xl md:text-6xl font-extrabold text-foreground leading-tight">
+                  Deja de buscar obras. Recibe <span className="text-secondary">proyectos de rehabilitación</span> cualificados.
+                </h1>
+                <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl">
+                  Accede a un flujo constante de oportunidades de negocio reales, impulsadas por la nueva normativa europea. Nosotros captamos y cualificamos los proyectos, tú te centras en cerrar los tratos.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" className="text-lg">
-                    <Star className="w-5 h-5 mr-2" />
-                    Prueba 30 Créditos Gratis
-                  </Button>
-                  <Button variant="outline" size="lg" className="text-lg">
-                    Ver Demo
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
+                <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                  <a 
+                    href="#formulario-contacto" 
+                    onClick={(e) => handleSmoothScroll(e, '#formulario-contacto')}
+                    className="bg-primary text-primary-foreground font-bold px-8 py-4 rounded-lg hover:bg-primary/90 transition-colors text-center"
+                  >
+                    Solicita 30 créditos gratis
+                  </a>
+                  <a 
+                    href="#como-funciona" 
+                    onClick={(e) => handleSmoothScroll(e, '#como-funciona')}
+                    className="bg-muted text-muted-foreground font-bold px-8 py-4 rounded-lg hover:bg-muted/80 transition-colors text-center"
+                  >
+                    Descubre cómo funciona
+                  </a>
                 </div>
               </div>
-              <div className="relative">
-                <img 
-                  src={heroImage} 
-                  alt="Rehabilitación energética de viviendas" 
-                  className="rounded-lg shadow-2xl w-full"
-                />
-                <div className="absolute -bottom-6 -left-6 bg-card p-4 rounded-lg shadow-lg border">
-                  <div className="text-2xl font-bold text-primary">+2,500</div>
-                  <div className="text-sm text-muted-foreground">Leads mensuales</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Benefits Section */}
-        <section className="py-20">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h3 className="text-3xl font-bold text-foreground mb-4">
-                ¿Por qué elegir Conecta Rehabilita 360?
-              </h3>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                La única plataforma que te conecta directamente con propietarios motivados por la nueva normativa europea
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              <Card className="text-center">
-                <CardHeader>
-                  <Users className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <CardTitle>Leads Cualificados</CardTitle>
-                  <CardDescription>
-                    Propietarios con necesidades reales de rehabilitación energética
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="text-sm text-muted-foreground space-y-2">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      Scoring automático de leads
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      Datos de contacto verificados
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      Segmentación por urgencia
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardHeader>
-                  <TrendingUp className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <CardTitle>ROI Garantizado</CardTitle>
-                  <CardDescription>
-                    Invierte solo en leads que se convierten en proyectos rentables
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="text-sm text-muted-foreground space-y-2">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      Tasa de conversión del 25%
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      Ticket medio 15.000€
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      ROI promedio 400%
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardHeader>
-                  <Shield className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <CardTitle>Gestión Integral</CardTitle>
-                  <CardDescription>
-                    CRM completo con todas las herramientas para tu negocio
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="text-sm text-muted-foreground space-y-2">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      Dashboard en tiempo real
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      Seguimiento automático
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      Reportes detallados
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Form Section */}
-        <section className="py-20 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h3 className="text-3xl font-bold text-foreground mb-4">
-                  Solicita tus 30 créditos gratuitos
-                </h3>
-                <p className="text-xl text-muted-foreground">
-                  Prueba la plataforma sin compromiso y comprueba la calidad de nuestros leads
-                </p>
-              </div>
-
-              <Card>
-                <CardContent className="p-8">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-sm font-medium mb-2">Nombre de la empresa *</label>
-                        <Input
-                          name="empresa"
-                          value={formData.empresa}
-                          onChange={handleInputChange}
-                          placeholder="Construcciones ABC S.L."
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium mb-2">Persona de contacto *</label>
-                        <Input
-                          name="nombre"
-                          value={formData.nombre}
-                          onChange={handleInputChange}
-                          placeholder="Juan Pérez"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-sm font-medium mb-2">Email *</label>
-                        <Input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          placeholder="contacto@empresa.com"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium mb-2">Teléfono *</label>
-                        <Input
-                          type="tel"
-                          name="telefono"
-                          value={formData.telefono}
-                          onChange={handleInputChange}
-                          placeholder="600 123 456"
-                          required
-                        />
-                      </div>
-                    </div>
-
+              <div className="bg-white p-6 rounded-lg shadow-lg border border-border">
+                <h3 className="font-bold text-lg text-foreground">Lo esencial en 60 segundos</h3>
+                <ul className="mt-4 space-y-3 text-muted-foreground">
+                  <li className="flex items-start">
+                    <span className="text-primary font-bold mr-2">→</span>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Mensaje (opcional)</label>
-                      <Textarea
-                        name="mensaje"
-                        value={formData.mensaje}
+                      <strong className="text-foreground">Qué es:</strong> Una plataforma que te conecta con propietarios que tienen la obligación y la necesidad de rehabilitar su vivienda.
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary font-bold mr-2">→</span>
+                    <div>
+                      <strong className="text-foreground">Cómo funciona:</strong> Recibes alertas de nuevos proyectos en tu zona. Usas créditos para comprar los datos de contacto y decides tu nivel de competencia.
+                    </div>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary font-bold mr-2">→</span>
+                    <div>
+                      <strong className="text-foreground">La oferta:</strong> Te regalamos 30 créditos para que pruebes la plataforma sin riesgo y compruebes la calidad de nuestros leads.
+                    </div>
+                  </li>
+                </ul>
+                <div className="mt-6 grid grid-cols-2 gap-4">
+                  <a 
+                    href="#formulario-contacto" 
+                    onClick={(e) => handleSmoothScroll(e, '#formulario-contacto')}
+                    className="bg-primary text-primary-foreground font-semibold py-3 rounded-lg text-center hover:bg-primary/90 transition-colors"
+                  >
+                    Empieza gratis
+                  </a>
+                  <a 
+                    href="#precios" 
+                    onClick={(e) => handleSmoothScroll(e, '#precios')}
+                    className="bg-secondary text-secondary-foreground font-semibold py-3 rounded-lg text-center hover:bg-secondary/90 transition-colors"
+                  >
+                    Ver precios
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Cómo funciona Section */}
+          <section id="como-funciona" className="py-20">
+            <div className="container mx-auto px-6 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground">Tu motor de crecimiento en 3 simples pasos</h2>
+              <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">Hemos simplificado al máximo el proceso para que solo inviertas tu tiempo en lo que de verdad importa: presupuestar y ejecutar obras.</p>
+              <div className="mt-12 grid md:grid-cols-3 gap-8">
+                <div className="text-center">
+                  <div className="flex items-center justify-center h-16 w-16 rounded-full bg-secondary/10 text-secondary mx-auto text-2xl font-bold">1</div>
+                  <h3 className="mt-6 text-xl font-bold text-foreground">Regístrate y define tu zona</h3>
+                  <p className="mt-2 text-muted-foreground">Crea tu perfil de empresa y selecciona las provincias y municipios donde operas. Recibirás alertas solo de las zonas que te interesan.</p>
+                </div>
+                <div className="text-center">
+                  <div className="flex items-center justify-center h-16 w-16 rounded-full bg-secondary/10 text-secondary mx-auto text-2xl font-bold">2</div>
+                  <h3 className="mt-6 text-xl font-bold text-foreground">Recibe y evalúa los leads</h3>
+                  <p className="mt-2 text-muted-foreground">Te notificaremos de nuevos proyectos. Verás una ficha completa con el presupuesto estimado y los detalles técnicos para que decidas si te interesa.</p>
+                </div>
+                <div className="text-center">
+                  <div className="flex items-center justify-center h-16 w-16 rounded-full bg-secondary/10 text-secondary mx-auto text-2xl font-bold">3</div>
+                  <h3 className="mt-6 text-xl font-bold text-foreground">Usa tus créditos y contacta</h3>
+                  <p className="mt-2 text-muted-foreground">Invierte tus créditos para obtener los datos del cliente. Decide si quieres el lead en exclusiva o cuánta competencia admites. ¡Así de fácil!</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Beneficios Section */}
+          <section id="beneficios" className="py-20 bg-white">
+            <div className="container mx-auto px-6">
+              <div className="text-center max-w-3xl mx-auto">
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground">Más que un portal, tu socio comercial</h2>
+                <p className="mt-4 text-lg text-muted-foreground">Diseñamos una plataforma pensada por y para profesionales de la reforma, centrada en la calidad y no en la cantidad.</p>
+              </div>
+              <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="bg-white p-8 rounded-xl shadow-sm border border-border hover:shadow-lg transition-shadow duration-300">
+                  <h3 className="text-xl font-bold text-foreground">Leads 100% Cualificados</h3>
+                  <p className="mt-2 text-muted-foreground">No te pasamos simples contactos. Cada lead ha sido verificado por nuestro equipo. Hablarás con propietarios que tienen una necesidad real y urgente.</p>
+                </div>
+                <div className="bg-white p-8 rounded-xl shadow-sm border border-border hover:shadow-lg transition-shadow duration-300">
+                  <h3 className="text-xl font-bold text-foreground">Control total sobre la competencia</h3>
+                  <p className="mt-2 text-muted-foreground">Tú decides. Usa tus créditos para conseguir un lead en exclusiva y ser el único en contactar, o elige un nivel de competencia menor para optimizar tu inversión.</p>
+                </div>
+                <div className="bg-white p-8 rounded-xl shadow-sm border border-border hover:shadow-lg transition-shadow duration-300">
+                  <h3 className="text-xl font-bold text-foreground">Sistema de Créditos Flexible</h3>
+                  <p className="mt-2 text-muted-foreground">Olvídate de cuotas fijas por leads que no te interesan. Paga solo por las oportunidades que de verdad encajan con tu negocio. Tu éxito es nuestro éxito.</p>
+                </div>
+                <div className="bg-white p-8 rounded-xl shadow-sm border border-border hover:shadow-lg transition-shadow duration-300">
+                  <h3 className="text-xl font-bold text-foreground">Información Técnica de Valor</h3>
+                  <p className="mt-2 text-muted-foreground">Cada ficha de lead incluye el CEE actual, la mejora propuesta y un presupuesto estimado. Tendrás todos los datos para preparar una oferta ganadora.</p>
+                </div>
+                <div className="bg-white p-8 rounded-xl shadow-sm border border-border hover:shadow-lg transition-shadow duration-300">
+                  <h3 className="text-xl font-bold text-foreground">Garantía de Contacto</h3>
+                  <p className="mt-2 text-muted-foreground">Si un lead se cierra muy rápido por otra empresa y no has podido contactar, te devolvemos los créditos. Sin preguntas. Protegemos tu inversión.</p>
+                </div>
+                <div className="bg-white p-8 rounded-xl shadow-sm border border-border hover:shadow-lg transition-shadow duration-300">
+                  <h3 className="text-xl font-bold text-foreground">Sin Limitaciones Geográficas</h3>
+                  <p className="mt-2 text-muted-foreground">Define tu área de trabajo con total libertad, desde un municipio hasta todo el territorio nacional, siempre que puedas garantizar la ejecución de la obra.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Precios Section */}
+          <section id="precios" className="py-20">
+            <div className="container mx-auto px-6 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground">Un plan simple para empezar a crecer</h2>
+              <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">Nuestra suscripción te da acceso a la plataforma y un paquete de créditos para que empieces a captar proyectos desde el primer día.</p>
+              <div className="mt-12 flex justify-center">
+                <div className="bg-white p-8 rounded-xl shadow-lg border-2 border-primary max-w-md w-full">
+                  <h3 className="text-2xl font-bold text-foreground">Plan Profesional</h3>
+                  <p className="mt-2 text-muted-foreground">Acceso completo a la plataforma y a todas las oportunidades.</p>
+                  <p className="mt-8 text-5xl font-extrabold text-foreground">3.000€<span className="text-lg font-medium text-muted-foreground">/año</span></p>
+                  <ul className="mt-8 space-y-4 text-left">
+                    <li className="flex items-center">
+                      <span className="text-secondary font-bold mr-3">✓</span>
+                      <span className="text-muted-foreground">Acceso a todos los leads de tus zonas</span>
+                    </li>
+                    <li className="flex items-center">
+                      <span className="text-secondary font-bold mr-3">✓</span>
+                      <span className="text-muted-foreground"><strong>300 créditos</strong> incluidos para empezar</span>
+                    </li>
+                    <li className="flex items-center">
+                      <span className="text-secondary font-bold mr-3">✓</span>
+                      <span className="text-muted-foreground">Opción de comprar paquetes de créditos adicionales</span>
+                    </li>
+                    <li className="flex items-center">
+                      <span className="text-secondary font-bold mr-3">✓</span>
+                      <span className="text-muted-foreground">Posibilidad de bloquear leads en exclusiva</span>
+                    </li>
+                    <li className="flex items-center">
+                      <span className="text-secondary font-bold mr-3">✓</span>
+                      <span className="text-muted-foreground">Soporte prioritario</span>
+                    </li>
+                  </ul>
+                  <a 
+                    href="#formulario-contacto" 
+                    onClick={(e) => handleSmoothScroll(e, '#formulario-contacto')}
+                    className="mt-10 block w-full bg-primary text-primary-foreground font-semibold py-3 rounded-lg hover:bg-primary/90 transition-colors"
+                  >
+                    Empieza con 30 créditos gratis
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Formulario Contacto Section */}
+          <section id="formulario-contacto" className="py-20 bg-white">
+            <div className="container mx-auto px-6">
+              <div className="bg-primary text-primary-foreground p-8 md:p-12 rounded-xl grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-bold">Prueba la plataforma sin riesgo</h2>
+                  <p className="mt-4 text-primary-foreground/80">Rellena el formulario y nuestro equipo se pondrá en contacto contigo para darte acceso a la plataforma y activar tu paquete de <strong>30 créditos gratuitos</strong>. Sin compromiso, sin tarjeta de crédito.</p>
+                </div>
+                <div>
+                  <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
+                    <div>
+                      <label htmlFor="company-name" className="sr-only">Nombre de la empresa</label>
+                      <Input
+                        id="company-name"
+                        name="company"
+                        value={formData.company}
                         onChange={handleInputChange}
-                        placeholder="Cuéntanos sobre tu empresa y objetivos..."
-                        rows={4}
+                        placeholder="Nombre de la empresa"
+                        className="w-full p-3 rounded-md bg-primary/20 border border-primary-foreground/30 placeholder:text-primary-foreground/60 text-primary-foreground focus:outline-none focus:ring-2 focus:ring-primary-foreground"
+                        required
                       />
                     </div>
-
-                    <Button type="submit" size="lg" className="w-full text-lg">
-                      <Star className="w-5 h-5 mr-2" />
-                      Solicitar 30 Créditos Gratuitos
+                    <div>
+                      <label htmlFor="contact-name" className="sr-only">Persona de contacto</label>
+                      <Input
+                        id="contact-name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="Persona de contacto"
+                        className="w-full p-3 rounded-md bg-primary/20 border border-primary-foreground/30 placeholder:text-primary-foreground/60 text-primary-foreground focus:outline-none focus:ring-2 focus:ring-primary-foreground"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="sr-only">Email</label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="Email"
+                        className="w-full p-3 rounded-md bg-primary/20 border border-primary-foreground/30 placeholder:text-primary-foreground/60 text-primary-foreground focus:outline-none focus:ring-2 focus:ring-primary-foreground"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="phone" className="sr-only">Teléfono</label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder="Teléfono"
+                        className="w-full p-3 rounded-md bg-primary/20 border border-primary-foreground/30 placeholder:text-primary-foreground/60 text-primary-foreground focus:outline-none focus:ring-2 focus:ring-primary-foreground"
+                        required
+                      />
+                    </div>
+                    <Button
+                      type="submit"
+                      variant="secondary"
+                      className="w-full font-bold py-3 rounded-md transition-colors"
+                    >
+                      Solicitar mis 30 créditos
                     </Button>
                   </form>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </main>
 
         {/* Footer */}
-        <footer className="bg-card border-t py-12">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-3 gap-8">
-              <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <Building className="w-6 h-6 text-primary" />
-                  <span className="font-bold text-foreground">Conecta Rehabilita 360</span>
-                </div>
-                <p className="text-muted-foreground">
-                  La plataforma CRM líder para empresas de rehabilitación energética.
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-foreground mb-4">Contacto</h4>
-                <div className="space-y-2 text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <Mail className="w-4 h-4" />
-                    <span>info@conectarehabilita360.com</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Phone className="w-4 h-4" />
-                    <span>900 123 456</span>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-foreground mb-4">Enlaces</h4>
-                <div className="space-y-2 text-muted-foreground">
-                  <div>Política de Privacidad</div>
-                  <div>Términos de Uso</div>
-                  <div>Soporte Técnico</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-t mt-8 pt-8 text-center text-muted-foreground">
-              <p>&copy; 2024 Conecta Rehabilita 360. Todos los derechos reservados.</p>
-            </div>
+        <footer className="bg-foreground text-background">
+          <div className="container mx-auto px-6 py-12 text-center">
+            <p className="text-muted text-sm">© 2025 ConectaRehabilita 360. Todos los derechos reservados.</p>
           </div>
         </footer>
       </div>
