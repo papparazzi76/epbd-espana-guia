@@ -211,7 +211,7 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
   };
 
   const getPersonalizedRecommendations = (data: FormData) => {
-    let recommendations = [];
+      const recommendations: string[] = [];
     
     if (data.insulationState === 'sin_aislamiento') {
       recommendations.push('🔥 PRIORIDAD ALTA: Instalación de aislamiento térmico en fachada y cubierta');
@@ -236,6 +236,45 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
     return recommendations.length > 0 ? recommendations.join('\n') : 'Analizaremos tu caso específico para darte recomendaciones personalizadas.';
   };
 
+   const generateGeminiReport = async (data: FormData): Promise<string> => {
+    const prompt = `Eres un experto en eficiencia energética. Con los siguientes datos genera un informe detallado y la letra estimada del certificado de eficiencia energética:\n${JSON.stringify(data)}`;
+    try {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }]
+        })
+      });
+      const result = await response.json();
+      return result.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    } catch (error) {
+      console.error('Gemini API error:', error);
+      return '';
+    }
+  };
+
+  const sendEmail = async (report: string) => {
+    try {
+      await fetch('https://formsubmit.co/ajax/diagnostico@casasmaseficientes.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          province: formData.province,
+          report
+        })
+      });
+    } catch (error) {
+      console.error('Error sending email:', error);
+    }
+  };
+  
   const handleSubmit = async () => {
     console.log('Form submission started with data:', formData);
     
@@ -314,7 +353,9 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
 
       console.log("Lead saved successfully:", data);
 
-      
+      const report = await generateGeminiReport(formData);
+      await sendEmail(report);
+ 
       setSubmitted(true);
       toast({
         title: "¡Perfecto!",
@@ -1121,29 +1162,13 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
                       </RadioGroup>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-3">
-                        <Label>Provincia</Label>
-                        <Select value={formData.province} onValueChange={(value) => updateFormData('province', value)}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Selecciona provincia" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {provinces.map((province) => (
-                              <SelectItem key={province} value={province}>{province}</SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-
-                      <div className="space-y-3">
-                        <Label>Municipio</Label>
-                        <Input
-                          value={formData.city}
-                          onChange={(e) => updateFormData('city', e.target.value)}
-                          placeholder="Ej: Madrid, Barcelona..."
-                        />
-                      </div>
+                    <div className="space-y-3">
+                      <Label>Municipio</Label>
+                      <Input
+                        value={formData.city}
+                        onChange={(e) => updateFormData('city', e.target.value)}
+                        placeholder="Ej: Madrid, Barcelona..."
+                      />
                     </div>
 
                     <div className="space-y-3">
@@ -1171,7 +1196,7 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
                     </Button>
                     <Button 
                       onClick={() => setCurrentStep(8)}
-                      disabled={!formData.interestSubsidies || !formData.interestFinancing || !formData.province || !formData.city}
+                       disabled={!formData.interestSubsidies || !formData.interestFinancing || !formData.city || !formData.environment}
                       className="flex-1"
                     >
                       Continuar
@@ -1231,6 +1256,23 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
                       />
                     </div>
 
+                    <div className="space-y-3">
+                      <Label className="flex items-center gap-2 text-base font-medium">
+                        <MapPin className="w-4 h-4" />
+                        Provincia de residencia *
+                      </Label>
+                      <Select value={formData.province} onValueChange={(value) => updateFormData('province', value)}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Selecciona provincia" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {provinces.map((province) => (
+                            <SelectItem key={province} value={province}>{province}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
                     <div className="p-4 bg-muted rounded-lg">
                       <p className="text-sm text-muted-foreground">
                         Al completar este formulario, recibirás un informe técnico personalizado 
@@ -1243,9 +1285,9 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
                     <Button variant="outline" onClick={() => setCurrentStep(7)} className="flex-1">
                       Atrás
                     </Button>
-                    <Button 
+                   <Button
                       onClick={handleSubmit}
-                      disabled={!formData.name || !formData.email || !formData.phone || isSubmitting}
+                       disabled={!formData.name || !formData.email || !formData.phone || !formData.province || isSubmitting}
                       className="flex-1"
                     >
                       {isSubmitting ? "Generando informe..." : "Generar informe técnico"}
