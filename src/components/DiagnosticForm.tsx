@@ -704,7 +704,7 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
                     </div>
 
                     {/* Conditional roof insulation section for houses only */}
-                    {(formData.propertyType === "Chalet independiente" || formData.propertyType === "Adosado/Pareado") && (
+                    {(formData.propertyType === "chalet_independiente" || formData.propertyType === "adosado_pareado") && (
                       <div className="space-y-3">
                         <Label className="text-base font-medium">Aislamiento de cubierta</Label>
                         <RadioGroup value={formData.roofInsulation} onValueChange={(value) => updateFormData('roofInsulation', value)}>
