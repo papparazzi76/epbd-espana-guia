@@ -668,6 +668,14 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
                           <RadioGroupItem value="sate" id="sate" />
                           <Label htmlFor="sate">SATE u otro aislamiento exterior</Label>
                         </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="sate" id="sate" />
+                          <Label htmlFor="adobe">Adobe</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="sate" id="sate" />
+                          <Label htmlFor="piedra">Piedra</Label>
+                        </div>
                       </RadioGroup>
                     </div>
 
