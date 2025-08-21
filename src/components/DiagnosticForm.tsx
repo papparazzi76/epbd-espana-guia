@@ -335,6 +335,25 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
 
       console.log('Lead data to insert:', leadData);
 
+      // Test Supabase connection first
+      console.log('Testing Supabase connection...');
+      const { data: testData, error: testError } = await supabase
+        .from('leads')
+        .select('count')
+        .limit(1);
+      
+      if (testError) {
+        console.error('Supabase connection test failed:', testError);
+        toast({
+          title: "Error de conexión",
+          description: "No se pudo conectar a la base de datos. Por favor, inténtalo de nuevo.",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      console.log('Supabase connection test passed. Inserting lead...');
+
       // Insert lead data matching the actual database schema
       const { data, error } = await supabase
         .from('leads')
@@ -344,8 +363,8 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
       if (error) {
         console.error('Supabase error details:', error);
         toast({
-          title: "Error",
-          description: "No se pudo enviar el formulario. Inténtalo de nuevo.",
+          title: "Error en la base de datos",
+          description: `Error: ${error.message}. Código: ${error.code}`,
           variant: "destructive"
         });
         return;
@@ -370,8 +389,8 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
     } catch (error) {
       console.error('Unexpected error:', error);
       toast({
-        title: "Error",
-        description: "Error inesperado. Por favor, inténtalo de nuevo.",
+        title: "Error inesperado",
+        description: `Error: ${error.message}. Por favor, inténtalo de nuevo.`,
         variant: "destructive"
       });
     } finally {
@@ -1196,7 +1215,7 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
                     </Button>
                     <Button 
                       onClick={() => setCurrentStep(8)}
-                       disabled={!formData.interestSubsidies || !formData.interestFinancing || !formData.city || !formData.environment}
+                      disabled={!formData.interestSubsidies || !formData.interestFinancing || !formData.city || !formData.environment}
                       className="flex-1"
                     >
                       Continuar
@@ -1287,7 +1306,7 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
                     </Button>
                    <Button
                       onClick={handleSubmit}
-                       disabled={!formData.name || !formData.email || !formData.phone || !formData.province || isSubmitting}
+                      disabled={!formData.name || !formData.email || !formData.phone || !formData.province || isSubmitting}
                       className="flex-1"
                     >
                       {isSubmitting ? "Generando informe..." : "Generar informe técnico"}
