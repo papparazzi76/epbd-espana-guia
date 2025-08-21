@@ -550,9 +550,9 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
                             <SelectValue placeholder="Selecciona década" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="antes_1960">Antes de 1960</SelectItem>
-                            <SelectItem value="1960_1980">1960-1980</SelectItem>
-                            <SelectItem value="1980_2000">1980-2000</SelectItem>
+                            <SelectItem value="antes_1980">Antes de 1980</SelectItem>
+                            <SelectItem value="1980_1990">1980-1990</SelectItem>
+                            <SelectItem value="1990_2000">1990-2000</SelectItem>
                             <SelectItem value="2000_2010">2000-2010</SelectItem>
                             <SelectItem value="despues_2010">Después de 2010</SelectItem>
                           </SelectContent>
@@ -846,6 +846,14 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="aerotermia" id="aerotermia" />
                           <Label htmlFor="aerotermia">Aerotermia / Geotermia</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="leña" id="leña" />
+                          <Label htmlFor="leña">Chimenea de leña</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="butano" id="butano" />
+                          <Label htmlFor="butano">Bombona de butano</Label>
                         </div>
                       </RadioGroup>
                     </div>
