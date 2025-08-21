@@ -24,6 +24,7 @@ interface FormData {
   // 2. Envolvente térmica
   facadeType: string;
   insulationState: string;
+  roofInsulation: string;
   windowType: string;
   thermalBridge: string;
   glassType: string;
@@ -82,6 +83,7 @@ export const DiagnosticForm = () => {
     occupancy: "",
     facadeType: "",
     insulationState: "",
+    roofInsulation: "",
     windowType: "",
     thermalBridge: "",
     glassType: "",
@@ -443,7 +445,7 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
                   // Reset form data
                   setFormData({
                     propertyType: "", constructionYear: "", surfaceArea: "", floors: "", rooms: "",
-                    bathrooms: "", occupancy: "", facadeType: "", insulationState: "", windowType: "",
+                    bathrooms: "", occupancy: "", facadeType: "", insulationState: "", roofInsulation: "", windowType: "",
                     thermalBridge: "", glassType: "", heatingSystem: "", coolingSystem: "", hotWaterSystem: "",
                     solarPanels: "", solarPower: "", battery: "", solarThermal: "", heatPump: "",
                     ventilationSystem: "", electricConsumption: "", gasOilConsumption: "", monthlyBill: "",
@@ -700,6 +702,39 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
                         </div>
                       </RadioGroup>
                     </div>
+
+                    {/* Conditional roof insulation section for houses only */}
+                    {(formData.propertyType === "Chalet independiente" || formData.propertyType === "Adosado/Pareado") && (
+                      <div className="space-y-3">
+                        <Label className="text-base font-medium">Aislamiento de cubierta</Label>
+                        <RadioGroup value={formData.roofInsulation} onValueChange={(value) => updateFormData('roofInsulation', value)}>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="poliuretano_proyectado" id="pu_proyectado" />
+                            <Label htmlFor="pu_proyectado">Poliuretano proyectado (espuma rígida)</Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="paneles_rigidos" id="paneles" />
+                            <Label htmlFor="paneles">Paneles rígidos (XPS, EPS, PIR)</Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="lana_mineral" id="lana" />
+                            <Label htmlFor="lana">Lana mineral (lana de roca o lana de vidrio)</Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="aislamiento_ecologico" id="ecologico" />
+                            <Label htmlFor="ecologico">Aislamiento ecológico (corcho natural, celulosa insuflada, fibras de madera)</Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="sandwich_metalico" id="sandwich" />
+                            <Label htmlFor="sandwich">Poliuretano (PUR) o Poliisocianurato (PIR) en sándwich metálico</Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="reflexivos_multicapa" id="reflexivos" />
+                            <Label htmlFor="reflexivos">Reflexivos multicapa (láminas aluminizadas con espumas o fibras)</Label>
+                          </div>
+                        </RadioGroup>
+                      </div>
+                    )}
 
                     <div className="space-y-3">
                       <Label className="text-base font-medium">Carpinterías</Label>
