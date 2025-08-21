@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowRight, Calculator, Download, ChevronDown } from "lucide-react";
-import heroImage from "@/assets/hero-energy-house.webp";
+import heroImage from "@/assets/hero-energy-house.jpg";
 import { scrollToSection } from "@/lib/smooth-scroll";
 
 export const HeroSection = () => {
