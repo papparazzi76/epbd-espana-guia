@@ -464,6 +464,11 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
     );
   }
 
+  // Debug log
+  console.log('Current property type:', formData.propertyType);
+  console.log('Current step:', currentStep);
+  console.log('Should show roof insulation:', formData.propertyType === "chalet_independiente" || formData.propertyType === "adosado_pareado");
+
   const totalSteps = 8;
 
   return (
