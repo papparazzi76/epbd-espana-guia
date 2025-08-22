@@ -338,41 +338,23 @@ Por casas-eficientes.es - Especialistas en rehabilitación energética
       console.log('Lead data to insert:', leadData);
 
       // Test Supabase connection first
-      console.log('Testing Supabase connection...');
-      const { data: testData, error: testError } = await supabase
-        .from('leads')
-        .select('count')
-        .limit(1);
-      
-      if (testError) {
-        console.error('Supabase connection test failed:', testError);
-        toast({
-          title: "Error de conexión",
-          description: "No se pudo conectar a la base de datos. Por favor, inténtalo de nuevo.",
-          variant: "destructive"
-        });
-        return;
-      }
-
-      console.log('Supabase connection test passed. Inserting lead...');
-
-      // Insert lead data matching the actual database schema
-      const { data, error } = await supabase
-        .from('leads')
-        .insert([leadData])
-        .select();
+      // Invoke Supabase Edge Function to submit the lead
+      console.log('Invoking submit-lead edge function...');
+      const { data, error } = await supabase.functions.invoke('submit-lead', {
+        body: leadData,
+      });
 
       if (error) {
-        console.error('Supabase error details:', error);
+        console.error('submit-lead error:', error);
         toast({
           title: "Error en la base de datos",
-          description: `Error: ${error.message}. Código: ${error.code}`,
+          description: `Error: ${error.message}`,
           variant: "destructive"
         });
         return;
       }
 
-      console.log("Lead saved successfully:", data);
+      console.log("Lead saved successfully via edge function:", data);
 
       const report = await generateGeminiReport(formData);
       await sendEmail(report);
