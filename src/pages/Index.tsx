@@ -16,7 +16,7 @@ const Index = () => {
             "@type": "WebSite",
             "name": "Guía EPBD 2024",
             "description": "Guía completa para adaptar tu vivienda a la nueva Directiva Europea de Eficiencia Energética",
-            "url": "https://guiaepbd2024.es",
+            "url": "https://casasmaseficientes.com",
           })
         }}
       />
