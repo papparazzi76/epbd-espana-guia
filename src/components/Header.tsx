@@ -62,8 +62,12 @@ export const Header = () => {
     <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-sm supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center">
-          <NavLink to="/" className="font-bold text-lg hover:text-primary transition-colors">
-            EPBD 2024
+          <NavLink to="/" className="flex items-center hover:opacity-80 transition-opacity">
+            <img 
+              src="/lovable-uploads/4590f9ea-5435-441d-a36b-d612eb82fdb4.png" 
+              alt="Casas Más Eficientes - Guía EPBD 2024" 
+              className="h-10 w-auto"
+            />
           </NavLink>
         </div>
 
