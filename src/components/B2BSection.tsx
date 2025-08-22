@@ -15,7 +15,7 @@ export const B2BSection = () => {
           name="description" 
           content="¿Eres una empresa de reformas o constructora? Accede a leads cualificados de propietarios interesados en adaptar su vivienda a la EPBD 2024." 
         />
-        <link rel="canonical" href="https://guiaepbd2024.es/empresas" />
+        <link rel="canonical" href="https://casasmaseficientes.com/empresas" />
       </Helmet>
 
       <section id="empresas" className="section-padding bg-gradient-to-br from-primary/5 to-secondary/5">
