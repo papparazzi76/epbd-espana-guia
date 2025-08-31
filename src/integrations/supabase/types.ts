@@ -366,6 +366,14 @@ export type Database = {
           total_submissions: number
         }[]
       }
+      get_lead_assignment_stats: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          active_companies: number
+          recent_assignments: number
+          total_assignments: number
+        }[]
+      }
       get_matching_companies_for_lead: {
         Args: { lead_provincia: string }
         Returns: {
