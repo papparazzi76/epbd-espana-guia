@@ -373,6 +373,14 @@ export type Database = {
           company_id: string
         }[]
       }
+      get_subscription_stats: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          active_subscriptions: number
+          provinces_with_subscriptions: string[]
+          total_subscriptions: number
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
