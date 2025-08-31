@@ -53,6 +53,141 @@ export type Database = {
         }
         Relationships: []
       }
+      diagnostics: {
+        Row: {
+          bathrooms: string | null
+          battery: string | null
+          budget: string | null
+          city: string | null
+          climatezone: string | null
+          constructionyear: string | null
+          coolingsystem: string | null
+          created_at: string | null
+          electricconsumption: string | null
+          email: string | null
+          energycertificate: string | null
+          environment: string | null
+          facadetype: string | null
+          floors: string | null
+          gasoilconsumption: string | null
+          glasstype: string | null
+          heatingsystem: string | null
+          heatpump: string | null
+          hotwatersystem: string | null
+          id: string
+          insulationstate: string | null
+          interestfinancing: string | null
+          interestsubsidies: string | null
+          maininterest: string | null
+          monthlybill: string | null
+          name: string | null
+          occupancy: string | null
+          phone: string | null
+          plannedworks: string[] | null
+          propertytype: string | null
+          province: string | null
+          roofinsulation: string | null
+          rooms: string | null
+          solarpanels: string | null
+          solarpower: string | null
+          solarthermal: string | null
+          source: string | null
+          submitted_at: string | null
+          surfacearea: string | null
+          thermalbridge: string | null
+          ventilationsystem: string | null
+          windowtype: string | null
+        }
+        Insert: {
+          bathrooms?: string | null
+          battery?: string | null
+          budget?: string | null
+          city?: string | null
+          climatezone?: string | null
+          constructionyear?: string | null
+          coolingsystem?: string | null
+          created_at?: string | null
+          electricconsumption?: string | null
+          email?: string | null
+          energycertificate?: string | null
+          environment?: string | null
+          facadetype?: string | null
+          floors?: string | null
+          gasoilconsumption?: string | null
+          glasstype?: string | null
+          heatingsystem?: string | null
+          heatpump?: string | null
+          hotwatersystem?: string | null
+          id?: string
+          insulationstate?: string | null
+          interestfinancing?: string | null
+          interestsubsidies?: string | null
+          maininterest?: string | null
+          monthlybill?: string | null
+          name?: string | null
+          occupancy?: string | null
+          phone?: string | null
+          plannedworks?: string[] | null
+          propertytype?: string | null
+          province?: string | null
+          roofinsulation?: string | null
+          rooms?: string | null
+          solarpanels?: string | null
+          solarpower?: string | null
+          solarthermal?: string | null
+          source?: string | null
+          submitted_at?: string | null
+          surfacearea?: string | null
+          thermalbridge?: string | null
+          ventilationsystem?: string | null
+          windowtype?: string | null
+        }
+        Update: {
+          bathrooms?: string | null
+          battery?: string | null
+          budget?: string | null
+          city?: string | null
+          climatezone?: string | null
+          constructionyear?: string | null
+          coolingsystem?: string | null
+          created_at?: string | null
+          electricconsumption?: string | null
+          email?: string | null
+          energycertificate?: string | null
+          environment?: string | null
+          facadetype?: string | null
+          floors?: string | null
+          gasoilconsumption?: string | null
+          glasstype?: string | null
+          heatingsystem?: string | null
+          heatpump?: string | null
+          hotwatersystem?: string | null
+          id?: string
+          insulationstate?: string | null
+          interestfinancing?: string | null
+          interestsubsidies?: string | null
+          maininterest?: string | null
+          monthlybill?: string | null
+          name?: string | null
+          occupancy?: string | null
+          phone?: string | null
+          plannedworks?: string[] | null
+          propertytype?: string | null
+          province?: string | null
+          roofinsulation?: string | null
+          rooms?: string | null
+          solarpanels?: string | null
+          solarpower?: string | null
+          solarthermal?: string | null
+          source?: string | null
+          submitted_at?: string | null
+          surfacearea?: string | null
+          thermalbridge?: string | null
+          ventilationsystem?: string | null
+          windowtype?: string | null
+        }
+        Relationships: []
+      }
       lead_assignments: {
         Row: {
           asignado_fecha: string
@@ -152,6 +287,39 @@ export type Database = {
         }
         Relationships: []
       }
+      profiles: {
+        Row: {
+          company_name: string | null
+          created_at: string
+          id: string
+          phone: string | null
+          role: string
+          updated_at: string
+          user_id: string
+          vat_id: string | null
+        }
+        Insert: {
+          company_name?: string | null
+          created_at?: string
+          id?: string
+          phone?: string | null
+          role?: string
+          updated_at?: string
+          user_id: string
+          vat_id?: string | null
+        }
+        Update: {
+          company_name?: string | null
+          created_at?: string
+          id?: string
+          phone?: string | null
+          role?: string
+          updated_at?: string
+          user_id?: string
+          vat_id?: string | null
+        }
+        Relationships: []
+      }
       subscription_alerts: {
         Row: {
           activo: boolean | null
@@ -189,6 +357,13 @@ export type Database = {
           tipo_vivienda: string
         }
         Returns: number
+      }
+      get_matching_companies_for_lead: {
+        Args: { lead_provincia: string }
+        Returns: {
+          company_email: string
+          company_id: string
+        }[]
       }
     }
     Enums: {
