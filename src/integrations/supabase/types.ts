@@ -358,6 +358,14 @@ export type Database = {
         }
         Returns: number
       }
+      get_diagnostic_summary_stats: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          recent_submissions: number
+          top_provinces: string[]
+          total_submissions: number
+        }[]
+      }
       get_matching_companies_for_lead: {
         Args: { lead_provincia: string }
         Returns: {
