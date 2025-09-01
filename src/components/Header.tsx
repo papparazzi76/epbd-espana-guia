@@ -66,7 +66,7 @@ export const Header = () => {
             <img 
               src="/lovable-uploads/4590f9ea-5435-441d-a36b-d612eb82fdb4.png" 
               alt="Casas Más Eficientes - Guía EPBD 2024" 
-              className="h-10 w-auto"
+              className="h-20 w-auto"
             />
           </NavLink>
         </div>
