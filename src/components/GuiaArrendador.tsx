@@ -40,12 +40,12 @@ export const GuiaArrendador = () => {
                     <h2 className="text-2xl font-bold text-gray-700 mb-6 flex items-center"><AlertTriangle className="w-6 h-6 mr-3 text-red-500"/>Fechas de Prohibición para Alquilar</h2>
                     <div className="grid md:grid-cols-3 gap-6">
                         <div className="bg-red-100 border-l-4 border-red-500 p-4 rounded-r-lg">
-                            <p className="font-bold text-red-800 text-2xl">2033</p>
-                            <p className="text-red-700">Prohibido alquilar viviendas **Clase G**.</p>
+                            <p className="font-bold text-red-800 text-2xl">2030</p>
+                            <p className="text-red-700">Prohibido alquilar viviendas **Clase F y G**.</p>
                         </div>
                         <div className="bg-amber-100 border-l-4 border-amber-500 p-4 rounded-r-lg">
-                            <p className="font-bold text-amber-800 text-2xl">2035</p>
-                            <p className="text-amber-700">Prohibido alquilar viviendas **Clase F**.</p>
+                            <p className="font-bold text-amber-800 text-2xl">2033</p>
+                            <p className="text-amber-700">Prohibido alquilar viviendas **Clase E**.</p>
                         </div>
                          <div className="bg-blue-100 border-l-4 border-blue-500 p-4 rounded-r-lg">
                             <p className="font-bold text-blue-800 text-2xl">2025</p>
@@ -87,15 +87,15 @@ export const GuiaArrendador = () => {
                         <div className="bg-green-50 p-6 rounded-lg">
                             <h3 className="font-semibold text-green-800 mb-2">Recomendado ✅</h3>
                             <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
-                                <li>Actúa primero sobre las viviendas de **Clase G**.</li>
+                                <li>Actúa primero sobre las viviendas de **Clase F y G**.</li>
                                 <li>Invierte en mejoras que **aumenten el valor y la renta** del alquiler (aislamiento, bomba de calor).</li>
                             </ul>
                         </div>
                         <div className="bg-red-50 p-6 rounded-lg">
                             <h3 className="font-semibold text-red-800 mb-2">Evita ❌</h3>
                              <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
-                                <li>**No esperes a 2032** para empezar a reformar.</li>
-                                <li>**No ignores las viviendas de Clase F**, también quedarán fuera del mercado.</li>
+                                <li>**No esperes a 2029** para empezar a reformar.</li>
+                                <li>**No ignores las viviendas de Clase E**, también quedarán fuera del mercado.</li>
                             </ul>
                         </div>
                     </div>
