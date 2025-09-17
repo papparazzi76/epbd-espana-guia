@@ -13,7 +13,7 @@
     {
       "id": "3",
       "question": "Mi vivienda es clase G, ¿qué opciones tengo y cuánto me costará?",
-      "answer": "Si tu vivienda es clase G, tienes hasta 2033 para mejorarla. Las opciones más efectivas son: mejorar el aislamiento térmico (3.000-8.000€), cambiar ventanas por unas eficientes (200-600€/m²), instalar bomba de calor (3.000-6.000€) y añadir paneles solares (4.000-8.000€). Con ayudas públicas, el coste puede reducirse entre un 30-50%. Lo importante es subir al menos a clase E o D."
+      "answer": "Si tu vivienda es clase G, tienes hasta 2030 para mejorarla. Las opciones más efectivas son: mejorar el aislamiento térmico (3.000-8.000€), cambiar ventanas por unas eficientes (200-600€/m²), instalar bomba de calor (3.000-6.000€) y añadir paneles solares (4.000-8.000€). Con ayudas públicas, el coste puede reducirse entre un 30-50%. Lo importante es subir al menos a clase E, aunque lo conveniente sería D."
     },
     {
       "id": "4",
@@ -38,7 +38,7 @@
     {
       "id": "8",
       "question": "¿Cuánto tiempo tengo para adaptar mi vivienda?",
-      "answer": "Los plazos clave son: hasta 2033 para viviendas clase G (no se podrán vender/alquilar), hasta 2035 para clase F, y hasta 2050 para el objetivo de cero emisiones. Sin embargo, es recomendable actuar antes porque: las ayudas se irán agotando, los precios de materiales y mano de obra subirán por la demanda, y tu vivienda perderá valor de mercado antes de las fechas límite."
+      "answer": "Los plazos clave son: hasta 2030 para viviendas clase F y G (no se podrán vender/alquilar), hasta 2033 para clase E, y hasta 2050 para el objetivo de cero emisiones. Sin embargo, es recomendable actuar antes porque: las ayudas se irán agotando, los precios de materiales y mano de obra subirán por la demanda, y tu vivienda perderá valor de mercado antes de las fechas límite."
     },
     {
       "id": "9",
