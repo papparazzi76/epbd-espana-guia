@@ -37,19 +37,19 @@
       "deadline": "2030-12-31"
     },
     {
-      "year": "2033",
+      "year": "2030",
       "quarter": "Q1",
       "title": "Normas mínimas de eficiencia (MEPS) para viviendas",
-      "description": "Las viviendas clase G no se podrán vender ni alquilar",
+      "description": "Las viviendas clase F y G no se podrán vender ni alquilar",
       "impact": "Bloqueo del mercado para viviendas con peor calificación",
       "status": "pendiente",
       "deadline": "2033-01-01"
     },
     {
-      "year": "2035",
+      "year": "2033",
       "quarter": "Q1",
-      "title": "MEPS para viviendas clase F",
-      "description": "Las viviendas clase F tampoco se podrán comercializar",
+      "title": "MEPS para viviendas clase E",
+      "description": "Las viviendas clase E tampoco se podrán comercializar",
       "impact": "Ampliación de restricciones a más viviendas",
       "status": "pendiente",
       "deadline": "2035-01-01"
