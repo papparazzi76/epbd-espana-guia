@@ -7,7 +7,7 @@
       "description": "Tienes una casa propia y quieres adaptarla",
       "obligations": [
         "Realizar certificado energético si vendes o alquilas",
-        "Cumplir MEPS antes de 2033 (clase G) y 2035 (clase F)",
+        "Cumplir MEPS antes de 2030 (clase F y G) y 2033 (clase E)",
         "Considerar instalación solar si renuevas tejado",
         "Sustituir caldera de gasóleo/gas por bomba de calor (recomendado)"
       ],
@@ -17,8 +17,8 @@
           "action": "Fin de ayudas para calderas fósiles"
         },
         {
-          "date": "2033-01-01",
-          "action": "Imposible vender/alquilar si eres clase G"
+          "date": "2030-01-01",
+          "action": "Imposible vender/alquilar si eres clase F o G"
         }
       ],
       "actions": [
@@ -87,7 +87,7 @@
       "description": "Alquilas viviendas y debes cumplir MEPS",
       "obligations": [
         "Certificado energético válido y visible en anuncios",
-        "Cumplir MEPS para poder alquilar (2033: no clase G, 2035: no clase F)",
+        "Cumplir MEPS para poder alquilar (2030: no clase F o G, 2035: no clase E)",
         "Informar al inquilino sobre eficiencia energética",
         "Mantener sistemas de climatización eficientes"
       ],
@@ -97,12 +97,12 @@
           "action": "Fin de ayudas para calderas fósiles"
         },
         {
-          "date": "2033-01-01",
-          "action": "Prohibido alquilar viviendas clase G"
+          "date": "2030-01-01",
+          "action": "Prohibido alquilar viviendas clase F y G"
         },
         {
-          "date": "2035-01-01",
-          "action": "Prohibido alquilar viviendas clase F"
+          "date": "2033-01-01",
+          "action": "Prohibido alquilar viviendas clase E"
         }
       ],
       "actions": [
@@ -112,14 +112,14 @@
         "Estudia el retorno de inversión vs. rentabilidad"
       ],
       "dos": [
-        "Actúa primero en viviendas clase G",
+        "Actúa primero en viviendas clase F y G",
         "Considera mejoras que también aumenten el valor",
         "Incluye eficiencia energética en la comercialización",
         "Mantén documentación al día"
       ],
       "donts": [
-        "No esperes a 2032 para actuar",
-        "No ignores viviendas clase F",
+        "No esperes a 2029 para actuar",
+        "No ignores viviendas clase E",
         "No olvides incluir costes en tu planificación",
         "No renueves contratos largos sin certificar"
       ]
@@ -137,11 +137,11 @@
       ],
       "timeline": [
         {
-          "date": "2033-01-01",
-          "action": "Viviendas clase G sin valor de mercado"
+          "date": "2030-01-01",
+          "action": "Viviendas clase F y G sin valor de mercado"
         },
         {
-          "date": "2035-01-01",
+          "date": "2033-01-01",
           "action": "Viviendas clase F sin valor de mercado"
         }
       ],
