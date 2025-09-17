@@ -153,15 +153,15 @@ export const ProfilesSection = () => {
                 </span>
               </div>
               <div>
-                <strong className="text-warning">Desde 2033:</strong>
+                <strong className="text-warning">Desde 2030:</strong>
                 <span className="text-muted-foreground ml-1">
-                  Prohibido vender/alquilar viviendas clase G
+                  Prohibido vender/alquilar viviendas clase F y G
                 </span>
               </div>
               <div>
-                <strong className="text-destructive">Desde 2035:</strong>
+                <strong className="text-destructive">Desde 2033:</strong>
                 <span className="text-muted-foreground ml-1">
-                  También prohibido para viviendas clase F
+                  También prohibido para viviendas clase E
                 </span>
               </div>
             </div>
