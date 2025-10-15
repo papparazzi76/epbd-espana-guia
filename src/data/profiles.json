@@ -7,18 +7,22 @@
       "description": "Tienes una casa propia y quieres adaptarla",
       "obligations": [
         "Realizar certificado energético si vendes o alquilas",
-        "Cumplir MEPS antes de 2030 (clase F y G) y 2033 (clase E)",
-        "Considerar instalación solar si renuevas tejado",
-        "Sustituir caldera de gasóleo/gas por bomba de calor (recomendado)"
+        "Contribuir a la reducción del 16% del consumo energético para 2030",
+        "Considerar instalación solar si renuevas tejado o edificio nuevo",
+        "Sustituir caldera de gasóleo/gas por bomba de calor (sin ayudas desde 2025)"
       ],
       "timeline": [
         {
           "date": "2025-01-01",
-          "action": "Fin de ayudas para calderas fósiles"
+          "action": "Fin de incentivos para calderas fósiles"
         },
         {
           "date": "2030-01-01",
-          "action": "Imposible vender/alquilar si eres clase F o G"
+          "action": "Objetivo reducción 16% consumo energético residencial"
+        },
+        {
+          "date": "2035-01-01",
+          "action": "Objetivo reducción 20-22% consumo energético"
         }
       ],
       "actions": [
@@ -47,18 +51,22 @@
       "description": "Administras una comunidad que debe adaptarse",
       "obligations": [
         "Certificado energético del edificio completo",
-        "Plan de renovación energética a medio plazo",
+        "Plan de renovación energética para reducir consumo",
         "Instalación de puntos de recarga para vehículos eléctricos",
-        "Cumplimiento de MEPS para zonas comunes"
+        "Contribuir a objetivos de eficiencia energética del edificio"
       ],
       "timeline": [
         {
-          "date": "2025-05-28",
-          "action": "Nueva normativa transpuesta"
+          "date": "2026-05-29",
+          "action": "Transposición EPBD 2024 a legislación española"
         },
         {
-          "date": "2027-01-01",
-          "action": "Obligación solar en renovaciones importantes"
+          "date": "2030-01-01",
+          "action": "Objetivo renovación 16% edificios no residenciales peor rendimiento"
+        },
+        {
+          "date": "2033-01-01",
+          "action": "Objetivo renovación 26% edificios no residenciales"
         }
       ],
       "actions": [
@@ -87,41 +95,41 @@
       "description": "Alquilas viviendas y debes cumplir MEPS",
       "obligations": [
         "Certificado energético válido y visible en anuncios",
-        "Cumplir MEPS para poder alquilar (2030: no clase F o G, 2035: no clase E)",
+        "Mejorar eficiencia para mantener competitividad en el mercado",
         "Informar al inquilino sobre eficiencia energética",
         "Mantener sistemas de climatización eficientes"
       ],
       "timeline": [
         {
           "date": "2025-01-01",
-          "action": "Fin de ayudas para calderas fósiles"
+          "action": "Fin de incentivos para calderas fósiles"
         },
         {
           "date": "2030-01-01",
-          "action": "Prohibido alquilar viviendas clase F y G"
+          "action": "Mayor demanda de viviendas eficientes"
         },
         {
-          "date": "2033-01-01",
-          "action": "Prohibido alquilar viviendas clase E"
+          "date": "2040-01-01",
+          "action": "Eliminación gradual calderas fósiles"
         }
       ],
       "actions": [
         "Revisa el certificado energético de todas tus viviendas",
-        "Identifica propiedades en riesgo (clases F y G)",
-        "Planifica inversiones para subir de clase",
-        "Estudia el retorno de inversión vs. rentabilidad"
+        "Identifica propiedades con peor eficiencia (clases F y G)",
+        "Planifica inversiones para mejorar eficiencia y reducir consumo",
+        "Estudia el retorno de inversión y aumento de valor"
       ],
       "dos": [
-        "Actúa primero en viviendas clase F y G",
-        "Considera mejoras que también aumenten el valor",
-        "Incluye eficiencia energética en la comercialización",
-        "Mantén documentación al día"
+        "Prioriza viviendas con peor eficiencia energética",
+        "Considera mejoras que aumenten valor y reduzcan consumo",
+        "Destaca la eficiencia energética en la comercialización",
+        "Mantén documentación y certificados actualizados"
       ],
       "donts": [
-        "No esperes a 2029 para actuar",
-        "No ignores viviendas clase E",
-        "No olvides incluir costes en tu planificación",
-        "No renueves contratos largos sin certificar"
+        "No pospongas las mejoras energéticas",
+        "No ignores viviendas ineficientes",
+        "No olvides incluir costes de mejora en planificación",
+        "No descuides el mantenimiento de certificados"
       ]
     },
     {
@@ -131,18 +139,18 @@
       "description": "Vas a comprar y quieres tomar la mejor decisión",
       "obligations": [
         "Exigir certificado energético válido antes de comprar",
-        "Evaluar costes futuros de adaptación",
-        "Considerar restricciones futuras de venta",
-        "Negociar precio según clase energética"
+        "Evaluar costes futuros de mejoras energéticas",
+        "Considerar la evolución del valor según eficiencia",
+        "Negociar precio según clase energética y potencial de mejora"
       ],
       "timeline": [
         {
           "date": "2030-01-01",
-          "action": "Viviendas clase F y G sin valor de mercado"
+          "action": "Viviendas ineficientes pierden valor de mercado"
         },
         {
-          "date": "2033-01-01",
-          "action": "Viviendas clase F sin valor de mercado"
+          "date": "2030-01-01",
+          "action": "Mayor demanda de edificios nuevos de cero emisiones"
         }
       ],
       "actions": [
@@ -158,10 +166,10 @@
         "Valora la orientación y el aislamiento"
       ],
       "donts": [
-        "No compres clase G sin evaluar costes",
+        "No compres vivienda ineficiente sin evaluar costes de mejora",
         "No ignores el certificado energético",
-        "No asumas que 'se puede mejorar fácil'",
-        "No olvides incluir mejoras en la financiación"
+        "No asumas que las mejoras son fáciles o baratas",
+        "No olvides incluir coste de mejoras en la financiación"
       ]
     }
   ]

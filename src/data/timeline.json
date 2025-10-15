@@ -1,65 +1,119 @@
 {
   "timeline": [
     {
-      "year": "2025",
+      "year": "2024",
       "quarter": "Q2",
-      "title": "Transposición de la EPBD a la legislación española",
-      "description": "España debe adaptar su normativa nacional a la nueva directiva europea",
-      "impact": "Los marcos normativos se actualizan",
-      "status": "pendiente",
-      "deadline": "2025-05-28"
+      "title": "Entrada en vigor de la EPBD 2024",
+      "description": "La Directiva (UE) 2024/1275 entra en vigor oficialmente",
+      "impact": "Nueva normativa europea de eficiencia energética en edificios",
+      "status": "completado",
+      "deadline": "2024-05-28"
     },
     {
       "year": "2025",
       "quarter": "Q1",
       "title": "Fin de incentivos a calderas de combustibles fósiles",
-      "description": "Las calderas de gas y gasóleo dejan de recibir subvenciones públicas",
+      "description": "Se prohiben los incentivos financieros para instalación de calderas fósiles",
       "impact": "Solo bombas de calor y sistemas renovables recibirán ayudas",
       "status": "activo",
       "deadline": "2025-01-01"
     },
     {
-      "year": "2027",
-      "quarter": "Q1",
-      "title": "Obligación de instalación solar en edificios nuevos",
-      "description": "Todos los edificios nuevos deben incluir sistemas solares cuando sea técnicamente viable",
-      "impact": "Encarece ligeramente la obra nueva pero reduce costes energéticos",
+      "year": "2026",
+      "quarter": "Q2",
+      "title": "Transposición de la EPBD a la legislación española",
+      "description": "España debe adaptar su normativa nacional a la Directiva (UE) 2024/1275",
+      "impact": "Los marcos normativos nacionales se actualizan",
       "status": "pendiente",
-      "deadline": "2027-01-01"
+      "deadline": "2026-05-29"
+    },
+    {
+      "year": "2028",
+      "quarter": "Q1",
+      "title": "Edificios públicos nuevos de cero emisiones (ZEB)",
+      "description": "Todos los edificios públicos nuevos deben ser de cero emisiones",
+      "impact": "Estándares más altos para construcción pública",
+      "status": "pendiente",
+      "deadline": "2028-01-01"
+    },
+    {
+      "year": "2028",
+      "quarter": "Q1",
+      "title": "Análisis ciclo de vida CO₂ para edificios >1.000m²",
+      "description": "Obligación de calcular el potencial de calentamiento global en edificios nuevos grandes",
+      "impact": "Mayor control ambiental en grandes construcciones",
+      "status": "pendiente",
+      "deadline": "2028-01-01"
     },
     {
       "year": "2030",
       "quarter": "Q1",
-      "title": "Reducción del 16% en consumo energético de edificios",
-      "description": "Objetivo intermedio de reducción del consumo en el parque edificatorio",
-      "impact": "Presión para renovar viviendas con peor calificación",
+      "title": "Todos los edificios nuevos de cero emisiones (ZEB)",
+      "description": "Todos los edificios nuevos deben ser de cero emisiones",
+      "impact": "Demanda de energía casi nula cubierta por fuentes renovables",
+      "status": "pendiente",
+      "deadline": "2030-01-01"
+    },
+    {
+      "year": "2030",
+      "quarter": "Q1",
+      "title": "Renovación 16% edificios no residenciales peor rendimiento",
+      "description": "Se debe renovar el 16% de edificios no residenciales con peor eficiencia",
+      "impact": "Impulso significativo a la rehabilitación energética",
       "status": "pendiente",
       "deadline": "2030-12-31"
     },
     {
       "year": "2030",
       "quarter": "Q1",
-      "title": "Normas mínimas de eficiencia (MEPS) para viviendas",
-      "description": "Las viviendas clase F y G no se podrán vender ni alquilar",
-      "impact": "Bloqueo del mercado para viviendas con peor calificación",
+      "title": "Reducción 16% consumo energético edificios residenciales",
+      "description": "Reducción del consumo medio de energía primaria en edificios residenciales",
+      "impact": "Presión para mejorar eficiencia del parque residencial",
       "status": "pendiente",
-      "deadline": "2033-01-01"
+      "deadline": "2030-12-31"
+    },
+    {
+      "year": "2030",
+      "quarter": "Q1",
+      "title": "Análisis ciclo de vida CO₂ obligatorio todos edificios nuevos",
+      "description": "Obligación de calcular el potencial de calentamiento global en todos los edificios nuevos",
+      "impact": "Control ambiental completo en construcción",
+      "status": "pendiente",
+      "deadline": "2030-01-01"
     },
     {
       "year": "2033",
       "quarter": "Q1",
-      "title": "MEPS para viviendas clase E",
-      "description": "Las viviendas clase E tampoco se podrán comercializar",
-      "impact": "Ampliación de restricciones a más viviendas",
+      "title": "Renovación 26% edificios no residenciales peor rendimiento",
+      "description": "Se debe renovar el 26% de edificios no residenciales con peor eficiencia",
+      "impact": "Ampliación de esfuerzos de rehabilitación",
       "status": "pendiente",
-      "deadline": "2035-01-01"
+      "deadline": "2033-12-31"
+    },
+    {
+      "year": "2035",
+      "quarter": "Q1",
+      "title": "Reducción 20-22% consumo energético edificios residenciales",
+      "description": "Reducción del consumo medio de energía primaria entre 20% y 22%",
+      "impact": "Mayor presión para renovar viviendas ineficientes",
+      "status": "pendiente",
+      "deadline": "2035-12-31"
+    },
+    {
+      "year": "2040",
+      "quarter": "Q1",
+      "title": "Eliminación gradual calderas de combustibles fósiles",
+      "description": "Objetivo de eliminación completa de sistemas de calefacción fósiles",
+      "impact": "Transición completa a sistemas de climatización renovables",
+      "status": "pendiente",
+      "deadline": "2040-12-31"
     },
     {
       "year": "2050",
       "quarter": "Q1",
-      "title": "Edificios de cero emisiones",
-      "description": "Todo el parque edificatorio debe ser neutro en carbono",
-      "impact": "Transformación completa del sector inmobiliario",
+      "title": "Parque de edificios de cero emisiones",
+      "description": "Todo el parque edificatorio debe ser de cero emisiones",
+      "impact": "Transformación completa hacia la neutralidad climática",
       "status": "pendiente",
       "deadline": "2050-12-31"
     }
