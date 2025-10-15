@@ -44,7 +44,7 @@ export const HeroSection = () => {
               <span className="block bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
                 clase energética E
               </span>
-              para poder venderse o alquilarse
+              para que su precio no caiga en picado
             </h1>
 
             <p className="text-xl text-white/90 mb-8 leading-relaxed max-w-2xl">
