@@ -41,11 +41,11 @@ export const GuiaArrendador = () => {
                     <div className="grid md:grid-cols-3 gap-6">
                         <div className="bg-red-100 border-l-4 border-red-500 p-4 rounded-r-lg">
                             <p className="font-bold text-red-800 text-2xl">2030</p>
-                            <p className="text-red-700">Prohibido alquilar viviendas **Clase F y G**.</p>
+                            <p className="text-red-700">Obligación de acometer mejoras para la reducción de consumo un 16%.</p>
                         </div>
                         <div className="bg-amber-100 border-l-4 border-amber-500 p-4 rounded-r-lg">
-                            <p className="font-bold text-amber-800 text-2xl">2033</p>
-                            <p className="text-amber-700">Prohibido alquilar viviendas **Clase E**.</p>
+                            <p className="font-bold text-amber-800 text-2xl">2035</p>
+                            <p className="text-amber-700">Obligación de acometer mejoras para la reducción de consumo un 22%.</p>
                         </div>
                          <div className="bg-blue-100 border-l-4 border-blue-500 p-4 rounded-r-lg">
                             <p className="font-bold text-blue-800 text-2xl">2025</p>
@@ -68,7 +68,7 @@ export const GuiaArrendador = () => {
                             <div className="bg-primary text-white rounded-full w-8 h-8 flex-shrink-0 flex items-center justify-center font-bold text-lg">2</div>
                             <div>
                                 <h3 className="font-bold text-gray-800">Cumplir los Estándares Mínimos (MEPS)</h3>
-                                <p className="text-sm text-gray-600">Planifica las reformas necesarias en tus inmuebles de clase F y G para poder seguir alquilándolos legalmente.</p>
+                                <p className="text-sm text-gray-600">Planifica las reformas necesarias en tus inmuebles de clase F y G para que tu vivienda no pierda valor.</p>
                             </div>
                         </div>
                         <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
@@ -95,7 +95,7 @@ export const GuiaArrendador = () => {
                             <h3 className="font-semibold text-red-800 mb-2">Evita ❌</h3>
                              <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
                                 <li>**No esperes a 2029** para empezar a reformar.</li>
-                                <li>**No ignores las viviendas de Clase E**, también quedarán fuera del mercado.</li>
+                                <li>**No ignores las viviendas de Clase E**, también deberán incrementar su eficiencia.</li>
                             </ul>
                         </div>
                     </div>
