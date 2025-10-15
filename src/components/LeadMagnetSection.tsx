@@ -15,8 +15,8 @@ CONTENIDO:
 4. Checklist de pasos sencillos para mejorar tu casa
 
 FECHAS CRÍTICAS:
-- 2030: Clase E mínima para vender/alquilar
-- 2033: Clase D mínima para vender/alquilar
+- 2030: Reducción de consumo 16%
+- 2035: Reducción de consumo 22%
 - 2025: Fin de ayudas para calderas de gas
 
 AYUDAS DISPONIBLES:
