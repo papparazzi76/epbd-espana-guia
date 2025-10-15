@@ -86,18 +86,9 @@
       "quarter": "Q1",
       "title": "Múltiples hitos críticos",
       "description": "Clase E mínima + edificios nuevos cero emisiones + -16% consumo medio",
-      "impact": "Año clave: imposible vender/alquilar viviendas clase F-G",
+      "impact": "Año clave: caída en los precios para vender/alquilar viviendas clase F-G",
       "status": "pendiente",
       "deadline": "2030-01-01"
-    },
-    {
-      "year": "2033",
-      "quarter": "Q1",
-      "title": "Clase D mínima obligatoria",
-      "description": "Solo se pueden vender/alquilar viviendas clase D o superior",
-      "impact": "También las viviendas clase E quedan fuera del mercado",
-      "status": "pendiente",
-      "deadline": "2033-01-01"
     },
     {
       "year": "2035",
