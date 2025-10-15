@@ -156,7 +156,7 @@ export const HeroSection = () => {
                   <div>
                     <strong className="text-sm">Cuándo te afecta:</strong>
                     <p className="text-sm text-muted-foreground">
-                      2030: mínimo clase E • 2033: mínimo clase D • 2025: fin ayudas calderas gas
+                      2030: obligatoria reducción del 16% de consumo energético • 2040: obligatoria reducción del 22% de consumo energético
                     </p>
                   </div>
                 </div>
