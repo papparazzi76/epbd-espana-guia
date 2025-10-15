@@ -41,7 +41,7 @@ export const FuturoComprador = () => {
                     <div className="grid md:grid-cols-2 gap-6">
                         <div className="bg-blue-100 border-l-4 border-blue-500 p-4 rounded-r-lg">
                             <h3 className="font-bold text-blue-800 text-lg mb-2">Certificado Energético</h3>
-                            <p className="text-blue-700 text-sm">Exige ver el CEE actualizado. Una vivienda Clase F y G puede quedar **sin poder venderse** a partir de 2030.</p>
+                            <p className="text-blue-700 text-sm">Exige ver el CEE actualizado. Una vivienda Clase F y G podría quedar **sin poder venderse** a partir de 2030.</p>
                         </div>
                         <div className="bg-amber-100 border-l-4 border-amber-500 p-4 rounded-r-lg">
                             <h3 className="font-bold text-amber-800 text-lg mb-2">Coste de Reformas</h3>
@@ -59,11 +59,11 @@ export const FuturoComprador = () => {
                         </div>
                         <div className="bg-red-100 border-l-4 border-red-500 p-4 rounded-r-lg">
                             <p className="font-bold text-red-800 text-xl">2030</p>
-                            <p className="text-red-700 text-sm">Prohibido vender y alquilar viviendas **Clase F y G**.</p>
+                            <p className="text-red-700 text-sm">Obligación de acometer mejoras para la reducción de consumo un 16%.</p>
                         </div>
                         <div className="bg-red-100 border-l-4 border-red-500 p-4 rounded-r-lg">
-                            <p className="font-bold text-red-800 text-xl">2033</p>
-                            <p className="text-red-700 text-sm">Prohibido vender y alquilar viviendas **Clase E**.</p>
+                            <p className="font-bold text-red-800 text-xl">2035</p>
+                            <p className="text-red-700 text-sm">Obligación de acometer mejoras para la reducción de consumo un 22%.</p>
                         </div>
                     </div>
                 </section>
