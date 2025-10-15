@@ -41,11 +41,11 @@ export const GuiaArrendador = () => {
                     <div className="grid md:grid-cols-3 gap-6">
                         <div className="bg-red-100 border-l-4 border-red-500 p-4 rounded-r-lg">
                             <p className="font-bold text-red-800 text-2xl">2030</p>
-                            <p className="text-red-700">Obligación de acometer mejoras para la reducción de consumo un 16%.</p>
+                            <p className="text-red-700">Obligación de acometer mejoras para la reducción de consumo un 16%.(Certificado F y G)</p>
                         </div>
                         <div className="bg-amber-100 border-l-4 border-amber-500 p-4 rounded-r-lg">
                             <p className="font-bold text-amber-800 text-2xl">2035</p>
-                            <p className="text-amber-700">Obligación de acometer mejoras para la reducción de consumo un 22%.</p>
+                            <p className="text-amber-700">Obligación de acometer mejoras para la reducción de consumo un 22%.(Certificado E)</p>
                         </div>
                          <div className="bg-blue-100 border-l-4 border-blue-500 p-4 rounded-r-lg">
                             <p className="font-bold text-blue-800 text-2xl">2025</p>
