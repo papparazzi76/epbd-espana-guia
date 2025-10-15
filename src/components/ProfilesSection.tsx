@@ -155,13 +155,15 @@ export const ProfilesSection = () => {
               <div>
                 <strong className="text-warning">Desde 2030:</strong>
                 <span className="text-muted-foreground ml-1">
-                  Prohibido vender/alquilar viviendas clase F y G
+                  Obligatorio una reducción al menos del 16% de consumo energético.
+                  (respecto a la media de 2020)
                 </span>
               </div>
               <div>
-                <strong className="text-destructive">Desde 2033:</strong>
+                <strong className="text-destructive">Desde 2040:</strong>
                 <span className="text-muted-foreground ml-1">
-                  También prohibido para viviendas clase E
+                  Obligatorio una reducción al menos del 22% de consumo energético.
+                  (respecto a la media de 2030)
                 </span>
               </div>
             </div>
