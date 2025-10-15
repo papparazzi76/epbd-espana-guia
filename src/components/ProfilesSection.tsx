@@ -160,10 +160,10 @@ export const ProfilesSection = () => {
                 </span>
               </div>
               <div>
-                <strong className="text-destructive">Desde 2040:</strong>
+                <strong className="text-destructive">Desde 2035:</strong>
                 <span className="text-muted-foreground ml-1">
                   Obligatorio una reducción al menos del 22% de consumo energético.
-                  (respecto a la media de 2030)
+                  (respecto a la media de 2020)
                 </span>
               </div>
             </div>
