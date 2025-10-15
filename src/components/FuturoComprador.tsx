@@ -41,7 +41,7 @@ export const FuturoComprador = () => {
                     <div className="grid md:grid-cols-2 gap-6">
                         <div className="bg-blue-100 border-l-4 border-blue-500 p-4 rounded-r-lg">
                             <h3 className="font-bold text-blue-800 text-lg mb-2">Certificado Energético</h3>
-                            <p className="text-blue-700 text-sm">Exige ver el CEE actualizado. Una vivienda Clase F y G podría quedar **sin poder venderse** a partir de 2030.</p>
+                            <p className="text-blue-700 text-sm">Exige ver el CEE actualizado. Una vivienda Clase F y G podría quedar muy depreciada a partir de 2030.</p>
                         </div>
                         <div className="bg-amber-100 border-l-4 border-amber-500 p-4 rounded-r-lg">
                             <h3 className="font-bold text-amber-800 text-lg mb-2">Coste de Reformas</h3>
