@@ -1,6 +1,5 @@
 import { HeroSection } from "@/components/HeroSection";
 import { DiagnosticForm } from "@/components/DiagnosticForm";
-import { MarketImpactSection } from "@/components/MarketImpactSection";
 import { FAQSection } from "@/components/FAQSection";
 
 const Index = () => {
@@ -21,7 +20,6 @@ const Index = () => {
       />
       <HeroSection />
       <DiagnosticForm />
-      <MarketImpactSection />
       <FAQSection />
     </>
   );

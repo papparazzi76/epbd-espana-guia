@@ -9,7 +9,6 @@ import NotFound from "./pages/NotFound";
 // Importa las secciones como si fueran páginas
 import { TimelineSection } from "@/components/TimelineSection";
 import { ProfilesSection } from "@/components/ProfilesSection";
-import { MarketImpactSection } from "@/components/MarketImpactSection";
 import { CalculatorSection } from "@/components/CalculatorSection";
 import { FinancialSupportSection } from "@/components/FinancialSupportSection";
 import { FAQSection } from "@/components/FAQSection";
@@ -49,7 +48,6 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/fechas-clave" element={<TimelineSection />} />
             <Route path="/obligaciones" element={<ProfilesSection />} />
-            <Route path="/impacto-mercado" element={<MarketImpactSection />} />
             <Route path="/calculadora" element={<CalculatorSection />} />
             <Route path="/ayudas-subvenciones" element={<FinancialSupportSection />} />
             <Route path="/faq" element={<FAQSection />} />
