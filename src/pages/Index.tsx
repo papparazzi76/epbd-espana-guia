@@ -1,5 +1,6 @@
 import { HeroSection } from "@/components/HeroSection";
 import { DiagnosticForm } from "@/components/DiagnosticForm";
+import { DownloadGuidesSection } from "@/components/DownloadGuidesSection";
 import { FAQSection } from "@/components/FAQSection";
 
 const Index = () => {
@@ -20,6 +21,7 @@ const Index = () => {
       />
       <HeroSection />
       <DiagnosticForm />
+      <DownloadGuidesSection />
       <FAQSection />
     </>
   );
