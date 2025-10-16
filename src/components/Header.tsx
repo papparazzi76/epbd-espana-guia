@@ -64,7 +64,7 @@ export const Header = () => {
         <div className="flex items-center">
           <NavLink to="/" className="flex items-center hover:opacity-80 transition-opacity">
             <img 
-              src="/lovable-uploads/4590f9ea-5435-441d-a36b-d612eb82fdb4.png" 
+              src="/lovable-uploads/4590f9ea-5435-441d-a36b-d612eb82fdb4.webp" 
               alt="Casas Más Eficientes - Guía EPBD 2024" 
               className="h-20 w-auto"
             />
