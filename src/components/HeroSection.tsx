@@ -1,20 +1,10 @@
 import { useState } from "react";
-import { ArrowRight, Calculator, Download, ChevronDown } from "lucide-react";
+import { ArrowRight, Calculator, ChevronDown } from "lucide-react";
 import heroImage from "@/assets/hero-energy-house.webp";
 import { scrollToSection } from "@/lib/smooth-scroll";
 
 export const HeroSection = () => {
   const [showQuickActions, setShowQuickActions] = useState(false);
-
-  const downloadGuide = () => {
-    // Simular descarga de guía PDF
-    const link = document.createElement('a');
-    link.href = 'data:text/plain;charset=utf-8,Guía EPBD 2024 - Contenido de ejemplo';
-    link.download = 'Guia-EPBD-2024-Completa.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
@@ -82,14 +72,7 @@ export const HeroSection = () => {
               
               {showQuickActions && (
                 <div className="mt-3 flex flex-wrap gap-2">
-                  <button 
-                    onClick={downloadGuide}
-                    className="bg-white/10 hover:bg-white/20 px-3 py-1 rounded text-sm flex items-center gap-1"
-                  >
-                    <Download className="w-3 h-3" />
-                    Descargar guía PDF
-                  </button>
-                  <button 
+                  <button
                     onClick={() => window.location.href = '/fechas-clave'}
                     className="bg-white/10 hover:bg-white/20 px-3 py-1 rounded text-sm"
                   >
