@@ -71,3 +71,9 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+## Strategic blueprint
+
+A detailed product, technical, legal, SEO, automation, and AI architecture proposal for a full digital real-estate platform is available at:
+
+- `docs/plataforma-inmobiliaria-integral.md`
